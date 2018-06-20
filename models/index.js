@@ -1,3 +1,6 @@
 module.exports = {
-	Book: require("./book")
+	Material: require("./materials")
+};
+module.exports = {
+	Part: require("./materials")
 };
