@@ -1,6 +1,6 @@
 module.exports = {
-	Material: require("./materials")
+	Material: require("./production")
 };
 module.exports = {
-	Part: require("./materials")
+	Part: require("./receiving")
 };
