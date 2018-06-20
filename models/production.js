@@ -3,8 +3,10 @@ const Schema = mongoose.Schema;
 
 const partSchema = new Schema({
 	name: { type: String, required: true },
-	sku: { type: Number, required: true },
-	quantity: { Number }
+	sku: { type: String, required: true },
+	quantity: { Number },
+	price: {NumberDecimal}
+
 		
 });
 const part = mongoose.model("parts", partSchema);
