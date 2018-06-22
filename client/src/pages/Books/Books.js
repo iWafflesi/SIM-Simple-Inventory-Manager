@@ -8,29 +8,29 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Table from "../../components/Table/Table";
 
-class Books extends Component {
+class Materials extends Component {
 	state = {
-		books: [],
+		materials: [],
 		title: "",
 		author: "",
 		synopsis: ""
 	};
 
 	componentDidMount() {
-		this.loadBooks();
+		this.loadMaterials();
 	}
 
-	loadBooks = () => {
-		API.getBooks()
+	loadMaterials = () => {
+		API.getMaterials()
 			.then(res =>
-				this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+				this.setState({ materials: res.data, title: "", author: "", synopsis: "" })
 			)
 			.catch(err => console.log(err));
 	};
 
-	deleteBook = id => {
-		API.deleteBook(id)
-			.then(res => this.loadBooks())
+	deleteMaterial = id => {
+		API.deleteMaterial(id)
+			.then(res => this.loadMaterials())
 			.catch(err => console.log(err));
 	};
 
@@ -44,12 +44,12 @@ class Books extends Component {
 	handleFormSubmit = event => {
 		event.preventDefault();
 		if (this.state.title && this.state.author) {
-			API.saveBook({
+			API.saveMaterial({
 				title: this.state.title,
 				author: this.state.author,
 				synopsis: this.state.synopsis
 			})
-			.then(res => this.loadBooks())
+			.then(res => this.loadMaterials())
 			.catch(err => console.log(err));
 		}
 	};
@@ -91,16 +91,16 @@ class Books extends Component {
 					</Col>
 					<Col size="md-6 sm-12">
 
-						{this.state.books.length ? (
+						{this.state.materials.length ? (
 							<List>
-								{this.state.books.map(book => (
-									<ListItem key={book._id}>
-										<Link to={"/books/" + book._id}>
+								{this.state.materials.map(material => (
+									<ListItem key={material._id}>
+										<Link to={"/materials/" + material._id}>
 											<strong>
-												{book.title} by {book.author}
+												{material.title} by {material.author}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
+										<DeleteBtn onClick={() => this.deletematerial(material._id)} />
 									</ListItem>
 								))}
 							</List>
@@ -114,4 +114,4 @@ class Books extends Component {
 	}
 }
 
-export default Books;
+export default Materials;
