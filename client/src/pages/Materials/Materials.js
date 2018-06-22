@@ -23,7 +23,7 @@ class Materials extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ materials: res.data, title: "", author: "", synopsis: "" })
+				this.setState({ materials: res.data, name: "", sku: "", quantity: "", price: "" })
 			)
 			.catch(err => console.log(err));
 	};
