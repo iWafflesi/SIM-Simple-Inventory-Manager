@@ -11,9 +11,10 @@ import Table from "../../components/Table/Table";
 class Materials extends Component {
 	state = {
 		materials: [],
-		title: "",
-		author: "",
-		synopsis: ""
+		name: "",
+		sku: "",
+		quantity: "",
+		price: ""
 	};
 
 	componentDidMount() {
