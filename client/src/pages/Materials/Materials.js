@@ -10,23 +10,11 @@ import Table from "../../components/Table/Table";
 
 class Materials extends Component {
 	state = {
-<<<<<<< HEAD
-		materials: []
-	};
-
-	componentDidMount() {
-		this.loadJobs();
-	}
-
-	loadJobs = () => {
-		API.getJobs()
-			.then(res =>
-				this.setState({ materials: res.data })
-=======
 		materials: [],
-		title: "",
-		author: "",
-		synopsis: ""
+		name: "",
+		sku: "",
+		quantity: "",
+		price: ""
 	};
 
 	componentDidMount() {
@@ -36,29 +24,14 @@ class Materials extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ materials: res.data, title: "", author: "", synopsis: "" })
->>>>>>> master
+				this.setState({ materials: res.data, name: "", sku: "", quantity: "", price: "" })
 			)
 			.catch(err => console.log(err));
 	};
 
-<<<<<<< HEAD
-	// loadBooks = () => {
-	// 	API.getBooks()
-	// 		.then(res =>
-	// 			this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-	// 		)
-	// 		.catch(err => console.log(err));
-	// };
-
-	deleteJob = id => {
-		API.deleteJob(id)
-			.then(res => this.loadJobs())
-=======
 	deleteMaterial = id => {
 		API.deleteMaterial(id)
 			.then(res => this.loadMaterials())
->>>>>>> master
 			.catch(err => console.log(err));
 	};
 
@@ -71,17 +44,6 @@ class Materials extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-<<<<<<< HEAD
-		if (this.state.materials) {
-			API.saveJob({
-				materials: this.state.materials
-				// title: this.state.title,
-				// author: this.state.author,
-				// synopsis: this.state.synopsis
-			})
-				.then(res => this.loadJobs())
-				.catch(err => console.log(err));
-=======
 		if (this.state.title && this.state.author) {
 			API.saveMaterial({
 				title: this.state.title,
@@ -90,7 +52,6 @@ class Materials extends Component {
 			})
 			.then(res => this.loadMaterials())
 			.catch(err => console.log(err));
->>>>>>> master
 		}
 	};
 	

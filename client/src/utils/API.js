@@ -1,20 +1,20 @@
 import axios from "axios";
 
 export default {
-	// Gets all jobs
-	getJobs: function() {
-		return axios.get("/api/jobs");
+	// Gets all materials
+	getMaterials: function() {
+		return axios.get("/api/materials");
 	},
-	// Gets the job with the given id
-	getJob: function(id) {
-		return axios.get("/api/jobs/" + id);
+	// Gets the book with the given id
+	getMaterial: function(id) {
+		return axios.get("/api/materials/" + id);
 	},
-	// Deletes the job with the given id
-	deleteJob: function(id) {
-		return axios.delete("/api/jobs/" + id);
+	// Deletes the book with the given id
+	deleteMaterial: function(id) {
+		return axios.delete("/api/materials/" + id);
 	},
-	// Saves a job to the database
-	saveJob: function(jobData) {
-		return axios.post("/api/jobs", jobData);
+	// Saves a book to the database
+	saveMaterial: function(bookData) {
+		return axios.post("/api/materials", bookData);
 	}
 };
