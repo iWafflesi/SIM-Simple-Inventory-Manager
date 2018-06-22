@@ -8,57 +8,29 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Table from "../../components/Table/Table";
 
-class Materials extends Component {
+class Books extends Component {
 	state = {
-<<<<<<< HEAD
-		materials: []
-	};
-
-	componentDidMount() {
-		this.loadJobs();
-	}
-
-	loadJobs = () => {
-		API.getJobs()
-			.then(res =>
-				this.setState({ materials: res.data })
-=======
-		materials: [],
+		books: [],
 		title: "",
 		author: "",
 		synopsis: ""
 	};
 
 	componentDidMount() {
-		this.loadMaterials();
+		this.loadBooks();
 	}
 
-	loadMaterials = () => {
-		API.getMaterials()
+	loadBooks = () => {
+		API.getBooks()
 			.then(res =>
-				this.setState({ materials: res.data, title: "", author: "", synopsis: "" })
->>>>>>> master
+				this.setState({ books: res.data, title: "", author: "", synopsis: "" })
 			)
 			.catch(err => console.log(err));
 	};
 
-<<<<<<< HEAD
-	// loadBooks = () => {
-	// 	API.getBooks()
-	// 		.then(res =>
-	// 			this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-	// 		)
-	// 		.catch(err => console.log(err));
-	// };
-
-	deleteJob = id => {
-		API.deleteJob(id)
-			.then(res => this.loadJobs())
-=======
-	deleteMaterial = id => {
-		API.deleteMaterial(id)
-			.then(res => this.loadMaterials())
->>>>>>> master
+	deleteBook = id => {
+		API.deleteBook(id)
+			.then(res => this.loadBooks())
 			.catch(err => console.log(err));
 	};
 
@@ -71,26 +43,14 @@ class Materials extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-<<<<<<< HEAD
-		if (this.state.materials) {
-			API.saveJob({
-				materials: this.state.materials
-				// title: this.state.title,
-				// author: this.state.author,
-				// synopsis: this.state.synopsis
-			})
-				.then(res => this.loadJobs())
-				.catch(err => console.log(err));
-=======
 		if (this.state.title && this.state.author) {
-			API.saveMaterial({
+			API.saveBook({
 				title: this.state.title,
 				author: this.state.author,
 				synopsis: this.state.synopsis
 			})
-			.then(res => this.loadMaterials())
+			.then(res => this.loadBooks())
 			.catch(err => console.log(err));
->>>>>>> master
 		}
 	};
 	
@@ -131,16 +91,16 @@ class Materials extends Component {
 					</Col>
 					<Col size="md-6 sm-12">
 
-						{this.state.materials.length ? (
+						{this.state.books.length ? (
 							<List>
-								{this.state.materials.map(material => (
-									<ListItem key={material._id}>
-										<Link to={"/materials/" + material._id}>
+								{this.state.books.map(book => (
+									<ListItem key={book._id}>
+										<Link to={"/books/" + book._id}>
 											<strong>
-												{material.title} by {material.author}
+												{book.title} by {book.author}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deletematerial(material._id)} />
+										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
 									</ListItem>
 								))}
 							</List>
@@ -154,4 +114,4 @@ class Materials extends Component {
 	}
 }
 
-export default Materials;
+export default Books;
