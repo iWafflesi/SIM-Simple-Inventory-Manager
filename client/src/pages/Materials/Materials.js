@@ -13,8 +13,8 @@ class Materials extends Component {
 		materials: [],
 		name: "",
 		sku: "",
-		quantity: "",
-		price: ""
+		price: "", 
+		quantity: ""
 	};
 
 	componentDidMount() {
@@ -24,7 +24,7 @@ class Materials extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ materials: res.data, name: "", sku: "", quantity: "", price: "" })
+				this.setState({ materials: res.data, name: "", sku: "", price: "", quantity: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -44,11 +44,12 @@ class Materials extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.title && this.state.author) {
+		if (this.state.name && this.state.sku) {
 			API.saveMaterial({
-				title: this.state.title,
-				author: this.state.author,
-				synopsis: this.state.synopsis
+				name: this.state.name,
+				sku: this.state.sku,
+				price: this.state.price,
+				quantity: this.state.quantity
 			})
 			.then(res => this.loadMaterials())
 			.catch(err => console.log(err));
@@ -60,54 +61,56 @@ class Materials extends Component {
 			<Container fluid>
 				<Row>
 					<Col size="md-12">
-
-					<Table>
-						<form>
-							<Input
-								value={this.state.title}
-								onChange={this.handleInputChange}
-								name="title"
-								placeholder="Title (required)"
-								/>
-							<Input
-								value={this.state.author}
-								onChange={this.handleInputChange}
-								name="author"
-								placeholder="Author (required)"
-								/>
-							<TextArea
-								value={this.state.synopsis}
-								onChange={this.handleInputChange}
-								name="synopsis"
-								placeholder="Synopsis (Optional)"
-								/>
-							<FormBtn
-								disabled={!(this.state.author && this.state.title)}
-								onClick={this.handleFormSubmit}
-								>
-								Submit Book
-							</FormBtn>
-						</form>
+						<Table>
+							<form>
+								<Row>
+									<Col size="md-6">
+										<Input
+											value={this.state.title}
+											onChange={this.handleInputChange}
+											name="material"
+											placeholder="Material (required)"
+										/>
+									</Col>
+									<Col size="md-5">
+										<Input
+											value={this.state.title}
+											onChange={this.handleInputChange}
+											name="qty"
+											placeholder="Qty (required)"
+											/>
+									</Col>
+									<Col size="md-1">
+										<FormBtn
+											disabled={!(this.state.author && this.state.title)}
+											onClick={this.handleFormSubmit}
+											>
+											Submit
+										</FormBtn>
+									</Col>
+								</Row>
+							</form>
 						</Table>
 					</Col>
-					<Col size="md-6 sm-12">
-
-						{this.state.materials.length ? (
-							<List>
-								{this.state.materials.map(material => (
-									<ListItem key={material._id}>
-										<Link to={"/materials/" + material._id}>
-											<strong>
-												{material.title} by {material.author}
-											</strong>
-										</Link>
-										<DeleteBtn onClick={() => this.deletematerial(material._id)} />
-									</ListItem>
-								))}
-							</List>
-						) : (
-							<h3>No Results to Display</h3>
-						)}
+				</Row>
+				<Row>
+					<Col size="md-12">
+						<Table>
+						<List>
+                {this.state.materials.map(material => {
+                  return (
+                    <ListItem key={material._id}>
+                      <a href={"/materials/" + material._id}>
+                        <strong>
+                          {material.title} by {material.author}
+                        </strong>
+                      </a>
+                      <DeleteBtn onClick={() => this.deleteMaterial(material._id)} />
+                    </ListItem>
+                  );
+                })}
+              </List>
+						</Table>
 					</Col>
 				</Row>
 			</Container>
