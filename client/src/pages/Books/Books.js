@@ -9,27 +9,32 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 
 class Books extends Component {
 	state = {
-		books: [],
-		title: "",
-		author: "",
-		synopsis: ""
+		materials: []
 	};
 
 	componentDidMount() {
-		this.loadBooks();
+		this.loadJobs();
 	}
 
-	loadBooks = () => {
-		API.getBooks()
+	loadJobs = () => {
+		API.getJobs()
 			.then(res =>
-				this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+				this.setState({ materials: res.data })
 			)
 			.catch(err => console.log(err));
 	};
 
-	deleteBook = id => {
-		API.deleteBook(id)
-			.then(res => this.loadBooks())
+	// loadBooks = () => {
+	// 	API.getBooks()
+	// 		.then(res =>
+	// 			this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+	// 		)
+	// 		.catch(err => console.log(err));
+	// };
+
+	deleteJob = id => {
+		API.deleteJob(id)
+			.then(res => this.loadJobs())
 			.catch(err => console.log(err));
 	};
 
@@ -42,13 +47,14 @@ class Books extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.title && this.state.author) {
-			API.saveBook({
-				title: this.state.title,
-				author: this.state.author,
-				synopsis: this.state.synopsis
+		if (this.state.materials) {
+			API.saveJob({
+				materials: this.state.materials
+				// title: this.state.title,
+				// author: this.state.author,
+				// synopsis: this.state.synopsis
 			})
-				.then(res => this.loadBooks())
+				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
 		}
 	};
