@@ -8,8 +8,9 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Table from "../../components/Table/Table";
 
-class Books extends Component {
+class Materials extends Component {
 	state = {
+<<<<<<< HEAD
 		materials: []
 	};
 
@@ -21,10 +22,27 @@ class Books extends Component {
 		API.getJobs()
 			.then(res =>
 				this.setState({ materials: res.data })
+=======
+		materials: [],
+		title: "",
+		author: "",
+		synopsis: ""
+	};
+
+	componentDidMount() {
+		this.loadMaterials();
+	}
+
+	loadMaterials = () => {
+		API.getMaterials()
+			.then(res =>
+				this.setState({ materials: res.data, title: "", author: "", synopsis: "" })
+>>>>>>> master
 			)
 			.catch(err => console.log(err));
 	};
 
+<<<<<<< HEAD
 	// loadBooks = () => {
 	// 	API.getBooks()
 	// 		.then(res =>
@@ -36,6 +54,11 @@ class Books extends Component {
 	deleteJob = id => {
 		API.deleteJob(id)
 			.then(res => this.loadJobs())
+=======
+	deleteMaterial = id => {
+		API.deleteMaterial(id)
+			.then(res => this.loadMaterials())
+>>>>>>> master
 			.catch(err => console.log(err));
 	};
 
@@ -48,6 +71,7 @@ class Books extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
+<<<<<<< HEAD
 		if (this.state.materials) {
 			API.saveJob({
 				materials: this.state.materials
@@ -57,6 +81,16 @@ class Books extends Component {
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
+=======
+		if (this.state.title && this.state.author) {
+			API.saveMaterial({
+				title: this.state.title,
+				author: this.state.author,
+				synopsis: this.state.synopsis
+			})
+			.then(res => this.loadMaterials())
+			.catch(err => console.log(err));
+>>>>>>> master
 		}
 	};
 	
@@ -97,16 +131,16 @@ class Books extends Component {
 					</Col>
 					<Col size="md-6 sm-12">
 
-						{this.state.books.length ? (
+						{this.state.materials.length ? (
 							<List>
-								{this.state.books.map(book => (
-									<ListItem key={book._id}>
-										<Link to={"/books/" + book._id}>
+								{this.state.materials.map(material => (
+									<ListItem key={material._id}>
+										<Link to={"/materials/" + material._id}>
 											<strong>
-												{book.title} by {book.author}
+												{material.title} by {material.author}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
+										<DeleteBtn onClick={() => this.deletematerial(material._id)} />
 									</ListItem>
 								))}
 							</List>
@@ -120,4 +154,4 @@ class Books extends Component {
 	}
 }
 
-export default Books;
+export default Materials;

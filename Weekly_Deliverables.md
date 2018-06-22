@@ -2,12 +2,12 @@
 
     * An overview of the intended application and WHY you feel it's valuable.
 
-			This is an application to help companies track inventory. Many companies lose money over the time spent tracking items between departments or items that have gone unaccounted for in the process of transferring. This application will help alleviate some of those errors and give the company better visibility on their products.
+			This is an application to help companies track inventory from purchase of raw materials to shipment of completed product. Many companies lose money over the time spent tracking items between departments or items that have gone unaccounted for in the process of transferring. This application will help alleviate some of those errors and give the company better visibility on their products.
 
     * A breakdown of roles by group member.
 
-			April - Authentication
-			Kelly - Database & auth
+			April - Authentication/server side
+			Kelly - Database & auth/server side
 			Ben - Smart Front End
 			Chris - Dumb Front End
 
@@ -22,7 +22,7 @@
 
     * A set of DETAILED screen-by-screen design layouts with annotations describing all UI/UX components and all data relevant to the screen.
 
-			Not done
+		In layout folder
 
       * On this note, show Slides 26-27 as an example of a UI/UX and Data Flow layout. Tell the class that you'll expect something akin to these drafts.
 
