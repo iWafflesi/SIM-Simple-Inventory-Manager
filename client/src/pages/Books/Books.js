@@ -7,7 +7,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Table from "../../components/Table/Table";
-
+import Modal from "../../components/Modal/modal"
 class Materials extends Component {
 	state = {
 		materials: [],
