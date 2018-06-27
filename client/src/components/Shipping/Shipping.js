@@ -5,8 +5,6 @@ const Shipping = () => (
 	
 		<React.Fragment>
 			<Nav/>
-				
-	
 			Shipping
 		</React.Fragment>
 
