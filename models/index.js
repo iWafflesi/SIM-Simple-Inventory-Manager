@@ -4,3 +4,7 @@ module.exports = {
 module.exports = {
 	Part: require("./receiving")
 };
+
+module.exports = {
+	User: require("./user")
+};
