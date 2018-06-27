@@ -3,13 +3,13 @@ import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 
-const Jobs = () => (
+const JobCreate = () => (
 	<React.Fragment>
 		<Nav/>
 		<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-		<NavBtn><Link to="/jobs/create">History</Link></NavBtn>
-			Jobs
+		<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+			Jobs.Create
 	</React.Fragment>
 );
 
-export default Jobs;
+export default JobCreate;
