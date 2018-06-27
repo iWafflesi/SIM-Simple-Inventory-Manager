@@ -1,15 +1,14 @@
 import React from "react";
+// import Router from "../Router";
+import Nav from "../Nav";
 import { Row, Col } from "../Grid";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const Nav = (props) => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-		
-    <a className="navbar-brand" href="/">
-      Simple Inventory Manager
-    </a>
-
+const Shipping = () => (
+	
+		<React.Fragment>
+			<Nav>
 				<Row>
 					<Col size='md-4'>
 				<NavBtn><Link to="/inventory/current">Inventory</Link></NavBtn>
@@ -20,14 +19,11 @@ const Nav = (props) => (
 				<Col size='md-4'>
 				<NavBtn><Link to="/shipping">Shipping</Link></NavBtn>
 					</Col>
-					</Row>
-					<Row>
-					<Col size='md-4'>
-				<NavBtn className="login" onClick>Login</NavBtn>
-					</Col>
 				</Row>
+			</Nav>
+			Shipping
+		</React.Fragment>
 
-  </nav>
 );
 
-export default Nav;
+export default Shipping;
