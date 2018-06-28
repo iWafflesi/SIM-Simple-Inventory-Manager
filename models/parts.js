@@ -5,12 +5,13 @@ const partSchema = new Schema({
 	name: { type: String, required: true },
 	sku: { type: String, required: true },
 	quantity: { type: Number },
+	material: { type: String, required: true },
 	// price: {NumberDecimal}
 
 		
 });
-const part = mongoose.model("parts", partSchema);
-module.exports = part;
+const Part = mongoose.model("part", partSchema);
+module.exports = Part;
 
 // const partSchema = new Schema({
 // 	name: { type: String, required: true },

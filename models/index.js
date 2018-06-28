@@ -1,9 +1,6 @@
 module.exports = {
-	Material: require("./production")
-};
-module.exports = {
-	Part: require("./receiving")
-};
-module.exports = {
+	Material: require("./parts"),
+	Part: require("./material"),
 	User: require("./user")
 };
+

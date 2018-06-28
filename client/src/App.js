@@ -1,22 +1,38 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
+import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
+import LoginModal from "./components/Modal";
 
-const App = () => (
-	<Router>
+
+class App extends React.Component {
+	state = {
+		openModal: true
+	}
+
+
+	handleModal = () => {
+		console.log(this);
+		console.log(this.state.openModal);
+	
+		this.setState((prevState) => ({openModal:!prevState.openModal}));
+	
+		console.log(this.state.openModal);	
+	};
+	
+
+	render = () => (
 		<div>
-			<Nav />
-			<Switch>
-				<Route exact path="/" component={Books} />
-				<Route exact path="/books" component={Books} />
-				<Route exact path="/books/:id" component={Detail} />
-				<Route component={NoMatch} />
-			</Switch>
+			<Nav 
+			handleModal = { 
+				this.handleModal
+			}/>
+			<Jumbotron />
+			<LoginModal
+			openModal={this.state.openModal} />
 		</div>
-	</Router>
-);
+
+	);
+};
+
 
 export default App;

@@ -1,11 +1,13 @@
 import React from "react";
 
-const Jumbotron = ({ children }) => (
+const Jumbotron = () => (
 	<div
 		style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
 		className="jumbotron"
 	>
-		{children}
+	<h1>Welcome to SIM</h1>
+	<h3>Please log in</h3>
+		
 	</div>
 );
 

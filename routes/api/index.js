@@ -1,17 +1,12 @@
 const router = require("express").Router();
 
+const materialRoutes = require("./materials");
+const partRoutes = require("./parts");
+const userRoutes = require("./users");
 
-// const bookRoutes = require("./books");
-// // Book routes
-// router.use("/books", bookRoutes);
-
-const receivingRoutes = require("./receiving");
-// Receiving routes
-router.use("/receiving", receivingRoutes);
-
-const productionRoutes = require("./production");
-// Production routes
-router.use("/production", productionRoutes);
+router.use("/materials", materialRoutes);
+router.use("/parts", partRoutes);
+router.use("/users", userRoutes);
 
 
 module.exports = router;
