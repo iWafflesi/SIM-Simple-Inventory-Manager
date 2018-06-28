@@ -1,48 +1,24 @@
 import React from "react";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Books from "./pages/AddInventory";
-// import Materials from "./pages/Materials";
-// import Detail from "./pages/Detail";
-// import NoMatch from "./pages/NoMatch";
+import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
-import Modal from "./components/Modal";
-// import db from "../../models";
+import LoginModal from "./components/Modal";
 
 
 class App extends React.Component {
 	state = {
-		credentials: {
-			username: this.username,
-			password: this.password
-		},
-		openModal: false
+		openModal: true
 	}
 
 
 	handleModal = () => {
-		// const credential = this.state.credentials;
-		this.setState((prevState) => ({
-			openModal: !prevState.openModal
-		}));
-		console.log("Login clicked!");
-		
+		console.log(this);
+		console.log(this.state.openModal);
+	
+		this.setState((prevState) => ({openModal:!prevState.openModal}));
+	
+		console.log(this.state.openModal);	
 	};
-
-	handleLogout = () => {
-		this.setState(() => ({
-			openModal: false
-		}));
-	};
-
-	// componentDidMount() {
-	// 	<p>Component mounted!</p>
-	// }
-
-	// componentDidUpdate(prevProps, prevState) {
-	// 	if (prevState.credentials !== this.state.credentials) {
-	// 		console.log("Credentials: ", this.state.credentials)
-	// 	}
-	// }
+	
 
 	render = () => (
 		<div>
@@ -50,7 +26,9 @@ class App extends React.Component {
 			handleModal = { 
 				this.handleModal
 			}/>
-			<Modal />
+			<Jumbotron />
+			<LoginModal
+			openModal={this.state.openModal} />
 		</div>
 
 	);
