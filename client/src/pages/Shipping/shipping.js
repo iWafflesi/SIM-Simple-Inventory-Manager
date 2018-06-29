@@ -1,36 +1,38 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Table from "../../components/Table/Table";
+import Nav from "../../components/Nav";
+import NavButton from "../../components/NavButton";
 
-class Books extends Component {
+class Parts extends Component {
 	state = {
-		books: [],
-		title: "",
-		author: "",
-		synopsis: ""
+		parts: [],
+		name: "",
+		sku: "",
+		quantity: "",
+		material: "",
 	};
 
 	componentDidMount() {
-		this.loadBooks();
+		this.loadParts();
 	}
 
-	loadBooks = () => {
-		API.getBooks()
+	loadParts = () => {
+		API.getParts()
 			.then(res =>
-				this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+				this.setState({ parts: res.data, name: "", sku: "", quantity: "",material: "" })
 			)
 			.catch(err => console.log(err));
 	};
 
-	deleteBook = id => {
-		API.deleteBook(id)
-			.then(res => this.loadBooks())
+	deletePart = id => {
+		API.deletePart(id)
+			.then(res => this.loadParts())
 			.catch(err => console.log(err));
 	};
 
@@ -43,13 +45,14 @@ class Books extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.title && this.state.author) {
-			API.saveBook({
-				title: this.state.title,
-				author: this.state.author,
-				synopsis: this.state.synopsis
+		if (this.state.name && this.state.sku) {
+			API.savePart({
+				name: this.state.name,
+				sku: this.state.sku,
+				quantity: this.state.quantity,
+				material: this.state.material
 			})
-			.then(res => this.loadBooks())
+			.then(res => this.loadParts())
 			.catch(err => console.log(err));
 		}
 	};
@@ -57,50 +60,57 @@ class Books extends Component {
 	render() {
 		return (
 			<Container fluid>
+			<Nav />
 				<Row>
 					<Col size="md-12">
 
 					<Table>
 						<form>
 							<Input
-								value={this.state.title}
+								value={this.state.name}
 								onChange={this.handleInputChange}
-								name="title"
-								placeholder="Title (required)"
+								name="name"
+								placeholder="name (Optional)"
 								/>
 							<Input
-								value={this.state.author}
+								value={this.state.sku}
 								onChange={this.handleInputChange}
-								name="author"
-								placeholder="Author (required)"
+								name="sku"
+								placeholder="sku (required)"
 								/>
-							<TextArea
-								value={this.state.synopsis}
+							<Input
+								value={this.state.quantity}
 								onChange={this.handleInputChange}
-								name="synopsis"
-								placeholder="Synopsis (Optional)"
+								name="quantity"
+								placeholder="quantity (required)"
+								/>
+								<Input
+								value={this.state.qmaterial}
+								onChange={this.handleInputChange}
+								name="material"
+								placeholder="material used (Optional)"
 								/>
 							<FormBtn
-								disabled={!(this.state.author && this.state.title)}
+								disabled={!(this.state.sku && this.state.quantity)}
 								onClick={this.handleFormSubmit}
 								>
-								Submit Book
+								Submit Part
 							</FormBtn>
 						</form>
 						</Table>
 					</Col>
 					<Col size="md-6 sm-12">
 
-						{this.state.books.length ? (
+						{this.state.parts.length ? (
 							<List>
-								{this.state.books.map(book => (
-									<ListItem key={book._id}>
-										<Link to={"/books/" + book._id}>
+								{this.state.parts.map(part => (
+									<ListItem key={part._id}>
+										<Link to={"/parts/" + part._id}>
 											<strong>
-												{book.title} by {book.author}
+												{part.name} by {part.sku}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
+										<DeleteBtn onClick={() => this.deletePart(part._id)} />
 									</ListItem>
 								))}
 							</List>

@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, Col } from "../Grid";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
-	console.log("props: ", props);
+	console.log( props);
+	console.log( props.state);
 	return (
 	<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 
@@ -32,5 +33,5 @@ const Nav = (props) => {
 	</nav>
 	)
 };
-
 export default Nav;
+
