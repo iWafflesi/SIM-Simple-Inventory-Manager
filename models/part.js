@@ -10,8 +10,8 @@ const partSchema = new Schema({
 
 		
 });
-const Parts = mongoose.model("part", partSchema);
-module.exports = Parts;
+const Part = mongoose.model("part", partSchema);
+module.exports = Part;
 
 // const partSchema = new Schema({
 // 	name: { type: String, required: true },
