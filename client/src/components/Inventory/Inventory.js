@@ -13,11 +13,14 @@ class Inventory extends Component {
 	};
 	componentDidMount() {
 		this.loadMaterials();
+		console.log("didmount log" + materials);
 	};
 	loadMaterials = () => {
 		API.getMaterials()
 		.then(res => 
+			
 		this.setState({materials: res.data, sku: "", name: "", quantity:""})
+
 	).catch(err => this.loadMaterials());
 	};
 

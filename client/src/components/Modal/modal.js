@@ -2,12 +2,10 @@ import React from "react";
 import Modal from "react-modal";
 
 const LoginModal = (props) => (
+	
 	<Modal
-	//opens when selected option is thruthy
-	isOpen={!!props.login}
-	//this gets rid of modal when you click background
-	onRequestClose={props.handleLogout}
-	//label of modal
+	
+	isOpen={props.openModel}
 	contentLabel="selected Option"
 	//shutting down modal
 	closeTimeoutMS={500}
