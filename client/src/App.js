@@ -5,7 +5,7 @@ import React from "react";
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/Modal";
 // import db from "../../models";
 
 
@@ -34,22 +34,21 @@ class App extends React.Component {
 		}));
 	};
 
-	// componentDidMount() {
-	// 	<p>Component mounted!</p>
-	// }
+	componentDidMount() {
+		<p>Component mounted!</p>
+		console.log("mounted");
+		
+	}
 
-	// componentDidUpdate(prevProps, prevState) {
-	// 	if (prevState.credentials !== this.state.credentials) {
-	// 		console.log("Credentials: ", this.state.credentials)
-	// 	}
-	// }
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.credentials !== this.state.credentials) {
+			console.log("Credentials: ", this.state.credentials)
+		}
+	}
 
 	render = () => (
 		<div>
-			<Nav 
-			handleModal = { 
-				this.handleModal
-			}/>
+			<Nav handleModal = { this.handleModal }/>
 			<Modal />
 		</div>
 
