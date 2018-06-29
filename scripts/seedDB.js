@@ -49,62 +49,12 @@ const materialSeed = [
 	price: 7.20
 	}
 ];
-const partSeed = [
-	{
-		name: 'this part',
-		sku: '798441',
-		quantity: 5,
-		price: 19.99,
-		material:'1UXf2'
-	},{
-		name: 'part 2',
-	sku: '49465264',
-	quantity: 5,
-	price: 23.50,
-	material:'1UXG6'
-	},{
-		name: 'part 3',
-		sku: '49649875',
-		quantity: 5,
-		price: 24.99,
-		material: '2hgf1'
-	},{
-		name: 'part 4',
-		sku: '49487765',
-		quantity: 5,
-		price: 21.99,
-		material: '2hkg1'
-	},{
-		name: 'part 5',
-		sku: '46984789',
-		quantity: 5,
-		price: 18.99,
-		material: '2hkf6'
-	},{
-		name: 'part 6',
-	sku: '56456545',
-	quantity: 5,
-	price: 15.99,
-	material: '2hkd9'
-	}
-]
 
-db.material
+db.Material
 	.remove({})
-	.then(() => db.material.collection.insertMany(materialSeed))
+	.then(() => db.Material.collection.insertMany(materialSeed))
 	.then(data => {
-		console.log(data.insertedIds.length + " records inserted!");
-		process.exit(0);
-	})
-	.catch(err => {
-		console.error(err);
-		process.exit(1);
-	});
-	db.part
-	.remove({})
-	.then(() => db.part.collection.insertMany(partSeed))
-	.then(data => {
-		console.log(data.insertedIds.length + " records inserted!");
+		console.log(data.insertedIds.length + "materials records inserted!");
 		process.exit(0);
 	})
 	.catch(err => {

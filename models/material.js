@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 const materialSchema = new Schema({
 	name: { type: String, required: true },
 	sku: { type: Number, required: true },
-	quantity: { Number }
+	quantity: {type: Number }
 	
 });
 
-const Material = mongoose.model("Material", materialSchema);
+const Material= mongoose.model("Material", materialSchema);
+
 module.exports = Material;
 

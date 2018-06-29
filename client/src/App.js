@@ -13,6 +13,7 @@ class App extends React.Component {
 	handleModal = () => {
 		console.log(this);
 		console.log(this.state.openModal);
+
 	
 		this.setState((prevState) => ({openModal:!prevState.openModal}));
 	
