@@ -21,7 +21,7 @@ const LoginModal = (props) => (
 						<input className='username__input' type="text" name="username" />
 						<input className='password__input' type="text" name="password" />
 					</form>
-	<button className='button' onClick={props.handleLogout}>Log In</button>
+	<button className='button'onClick={props.handleLogout}>Log In</button>
 	</Modal>
 	);
 	export default LoginModal;
