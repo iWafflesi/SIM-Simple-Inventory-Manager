@@ -89,22 +89,22 @@ const partSeed = [
 	}
 ]
 
-db.material
+db.Materials
 	.remove({})
-	.then(() => db.material.collection.insertMany(materialSeed))
+	.then(() => db.Materials.collection.insertMany(materialSeed))
 	.then(data => {
-		console.log(data.insertedIds.length + " records inserted!");
+		console.log(data.insertedIds.length + "materials records inserted!");
 		process.exit(0);
 	})
 	.catch(err => {
 		console.error(err);
 		process.exit(1);
 	});
-	db.part
+	db.Parts
 	.remove({})
-	.then(() => db.part.collection.insertMany(partSeed))
+	.then(() => db.Parts.collection.insertMany(partSeed))
 	.then(data => {
-		console.log(data.insertedIds.length + " records inserted!");
+		console.log(data.insertedIds.length + " parts records inserted!");
 		process.exit(0);
 	})
 	.catch(err => {

@@ -3,8 +3,10 @@ import Modal from "react-modal";
 
 
 const LoginModal = (props) => (
+	
 	<Modal
-	isOpen={!!props.openModel}
+	
+	isOpen={props.openModel}
 	contentLabel="selected Option"
 	>
 	
