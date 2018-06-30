@@ -26,7 +26,9 @@ const Inventory = () => {
 
 							</tr>
 						</thead>
-						<InventoryTable />
+						<tbody>
+							<InventoryTable />
+						</tbody>
 					</table>
 				</div>
 			</div>
