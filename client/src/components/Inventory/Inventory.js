@@ -3,34 +3,35 @@ import React, { Component } from "react";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
-import inventoryTable from "../InventoryTable";
+import InventoryTable from "../InventoryTable";
 
 const Inventory = () => {
 
-
-			<React.Fragment>
+	return (
+		<React.Fragment>
 			<Nav />
 			<NavBtn><Link to="/inventory/current">Current</Link></NavBtn>
 			<NavBtn><Link to="/inventory/history">History</Link></NavBtn>
 			<NavBtn><Link to="/inventory/receiving">Receiving</Link></NavBtn>
 
-					<div className="panel panel-default">
-					<div className="panel heading">Current Inventory</div>
-					<div className="panel-body">
-						<table className="table table-hover" id='inventoryTable'>
-							<thead>
-								<tr>
-									<th scope="col">SKU</th>
-									<th scope="col">Name</th>
-									<th scope="col">Quantity</th>
+			<div className="panel panel-default">
+				<div className="panel heading">Current Inventory</div>
+				<div className="panel-body">
+					<table className="table table-hover" id='inventoryTable'>
+						<thead>
+							<tr>
+								<th scope="col">SKU</th>
+								<th scope="col">Name</th>
+								<th scope="col">Quantity</th>
 
-								</tr>
-							</thead>
-							<inventoryTable />
-						</table>
-					</div>
+							</tr>
+						</thead>
+						<InventoryTable />
+					</table>
 				</div>
-					</React.Fragment>
+			</div>
+		</React.Fragment>
+	)
 };
 
 
