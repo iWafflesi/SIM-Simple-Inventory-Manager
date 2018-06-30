@@ -1,19 +1,24 @@
 import React from "react";
 import Modal from "react-modal";
+import ModalForm from "./../ModalForm"
+
 
 const LoginModal = (props) => (
+	
+
+
 	<Modal
-	//opens when selected option is thruthy
-	isOpen={!!props.login}
-	//this gets rid of modal when you click background
-	onRequestClose={props.handleLogout}
-	//label of modal
+	
+	isOpen= {props.openModal}
 	contentLabel="selected Option"
-	//shutting down modal
-	closeTimeoutMS={500}
-	className='modal'
-	//div contents
 	>
+<ModalForm 
+logout={props.logout}
+username ={props.username}
+password = {props.password}
+getUsername = {props.getUsername}
+getPassword = {props.getPassword}
+/>
 	
 	<h3 className='modal__title'> User Log In</h3>
 	{props.login && <p className='modal__body'>{props.login}</p>}
