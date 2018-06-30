@@ -14,14 +14,14 @@ class Jobs extends Component {
 		name: "",
 		jobNumber: "",
 	};
-	// componentDidMount(){
-	// 	this.getJobs();
-	// };
-	// getJobs = () => {
-	// 	API.getJobs().then((res) => {
-	// 		this.setState({ jobList: res.data })
-	// 	});
-	// };
+	componentDidMount(){
+		this.getJobs();
+	};
+	getJobs = () => {
+		API.getJobs().then((res) => {
+			this.setState({ jobList: res.data })
+		});
+	};
 	render() {
 		return (
 			<React.Fragment>
@@ -56,7 +56,6 @@ class Jobs extends Component {
 								</tr>
 							</thead>
 							<tbody>
-
 							</tbody>
 						</table>
 					</div>
