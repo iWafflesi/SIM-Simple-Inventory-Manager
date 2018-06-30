@@ -3,41 +3,21 @@ import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import inventoryTable from "../InventoryTable";
 
-class Inventory extends Component {
-	state ={
-		materials: [],
-		sku: "",
-		name: "",
-		quantity: "",
-	};
-	componentDidMount() {
-		this.loadMaterials();
-		console.log("didmount log" + materials);
-	};
-	loadMaterials = () => {
-		API.getMaterials()
-		.then(res => 
-			
-		this.setState({materials: res.data, sku: "", name: "", quantity:""})
-
-	).catch(err => this.loadMaterials());
-	};
+const Inventory = () => {
 
 
-		
-	render() {
-		return (
 			<React.Fragment>
 			<Nav />
 			<NavBtn><Link to="/inventory/current">Current</Link></NavBtn>
 			<NavBtn><Link to="/inventory/history">History</Link></NavBtn>
 			<NavBtn><Link to="/inventory/receiving">Receiving</Link></NavBtn>
 
-					<div class="panel panel-default">
-					<div class="panel heading">Current Inventory</div>
-					<div class="panel-body">
-						<table class="table table-hover" id='inventoryTable'>
+					<div className="panel panel-default">
+					<div className="panel heading">Current Inventory</div>
+					<div className="panel-body">
+						<table className="table table-hover" id='inventoryTable'>
 							<thead>
 								<tr>
 									<th scope="col">SKU</th>
@@ -46,15 +26,11 @@ class Inventory extends Component {
 
 								</tr>
 							</thead>
-							<tbody>
-
-							</tbody>
+							<inventoryTable />
 						</table>
 					</div>
 				</div>
 					</React.Fragment>
-				);
-			};
 };
 
 
