@@ -7,7 +7,7 @@ const keys = require("./config/keys");
 const cookieSession = require('cookie-session');
 const passport = require("passport");
 const PORT = process.env.PORT || 3001;
-require("./models/user");
+require("./models/users");
 require("./service/passport");
 
 // Define middleware here
