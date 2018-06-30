@@ -4,8 +4,7 @@ import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
-	console.log( props);
-	console.log( props.state);
+
 	return (
 	<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 

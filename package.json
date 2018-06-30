@@ -8,7 +8,7 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "seed": "node scripts/seedDB.js && node scripts/partseedDB.js",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
@@ -29,7 +29,6 @@
     "mongodb": "2.2",
     "mongoose": "^5.0.17",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "react-modal": "^3.4.5"
+    "passport-local": "^1.0.0"
   }
 }
