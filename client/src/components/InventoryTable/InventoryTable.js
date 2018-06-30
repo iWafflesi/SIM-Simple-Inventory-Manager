@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
+import API from "../../utils/API";
 
 class InventoryTable extends Component {
-	constructer(props) {
+	constructor(props) {
 		super(props)
 		this.state = {}
 	}

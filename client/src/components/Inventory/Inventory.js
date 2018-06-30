@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
