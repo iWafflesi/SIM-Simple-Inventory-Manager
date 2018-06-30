@@ -26,13 +26,13 @@ class Jobs extends Component {
 		return (
 			<React.Fragment>
 				<Nav />
-				<div class="panel panel-default">
-					<div class="panel heading">
+				<div className="panel panel-default">
+					<div className="panel heading">
 						<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
 						<NavBtn><Link to="/jobs/create">History</Link></NavBtn>
 						<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
 					</div>
-					<div class="panel-body">
+					<div className="panel-body">
 						{this.state.jobList ?
 							this.state.jobList.map((job, i) => {
 								<div className="jobButton">
@@ -42,10 +42,10 @@ class Jobs extends Component {
 							: null}
 					</div>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel heading">Current Jobs</div>
-					<div class="panel-body">
-						<table class="table table-hover" id='jobTable'>
+				<div className="panel panel-default">
+					<div className="panel heading">Current Jobs</div>
+					<div className="panel-body">
+						<table className="table table-hover" id='jobTable'>
 							<thead>
 								<tr>
 									<th scope="col">Job ID</th>
