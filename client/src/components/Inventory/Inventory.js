@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import API from "../../utils/API";
+import React from "react";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
-import inventoryTable from "../InventoryTable";
+import InventoryTable from "../InventoryTable";
+
+
 
 const Inventory = () => {
 
@@ -26,7 +27,7 @@ const Inventory = () => {
 
 								</tr>
 							</thead>
-							<inventoryTable />
+							<InventoryTable />
 						</table>
 					</div>
 				</div>
