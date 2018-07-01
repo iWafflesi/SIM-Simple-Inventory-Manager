@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
 
 
-class Jobs extends Component {
+class JobHistory extends Component {
 	state = {
 		jobs: [],
 		name: "",
@@ -43,7 +43,7 @@ class Jobs extends Component {
 					</div>
 				</div>
 				<div className="panel panel-default">
-					<div className="panel heading">Current Jobs</div>
+					<div className="panel heading">Job History</div>
 					<div className="panel-body">
 						<table className="table table-hover" id='jobTable'>
 							<thead>
@@ -66,4 +66,4 @@ class Jobs extends Component {
 	};
 };
 
-export default Jobs;
+export default JobHistory;
