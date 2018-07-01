@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react"; // import React, { Component } from "react";
 
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
@@ -26,7 +26,9 @@ const Inventory = () => {
 
 							</tr>
 						</thead>
-						<InventoryTable />
+						<tbody>
+							<InventoryTable />
+						</tbody>
 					</table>
 				</div>
 			</div>
