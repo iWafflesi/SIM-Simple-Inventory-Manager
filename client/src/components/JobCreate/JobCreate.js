@@ -65,6 +65,7 @@ class JobCreate extends Component {
 			<React.Fragment>
 			<Nav />
 			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+			<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
 			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
 				<Row>
 					<Col size="md-12">
