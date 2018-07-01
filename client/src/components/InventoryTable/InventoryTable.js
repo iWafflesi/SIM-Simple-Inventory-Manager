@@ -14,23 +14,26 @@ class InventoryTable extends Component {
 	getMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ materialsList: res.data, sku: "", name: "", quantity: "" })
+				this.setState({ materialList: res.data })
 
 			).catch(err => this.getMaterials());
 	}
 
 
 	render() {
-		return (<React.Fragment>
+		console.log("MaterialList: ", this.state.materialList);
+		return <React.Fragment>
 			{this.state.materialList ? this.state.materialList.map((material, i) => {
-				<tbody>
-					<td>{this.material.sku}</td>
-					<td>{this.material.name}</td>
-					<td>{this.material.quantity}</td>
-				</tbody>
+				return(
+				<tr key={i}>
+					<td>{material.sku}</td>
+					<td>{material.name}</td>
+					<td>{material.quantity}</td>
+				</tr>
+				)
 			}) : null}
 		</React.Fragment>
-		)
+		
 	}
 }
 export default InventoryTable;

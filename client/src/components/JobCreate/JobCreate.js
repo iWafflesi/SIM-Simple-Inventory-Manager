@@ -27,7 +27,7 @@ class JobCreate extends Component {
 	loadParts = () => {
 		API.getParts()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: "", username:"" })
+				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: ""})
 			)
 			.catch(err => console.log(err));
 	};

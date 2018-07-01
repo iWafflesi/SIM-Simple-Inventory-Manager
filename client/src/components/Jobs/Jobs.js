@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
@@ -35,9 +35,11 @@ class Jobs extends Component {
 					<div className="panel-body">
 						{this.state.jobList ?
 							this.state.jobList.map((job, i) => {
+								return (
 								<div className="jobButton">
 									<button><Link to="#"> {job.number}</Link></button>
 								</div>
+								)
 							})
 							: null}
 					</div>

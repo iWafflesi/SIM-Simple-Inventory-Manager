@@ -28,7 +28,7 @@ class JobDetail extends Component {
 	loadParts = () => {
 		API.getParts()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",material: "", materialQuantity:"", username:"", comments:"" })
+				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",material: "", materialQuantity:"", comments:"" })
 			)
 			.catch(err => console.log(err));
 	};

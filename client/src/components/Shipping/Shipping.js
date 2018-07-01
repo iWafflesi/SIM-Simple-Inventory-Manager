@@ -4,8 +4,8 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
-import { Input, FormBtn } from "../Form";
-import Table from "../Table/Table";
+// import { Input, FormBtn } from "../Form";
+// import Table from "../Table/Table";
 import Nav from "../Nav";
 
 
