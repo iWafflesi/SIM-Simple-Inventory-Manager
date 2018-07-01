@@ -1,6 +1,9 @@
 import React from "react"; // import React, { Component } from "react";
 
 import Nav from "../Nav";
+import { Row, Col, Container } from "../Grid";
+import "./Inventory.css"
+import Table from "../Table";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import InventoryTable from "../InventoryTable";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
 
 
-class Jobs extends Component {
+class JobHistory extends Component {
 	state = {
 		jobs: [],
 		name: "",
@@ -35,17 +35,15 @@ class Jobs extends Component {
 					<div className="panel-body">
 						{this.state.jobList ?
 							this.state.jobList.map((job, i) => {
-								return (
 								<div className="jobButton">
 									<button><Link to="#"> {job.number}</Link></button>
 								</div>
-								)
 							})
 							: null}
 					</div>
 				</div>
 				<div className="panel panel-default">
-					<div className="panel heading">Current Jobs</div>
+					<div className="panel heading">Job History</div>
 					<div className="panel-body">
 						<table className="table table-hover" id='jobTable'>
 							<thead>
@@ -68,4 +66,4 @@ class Jobs extends Component {
 	};
 };
 
-export default Jobs;
+export default JobHistory;

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import components
 import App from "../App";
 import Jobs from "./Jobs/Jobs";
+import JobHistory from "./JobHistory/JobHistory";
 import Shipping from "./Shipping/Shipping";
 import Inventory from "./Inventory/Inventory";
 import TranHistory from "./History/History";
@@ -19,6 +20,7 @@ const Router = () => (
 		<Route path="/inventory/history" component={TranHistory} />
 		<Route path="/inventory/receiving" component={Receiving} />
 		<Route path="/jobs" component={Jobs} />
+		<Route path="/jobs/jobhistory" component={JobHistory} />
 		<Route path="/jobs/create" component={JobCreate} />
 		<Route path="/job/detail/:jobID" component={JobDetail} />
 		<Route path="/shipping" component={Shipping} />
