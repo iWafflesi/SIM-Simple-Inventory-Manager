@@ -22,7 +22,6 @@ const Inventory = () => {
 								<th scope="col">SKU</th>
 								<th scope="col">Name</th>
 								<th scope="col">Quantity</th>
-
 							</tr>
 						</thead>
 						<InventoryTable />
