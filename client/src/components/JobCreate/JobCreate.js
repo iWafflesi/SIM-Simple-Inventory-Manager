@@ -28,7 +28,7 @@ class JobCreate extends Component {
 	loadParts = () => {
 		API.getParts()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: "", username:"" })
+				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: ""})
 			)
 			.catch(err => console.log(err));
 	};
@@ -65,6 +65,7 @@ class JobCreate extends Component {
 		return (
 			<React.Fragment>
 			<Nav />
+<<<<<<< HEAD
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
@@ -73,6 +74,11 @@ class JobCreate extends Component {
 					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
 				</div>
 			</div>
+=======
+			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+			<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
+			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+>>>>>>> master
 				<Row>
 					<Col size="md-12">
 
