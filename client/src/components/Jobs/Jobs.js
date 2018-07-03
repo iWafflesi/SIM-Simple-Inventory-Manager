@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import "../links.css"
 
 //need more information on jobs to create functionality and rendering
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
@@ -14,30 +15,33 @@ class Jobs extends Component {
 		name: "",
 		jobNumber: "",
 	};
-	// componentDidMount(){
-	// 	this.getJobs();
-	// };
-	// getJobs = () => {
-	// 	API.getJobs().then((res) => {
-	// 		this.setState({ jobList: res.data })
-	// 	});
-	// };
+	componentDidMount(){
+		this.getJobs();
+	};
+	getJobs = () => {
+		API.getJobs().then((res) => {
+			this.setState({ jobList: res.data })
+		});
+	};
 	render() {
 		return (
 			<React.Fragment>
 				<Nav />
-				<div className="panel panel-default">
-					<div className="panel heading">
-						<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-						<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
-						<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-					</div>
+					<div className="panel panel-default">
+						<div className="panel heading subLinks">
+							<div className="link">
+								<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+							</div>
+							<div className="link">
+								<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+							</div>
+						</div>
 					<div className="panel-body">
 						{this.state.jobList ?
 							this.state.jobList.map((job, i) => {
 								return (
 								<div className="jobButton">
-									<button><Link to="#"> {job.number}</Link></button>
+									<button><Link to="/job/detail/:jobID"> {job.number}</Link></button>
 								</div>
 								)
 							})
@@ -58,7 +62,6 @@ class Jobs extends Component {
 								</tr>
 							</thead>
 							<tbody>
-
 							</tbody>
 						</table>
 					</div>

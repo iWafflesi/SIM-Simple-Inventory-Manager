@@ -21,8 +21,7 @@ class InventoryTable extends Component {
 
 
 	render() {
-		console.log("MaterialList: ", this.state.materialList);
-		return <React.Fragment>
+		return (<React.Fragment>
 			{this.state.materialList ? this.state.materialList.map((material, i) => {
 				return(
 				<tr key={i}>
@@ -33,7 +32,7 @@ class InventoryTable extends Component {
 				)
 			}) : null}
 		</React.Fragment>
-		
+		)
 	}
 }
 export default InventoryTable;
