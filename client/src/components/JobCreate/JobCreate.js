@@ -65,7 +65,6 @@ class JobCreate extends Component {
 		return (
 			<React.Fragment>
 			<Nav />
-<<<<<<< HEAD
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
@@ -74,11 +73,6 @@ class JobCreate extends Component {
 					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
 				</div>
 			</div>
-=======
-			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-			<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
-			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
->>>>>>> master
 				<Row>
 					<Col size="md-12">
 
