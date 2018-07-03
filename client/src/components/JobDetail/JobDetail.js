@@ -6,8 +6,10 @@ import Table from "../Table/Table";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
+import "../links.css"
 
 //********THIS PAGE DOES NOT HAVE A ROUTE AND CANNOT BE SEEN!!!!!!!!!!
+//  routes to this page is dependant on the jobId#
 
 class JobDetail extends Component {
 	state = {
@@ -66,8 +68,14 @@ class JobDetail extends Component {
 		return (
 			<React.Fragment>
 			<Nav />
-			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+			<div className="subLinks">
+				<div className="link">
+					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+				</div>
+				<div className="link">
+					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+				</div>
+			</div>
 				<Row>
 					<Col size="md-12">
 

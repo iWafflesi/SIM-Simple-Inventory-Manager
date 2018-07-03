@@ -21,7 +21,8 @@ class InventoryTable extends Component {
 
 
 	render() {
-		return (<React.Fragment>
+		return (
+		<React.Fragment>
 			{this.state.materialList ? this.state.materialList.map((material, i) => {
 				<tbody>
 					<td>{this.material.sku}</td>

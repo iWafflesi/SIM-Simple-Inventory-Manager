@@ -1,7 +1,8 @@
+
 import React from "react";
-// import { Row, Col } from "../Grid";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import "./Nav.css"
 
 const Nav = (props) => {
 	return (
@@ -9,30 +10,16 @@ const Nav = (props) => {
 
 		<a className="navbar-brand" href="/">Simple Inventory Manager</a>
 
-		<NavBtn><Link to="/inventory/current">Inventory</Link></NavBtn>
+			<div className="navLinks">
+				<NavBtn className="link"><Link className="linkStyle" to="/inventory/current">Inventory</Link></NavBtn>
 
-		<NavBtn><Link to="/jobs">Production</Link></NavBtn>
+				<NavBtn className="link"><Link className="linkStyle" to="/jobs">Production</Link></NavBtn>
 
-		<NavBtn><Link to="/shipping">Shipping</Link></NavBtn>
+				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
+			</div>
 
 		<NavBtn className="login" onClick={props.handleModal}>Login</NavBtn>
-
 	</nav>
 	)
 };
 export default Nav;
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>

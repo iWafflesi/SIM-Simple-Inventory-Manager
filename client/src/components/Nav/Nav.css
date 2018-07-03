@@ -1,0 +1,39 @@
+.navbar {
+	display: flex; /* or inline-flex */
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.navbar-brand {
+	order: 0;
+	font-size: 22px;
+}
+
+.navLinks {
+	display: flex; /* or inline-flex */
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-grow: 1;
+}
+
+.link {
+	order: 0;
+	flex-grow: 2;
+	letter-spacing: 2px;
+	font-size: 12px;
+}
+
+.login {
+	order: 2;
+}
+
+.linkStyle {
+	color: black;
+	text-decoration: none;
+}
+
+.linkStyle:active, .linkStyle:hover{
+	color: red;
+	text-decoration: none;
+}
+

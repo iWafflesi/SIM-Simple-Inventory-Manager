@@ -1,14 +1,5 @@
-.receiveBtn {
-	padding-right: 15px;
-	padding-left: 0px;
-}
 
-.productionBtn {
-	padding-right: 15px;
-	padding-left: 0px;
-}
-
-.inventoryBtn {
-	padding-right: 15px;
-	padding-left: 15px;
+.navButton {
+	letter-spacing: 2px;
+	font-size: 20px;
 }
