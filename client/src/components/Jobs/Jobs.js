@@ -1,74 +1,42 @@
-import React, { Component } from "react";
-// import API from "../../utils/API";
+import React from "react"; 
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
-import "../links.css"
+import JobsTable from "../JobsTable";
 
-//need more information on jobs to create functionality and rendering
-//also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
+const Jobs = () => {
 
+	return (
+		<React.Fragment>
+			<Nav />
+			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+			<NavBtn><Link to="/jobs/create">History</Link></NavBtn>
+			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+			<div className="panel panel-default">
+			<p>This is the grid for jobs</p>
+			
+			</div>
 
-class Jobs extends Component {
-	state = {
-		jobs: [],
-		name: "",
-		jobNumber: "",
-	};
-	componentDidMount(){
-		this.getJobs();
-	};
-	getJobs = () => {
-		API.getJobs().then((res) => {
-			this.setState({ jobList: res.data })
-		});
-	};
-	render() {
-		return (
-			<React.Fragment>
-				<Nav />
-					<div className="panel panel-default">
-						<div className="panel heading subLinks">
-							<div className="link">
-								<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-							</div>
-							<div className="link">
-								<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-							</div>
-						</div>
-					<div className="panel-body">
-						{this.state.jobList ?
-							this.state.jobList.map((job, i) => {
-								return (
-								<div className="jobButton">
-									<button><Link to="/job/detail/:jobID"> {job.number}</Link></button>
-								</div>
-								)
-							})
-							: null}
-					</div>
+			<div className="panel panel-default">
+				<div className="panel heading">Current Jobs</div>
+				<div className="panel-body">
+					<table className="table table-hover" id='JobsTable'>
+						<thead>
+							<tr>
+								<th scope="col">Job ID</th>
+								<th scope="col">Part Sku</th>
+								<th scope="col">Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<JobsTable />
+						</tbody>
+					</table>
 				</div>
-				<div className="panel panel-default">
-					<div className="panel heading">Current Jobs</div>
-					<div className="panel-body">
-						<table className="table table-hover" id='jobTable'>
-							<thead>
-								<tr>
-									<th scope="col">Job ID</th>
-									<th scope="col">Part</th>
-									<th scope="col">Quantity</th>
-									<th scope="col">Date</th>
-									<th scope="col">Completed By</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</React.Fragment>
-		);
-	};
+			</div>
+		</React.Fragment>
+	)
 };
+
 
 export default Jobs;
