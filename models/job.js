@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const AutoIncrement = require ("mongoose-sequence")(mongoose);
 
 const jobSchema = new Schema({
-	id: { type: Number, required: true, trim: true, autoIncrement: true },
-	sku: { type: Number, required: true, trim: true },
-	quantity: {type: Number }
-	
+	jobNumber: { type: Number, trim: true },
+	sku: { type: String, required: true, trim: true },
+	quantity: {type: Number },
+	username: {type: String, trim: true},
+	date: {type: Date }
 });
+jobSchema.plugin(AutoIncrement, {inc_field: "jobNumber"});
 
 const Job= mongoose.model("Job", jobSchema);
 

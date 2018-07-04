@@ -14,30 +14,40 @@ class JobHistory extends Component {
 		name: "",
 		jobNumber: "",
 	};
-	// componentDidMount(){
-	// 	this.getJobs();
-	// };
-	// getJobs = () => {
-	// 	API.getJobs().then((res) => {
-	// 		this.setState({ jobList: res.data })
-	// 	});
-	// };
+	componentDidMount() {
+		this.getJobs();
+	};
+	getJobs = () => {
+		API.getJobs().then((res) => {
+			this.setState({ jobList: res.data })
+		});
+	};
 	render() {
 		return (
 			<React.Fragment>
 				<Nav />
 				<div className="panel panel-default">
 					<div className="panel heading">
-						<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-						<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
-						<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+						<div className="subLinks">
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+							</div>
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+							</div>
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+							</div>
+						</div>
 					</div>
 					<div className="panel-body">
 						{this.state.jobList ?
 							this.state.jobList.map((job, i) => {
-								<div className="jobButton">
-									<button><Link to="#"> {job.number}</Link></button>
-								</div>
+								return (
+									<div className="jobButton" key={i}>
+										<button><Link to="#"> {job.number}</Link></button>
+									</div>
+								)
 							})
 							: null}
 					</div>
