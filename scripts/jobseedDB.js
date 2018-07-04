@@ -13,19 +13,25 @@ mongoose.connect(
 
 const jobSeed = [
 {
-	id: 1,
+	jobNumber: 1,
+	username: "Cowboy",
+	date: "01/01/1990",
 	sku: 49649875,
 	quantity:2,
 	notes: "Company needs this completed ASAP"
 },
 {
-	id: 2,
+	jobNumber: 2,
+	username: "Cowgirl",
+	date: "01/01/1991",
 	sku:9465264,
 	quantity:5,
 	notes:"Once job one is completed company requires this within two business days"
 },
 {
-	id:3,
+	jobNumber:3,
+	username: "Cowkid",
+	date: "01/01/1992",
 	sku:49487765,
 	quantity:4,
 	notes:"This request is to be made out of copper instead of steel"
