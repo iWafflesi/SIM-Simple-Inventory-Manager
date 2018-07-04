@@ -12,118 +12,122 @@ import "../links.css"
 
 class JobCreate extends Component {
 	state = {
-		parts: [],
-		jobNumber: "",
+		jobs: [],
+		// jobNumber: "",
 		sku: "",
 		quantity: "",
 		username: "",
 		date: "",
-	
+
 	};
 
 	componentDidMount() {
-		this.loadParts();
+		this.loadJobs();
 	}
 
-	loadParts = () => {
-		API.getParts()
+	loadJobs = () => {
+		API.getJobs()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: ""})
+				this.setState({ jobs: res.data, username: "", sku: "", quantity: "", date: "" })
 			)
 			.catch(err => console.log(err));
 	};
-// ******* find out how to delete material used instead of part
-	deletePart = id => {
-		API.deletePart(id)
-			.then(res => this.loadParts())
+	// ******* find out how to delete material used instead of part
+	deleteJob = id => {
+		API.deleteJob(id)
+			.then(res => this.loadJobs())
 			.catch(err => console.log(err));
 	};
 
 	handleInputChange = event => {
-		const { username, value } = event.target;
+		const { name, value } = event.target;
 		this.setState({
-			[username]: value
+			[name]: value
 		});
 	};
 
 	handleFormSubmit = event => {
 		event.preventDefault();
 		if (this.state.username && this.state.sku) {
-			API.savePart({
-				jobNumber: this.state.jobNumber,
+			console.log("This: ", this.state);
+			API.saveJob({
+				// jobNumber: this.state.jobNumber,
+				username: this.state.username,
+				date: this.state.date,
 				sku: this.state.sku,
-				quantity: this.state.quantity,
-				username: this.username,
-				date: this.date
+				quantity: this.state.quantity
 			})
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
+				.then(res => this.loadJobs())
+				.catch(err => console.log(err));
 		}
 	};
-	
+
 	render() {
 		return (
 			<React.Fragment>
-			<Nav />
-			<div className="subLinks">
-				<div className="link">
-					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+				<Nav />
+				<div className="subLinks">
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+					</div>
 				</div>
-				<div className="link">
-					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-				</div>
-			</div>
 				<Row>
 					<Col size="md-12">
 
-					<Table>
-						<form>
-						<Input
-								value={this.state.username}
-								onChange={this.handleInputChange}
-								name="username"
-								placeholder="username (required)"
+						<Table>
+							<form>
+								<Input
+									value={this.state.username}
+									onChange={this.handleInputChange}
+									name="username"
+									placeholder="username (required)"
+								/>
+								{/* <Input
+									value={this.state.jobNumber}
+									onChange={this.handleInputChange}
+									name="jobNumber"
+									placeholder="jobNumber (optional)"
+								/> */}
+								<Input
+									value={this.state.date}
+									onChange={this.handleInputChange}
+									name="date"
+									placeholder="date used (optional)"
+								/>
+
+								<Input
+									value={this.state.sku}
+									onChange={this.handleInputChange}
+									name="sku"
+									placeholder="Part sku (required)"
 								/>
 								<Input
-								value={this.state.jobNumber}
-								onChange={this.handleInputChange}
-								name="jobNumber"
-								placeholder="jobNumber (optional)"
-								/>
-							<Input
-								value={this.state.date}
-								onChange={this.handleInputChange}
-								name="date"
-								placeholder="date used (optional)"
+									value={this.state.quantity}
+									onChange={this.handleInputChange}
+									name="quantity"
+									placeholder="quantity of parts (required)"
 								/>
 
-							<Input
-								value={this.state.sku}
-								onChange={this.handleInputChange}
-								name="sku"
-								placeholder="Part sku (required)"
-								/>
-							<Input
-								value={this.state.quantity}
-								onChange={this.handleInputChange}
-								name="quantity"
-								placeholder="quantity of parts (required)"
-								/>
-
-							<FormBtn
-								disabled={!(this.state.sku && this.state.quantity)}
-								onClick={this.handleFormSubmit}
+								<FormBtn
+									disabled={!(this.state.sku && this.state.quantity)}
+									onClick={this.handleFormSubmit}
 								>
-								Start Job
+									Start Job
 							</FormBtn>
-						</form>
+							</form>
 						</Table>
 					</Col>
-					</Row>
-					</React.Fragment>
-				);
-			};
-		}
+				</Row>
+			</React.Fragment>
+		);
+	};
+}
 
 
 
