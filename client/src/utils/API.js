@@ -17,6 +17,8 @@ export default {
 	saveJob: function(jobData) {
 		return axios.post("/api/jobs", jobData);
 	},
+
+
 	// Gets all materials
 	getMaterials: function() {
 		return axios.get("/api/materials");
@@ -33,6 +35,8 @@ export default {
 	saveMaterial: function(materialData) {
 		return axios.post("/api/materials", materialData);
 	},
+
+
 	getParts: function() {
 		return axios.get("/api/parts");
 	},
@@ -48,6 +52,8 @@ export default {
 	savePart: function(partData) {
 		return axios.post("/api/parts", partData);
 	},
+
+	
 	getUsers: function() {
 		return axios.get("/api/users");
 	},

@@ -3,15 +3,26 @@ import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import JobsTable from "../JobsTable";
+import "../links.css"
 
 const Jobs = () => {
 
 	return (
 		<React.Fragment>
 			<Nav />
-			<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-			<NavBtn><Link to="/jobs/create">History</Link></NavBtn>
-			<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+			<div className="subLinks">
+				<div className="link">
+					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+				</div>
+				<div className="link">
+				<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
+				</div>
+				<div className="link">
+					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+				</div>
+			</div>
+			
+			
 			<div className="panel panel-default">
 			<p>This is the grid for jobs</p>
 			

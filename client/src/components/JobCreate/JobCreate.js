@@ -22,20 +22,20 @@ class JobCreate extends Component {
 	};
 
 	componentDidMount() {
-		this.loadParts();
+		this.loadJobs();
 	}
 
-	loadParts = () => {
-		API.getParts()
+	loadJobs = () => {
+		API.getJobs()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: ""})
+				this.setState({ job: res.data,jobNumber: "", username: "", sku: "", quantity: "",date: ""})
 			)
 			.catch(err => console.log(err));
 	};
 // ******* find out how to delete material used instead of part
-	deletePart = id => {
-		API.deletePart(id)
-			.then(res => this.loadParts())
+	deleteJob = id => {
+		API.deleteJob(id)
+			.then(res => this.loadJobs())
 			.catch(err => console.log(err));
 	};
 
@@ -49,14 +49,14 @@ class JobCreate extends Component {
 	handleFormSubmit = event => {
 		event.preventDefault();
 		if (this.state.username && this.state.sku) {
-			API.savePart({
+			API.saveJob({
 				jobNumber: this.state.jobNumber,
 				sku: this.state.sku,
 				quantity: this.state.quantity,
 				username: this.username,
 				date: this.date
 			})
-			.then(res => this.loadParts())
+			.then(res => this.loadJobs())
 			.catch(err => console.log(err));
 		}
 	};
@@ -68,6 +68,9 @@ class JobCreate extends Component {
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+				</div>
+				<div className="link">
+				<NavBtn><Link to="/jobs/jobhistory">History</Link></NavBtn>
 				</div>
 				<div className="link">
 					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
