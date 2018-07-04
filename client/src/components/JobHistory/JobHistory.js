@@ -3,10 +3,11 @@ import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import JobsTable from "../JobsTable";
+import "../links.css"
 
 //need more information on jobs to create functionality and rendering
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
-
 
 class JobHistory extends Component {
 	state = {
@@ -52,25 +53,27 @@ class JobHistory extends Component {
 							: null}
 					</div>
 				</div>
-				<div className="panel panel-default">
-					<div className="panel heading">Job History</div>
-					<div className="panel-body">
-						<table className="table table-hover" id='jobTable'>
-							<thead>
-								<tr>
-									<th scope="col">Job ID</th>
-									<th scope="col">Part</th>
-									<th scope="col">Quantity</th>
-									<th scope="col">Date</th>
-									<th scope="col">Completed By</th>
-								</tr>
-							</thead>
-							<tbody>
 
-							</tbody>
-						</table>
-					</div>
+			<div className="panel panel-default">
+				<div className="panel heading">Job History</div>
+				<div className="panel-body">
+					<table className="table table-hover" id='jobsHistoryTable'>
+						<thead>
+							<tr>
+								<th scope="col">Job Number</th>
+								<th scope="col">Part SKU</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Job Number</th>
+								<th scope="col">Username</th>
+								<th scope="col">Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							{/* <JobsTable /> */}
+						</tbody>
+					</table>
 				</div>
+			</div>
 			</React.Fragment>
 		);
 	};
