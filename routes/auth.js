@@ -8,6 +8,7 @@ module.exports = app => {
 
   app.post('/api/login', passport.authenticate('local', { failureRedirect: '/api/youmessedup' }), (req, res) => {
 		console.log('hello');
+		console.log(req.body);
     res.send('success');
   });
 
