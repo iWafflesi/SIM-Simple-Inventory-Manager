@@ -1,36 +1,25 @@
+
 import React from "react";
-import { Row, Col } from "../Grid";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import "./Nav.css"
 
 const Nav = (props) => {
-
 	return (
 	<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 
-		<a className="navbar-brand" href="/">
-			Simple Inventory Manager
-    </a>
+		<a className="navbar-brand" href="/">Simple Inventory Manager</a>
 
-		<Row>
-			<Col size='md-4'>
-				<NavBtn><Link to="/inventory/current">Inventory</Link></NavBtn>
-			</Col>
-			<Col size='md-4'>
-				<NavBtn><Link to="/jobs">Production</Link></NavBtn>
-			</Col>
-			<Col size='md-4'>
-				<NavBtn><Link to="/shipping">Shipping</Link></NavBtn>
-			</Col>
-		</Row>
-		<Row>
-			<Col size='md-4'>
-				<NavBtn className="login" onClick={props.handleModal}>Login</NavBtn>
-			</Col>
-		</Row>
+			<div className="navLinks">
+				<NavBtn className="link"><Link className="linkStyle" to="/inventory/current">Inventory</Link></NavBtn>
 
+				<NavBtn className="link"><Link className="linkStyle" to="/jobs">Production</Link></NavBtn>
+
+				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
+			</div>
+
+		<NavBtn className="login" onClick={props.handleModal}>Login</NavBtn>
 	</nav>
 	)
 };
 export default Nav;
-

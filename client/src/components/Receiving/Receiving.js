@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import Table from "../Table/Table";
-
+import "../links.css"
 
 
 
@@ -61,9 +61,17 @@ class Receiving extends Component {
 		return (
 			<React.Fragment>
 			<Nav />
-			<NavBtn><Link to="/inventory/current">Current</Link></NavBtn>
-			<NavBtn><Link to="/inventory/history">History</Link></NavBtn>
-			<NavBtn><Link to="/inventory/receiving">Receiving</Link></NavBtn>
+			<div className="subLinks">
+				<div className="link">
+					<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
+				</div>
+				<div className="link">
+					<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
+				</div>
+				<div className="link">
+					<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
+				</div>
+			</div>
 				<Row>
 					<Col size="md-12">
 
