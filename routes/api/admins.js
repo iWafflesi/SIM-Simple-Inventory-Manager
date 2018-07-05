@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const usersController = require("../../controllers/usersController");
-const passport = require("passport");
-// Matches with "/api/users"
+const adminsController = require("../../controllers/adminsController");
+const passport = require('passport');
 
 router
   .route('/login')
@@ -21,15 +20,27 @@ router
       // If user isn't logged in, send back false
       res.json(false);
     }
-	});
+  });
 
-	router
+// logout route
+router
   .route('/logout')
   .get(function(req,res) {
     // Log user out
     req.logout()
     console.log(req.user);
     res.json(false);
-	})
-	
-	module.exports = router;
+  })
+
+// Matches with "/api/user/:id"
+router
+  .route('/:id')
+  .get(adminsController.findById)
+  .put(adminsController.update)
+  .delete(adminsController.remove);
+
+	router
+  .route('/admin')
+  .post(adminsController.register);
+
+module.exports = router;
