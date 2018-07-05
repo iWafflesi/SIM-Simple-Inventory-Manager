@@ -13,7 +13,7 @@ const Nav = (props) => {
 			<div className="navLinks">
 				<NavBtn className="link"><Link className="linkStyle" to="/inventory/current">Inventory</Link></NavBtn>
 
-				<NavBtn className="link"><Link className="linkStyle" to="/jobs">Production</Link></NavBtn>
+				<NavBtn className="link"><Link className="linkStyle" to="/jobs/current">Production</Link></NavBtn>
 
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
 			</div>

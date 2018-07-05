@@ -20,8 +20,8 @@ const Router = () => (
 		<Route path="/inventory/current" component={Inventory} />
 		<Route path="/inventory/history" component={TranHistory} />
 		<Route path="/inventory/receiving" component={Receiving} />
-		<Route path="/jobs" component={Jobs} />
-		<Route path="/jobs/jobhistory" component={JobHistory} />
+		<Route path="/jobs/current" component={Jobs} />
+		<Route path="/jobs/history" component={JobHistory} />
 		<Route path="/jobs/create" component={JobCreate} />
 		<Route path="/job/detail/:jobID" component={JobDetail} />
 		<Route path="/shipping" component={Shipping} />
