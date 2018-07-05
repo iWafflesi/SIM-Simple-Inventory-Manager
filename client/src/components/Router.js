@@ -25,7 +25,7 @@ const Router = () => (
 		<Route path="/jobs/create" component={JobCreate} />
 		<Route path="/job/detail/:jobID" component={JobDetail} />
 		<Route path="/shipping" component={Shipping} />
-		<Route path="/api/user/register" component={Register} />
+		<Route path="/api/admin/register" component={Register} />
 		<Route component={App} />
 	</Switch>
 </BrowserRouter>

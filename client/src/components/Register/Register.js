@@ -10,10 +10,11 @@ class CreateUser extends Component {
 		admin: false
 	}
 
-	handleInputChange = e => {
-		const { name, value } = e.target;
+	handleInputChange = event => {
+		const { name, value } = event.target;
 		this.setState({
-			[name]: value
+			[name]: value,
+			
 		})
 	}
 
@@ -21,10 +22,14 @@ class CreateUser extends Component {
 	register = (event) => {
     event.preventDefault();
     API
-      .saveUser({ username: this.state.username, password: this.state.password })
-      .then(res => {
-        console.log(res.data);
-        this.setState({ success: res.data })
+      .saveUser({ username: this.state.username, password: this.state.password, admin: this.state.admin })
+      .then((user) => {
+			
+				console.log(user.data);
+				console.log("username "+this.state.username);
+				console.log("password "+this.state.password);
+				console.log("admin "+ this.state.admin);
+        this.setState({ success: user.data })
 
       })
       .catch(err => console.log(err.response.data));
@@ -33,11 +38,11 @@ class CreateUser extends Component {
 	render() {
 		// If Signup was a success, take them to the Login page
 		if (this.state.success) {
-			return <Redirect to="/login" />
+			return <Redirect to="/" />
 		}
 
 		return (
-			<div className="container my-5">
+			<div className="container admin">
 				<div className="row justify-content-center">
 					<form>
 						<h3>Create a new user</h3>
@@ -52,6 +57,7 @@ class CreateUser extends Component {
 								placeholder="Username" />
 							<small id="usernameHelp" className="form-text text-muted">Enter username</small>
 						</div>
+						
 						<div className="form-group">
 							<label htmlFor="password">Password</label>
 							<input
@@ -66,7 +72,7 @@ class CreateUser extends Component {
 						<div className="checkbox">
 							<input
 							 type="checkbox"
-							 name="password"
+							 name="admin"
 								value={this.setState.admin = true}
 								onChange={this.handleInputChange}
 							 />
