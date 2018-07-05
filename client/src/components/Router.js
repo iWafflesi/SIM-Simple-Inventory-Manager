@@ -11,6 +11,7 @@ import TranHistory from "./History/History";
 import Receiving from "./Receiving/Receiving";
 import JobCreate from "./JobCreate/JobCreate";
 import JobDetail from "./JobDetail/JobDetail";
+import Register from "./Register/Register";
 
 const Router = () => (
 <BrowserRouter>
@@ -24,6 +25,7 @@ const Router = () => (
 		<Route path="/jobs/create" component={JobCreate} />
 		<Route path="/job/detail/:jobID" component={JobDetail} />
 		<Route path="/shipping" component={Shipping} />
+		<Route path="/api/user/register" component={Register} />
 		<Route component={App} />
 	</Switch>
 </BrowserRouter>

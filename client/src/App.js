@@ -13,7 +13,7 @@ class App extends React.Component {
 		password : ""
 	}
 //close modal
-	handleLogout = () => {
+	closeModal = () => {
 		this.setState({ openModal: false });
 	
 	}
@@ -41,7 +41,7 @@ class App extends React.Component {
 				} />
 			<Jumbotron />
 			<LoginModal
-				logout={this.handleLogout}
+				closeModal={this.closeModal}
 				openModal={this.state.openModal}
 				username={this.state.username}
 				password={this.state.password}
