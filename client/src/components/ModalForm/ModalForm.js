@@ -1,18 +1,25 @@
-import React from "react";
+import React, {Component} from "react";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 class ModalForm extends React.Component {
 	constructor(props){
 		super(props)
 	this.state = {
-		openModel: true
+		openModel: true,
+		username: '',
+		password: '',
 	}
 	this.onSubmit = this.onSubmit.bind(this)
 }
 onSubmit() {
-	console.log('eellloo')
-	axios.post('/api/login')
-	{this.props.logout}
+	axios.get('/api/users/login')
+	
+		.then(response =>{
+			this.props.closeModal()
+			console.log('was this optimisitic', response)
+		});
+	
 }
 
 	render = () => (

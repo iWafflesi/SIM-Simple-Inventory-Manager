@@ -1,0 +1,53 @@
+const db = require("../models");
+const User = require("../models/user");
+
+// Defining methods for the booksController
+module.exports = {
+	findAll: function (req, res) {
+		db.User
+			.find(req.query)
+			.sort({ date: -1 })
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+		console.log('let us be optimistic');
+		res.send('optimistic');
+	},
+	findById: function (req, res) {
+		db.User
+			.findById(req.params.id)
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+	create: function (req, res) {
+		db.User
+			.create(req.body)
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+	update: function (req, res) {
+		db.User
+			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+	remove: function (req, res) {
+		db.User
+			.findById({ _id: req.params.id })
+			.then(dbModel => dbModel.remove())
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+
+	register: function (req, res) {
+    /* To create a new user */
+    db.User
+      .register(new User({username: req.body.username}), req.body.password, function (err) {
+        if (err) {
+          console.log('error while user register!', err);
+          return res.status(422).json(err);
+        }
+        console.log('user registered!');
+        res.json(true);
+      });
+  }
+};
