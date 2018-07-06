@@ -41,6 +41,6 @@ router
 
 	router
   .route('/admin')
-  .post(adminsController.register);
+  .post(adminsController.saveUser);
 
 module.exports = router;

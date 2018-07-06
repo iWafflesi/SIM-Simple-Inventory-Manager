@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
-const usersController = require('../controllers/usersController');
-const adminsController = require('../controllers/adminsController');
+const usersController = require('../../controllers/usersController');
+const adminsController = require('../../controllers/adminsController');
 
 // Matches with "/api/user/login"
 router
@@ -44,6 +44,6 @@ router
 // register a new user ("/api/user/register")
 router
   .route('/register')
-  .post(adminsController.register);
+  .post(adminsController.saveUser);
 
 module.exports = router;
