@@ -23,12 +23,11 @@ class JobHistory extends Component {
 			this.setState({ jobList: res.data })
 		});
 	};
+	
 	render() {
 		return (
 			<React.Fragment>
 				<Nav />
-				<div className="panel panel-default">
-					<div className="panel heading">
 						<div className="subLinks">
 							<div className="link">
 								<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
@@ -40,19 +39,6 @@ class JobHistory extends Component {
 								<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
 							</div>
 						</div>
-					</div>
-					<div className="panel-body">
-						{this.state.jobList ?
-							this.state.jobList.map((job, i) => {
-								return (
-									<div className="jobButton" key={i}>
-										<button><Link to="#"> {job.number}</Link></button>
-									</div>
-								)
-							})
-							: null}
-					</div>
-				</div>
 
 			<div className="panel panel-default">
 				<div className="panel heading">Job History</div>
@@ -69,7 +55,7 @@ class JobHistory extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{/* <JobsTable /> */}
+							<JobsTable />
 						</tbody>
 					</table>
 				</div>

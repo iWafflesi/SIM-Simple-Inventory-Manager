@@ -7,6 +7,7 @@ import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import Table from "../Table/Table";
 import "../links.css"
+import "./Receiving.css"
 
 
 
@@ -17,6 +18,7 @@ class Receiving extends Component {
 		sku: "",
 		quantity: "",
 		material: "",
+		price: ""
 	};
 
 	componentDidMount() {
@@ -26,7 +28,7 @@ class Receiving extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "" })
+				this.setState({ parts: res.data, name: "", sku: "", quantity: "", price: ""})
 			)
 			.catch(err => console.log(err));
 	};
@@ -46,11 +48,14 @@ class Receiving extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.name && this.state.sku) {
+		if (this.state.name && this.state.sku && this.state.price) {
+			console.log(this);
+			
 			API.saveMaterial({
 				name: this.state.name,
 				sku: this.state.sku,
-				quantity: this.state.quantity
+				quantity: this.state.quantity,
+				price: this.state.price
 			})
 				.then(res => this.loadMaterials())
 				.catch(err => console.log(err));
@@ -95,8 +100,15 @@ class Receiving extends Component {
 									name="quantity"
 									placeholder="quantity (required)"
 								/>
+									<Input
+									value={this.state.price}
+									onChange={this.handleInputChange}
+									name="price"
+									placeholder="price (required)"
+								/>
 								<FormBtn
-									disabled={!(this.state.sku && this.state.quantity)}
+									className="btn btn-outline-dark formButton"
+									disabled={!(this.state.sku && this.state.quantity && this.state.price)}
 									onClick={this.handleFormSubmit}
 								>
 									Receive Order
