@@ -5,7 +5,6 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
 	admin: {type: Boolean}	
-  
 });
 
 // Set up passport to 

@@ -17,7 +17,7 @@ const Nav = (props) => {
 
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
 
-				<NavBtn className="link"><Link className="linkStyle" to="/api/admin/register">Admin</Link></NavBtn>
+				<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>
 			</div>
 			
 

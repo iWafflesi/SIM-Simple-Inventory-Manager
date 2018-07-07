@@ -29,7 +29,7 @@ const Router = () => (
 					 props => <JobDetail {...props}/>
 					}/> */}
 		<Route path="/shipping" component={Shipping} />
-		<Route path="/api/admin/register" component={Register} />
+		<Route path="/admin" component={Register} />
 		<Route component={App} />
 	</Switch>
 </BrowserRouter>

@@ -24,7 +24,7 @@ class CreateUser extends Component {
 	register = (event) => {
 		event.preventDefault();
 		API
-			.saveUser({ username: this.state.username, password: this.state.password, admin: this.state.admin })
+			.register({ username: this.state.username, password: this.state.password, admin: this.state.admin })
 			.then((user) => {
 
 				console.log(user.data);
