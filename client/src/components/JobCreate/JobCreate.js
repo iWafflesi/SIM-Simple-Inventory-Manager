@@ -13,7 +13,7 @@ import "../links.css"
 class JobCreate extends Component {
 	state = {
 		jobs: [],
-		// jobNumber: "",
+		jobNumber: "",
 		sku: "",
 		quantity: "",
 		username: "",
@@ -51,7 +51,7 @@ class JobCreate extends Component {
 		if (this.state.username && this.state.sku) {
 			console.log("This: ", this.state);
 			API.saveJob({
-				// jobNumber: this.state.jobNumber,
+				jobNumber: this.state.jobNumber,
 				username: this.state.username,
 				date: this.state.date,
 				sku: this.state.sku,
@@ -88,12 +88,12 @@ class JobCreate extends Component {
 									name="username"
 									placeholder="username (required)"
 								/>
-								{/* <Input
+								<Input
 									value={this.state.jobNumber}
 									onChange={this.handleInputChange}
 									name="jobNumber"
 									placeholder="jobNumber (optional)"
-								/> */}
+								/>
 								<Input
 									value={this.state.date}
 									onChange={this.handleInputChange}

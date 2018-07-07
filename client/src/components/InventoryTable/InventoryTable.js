@@ -25,9 +25,11 @@ class InventoryTable extends Component {
 			{this.state.materialList ? this.state.materialList.map((material, i) => {
 				return(
 				<tr key={i}>
-					<td>{material.sku}</td>
+					{/* <td>{material._id}</td> */}
 					<td>{material.name}</td>
+					<td>{material.sku}</td>
 					<td>{material.quantity}</td>
+					<td>${material.price}</td>
 				</tr>
 				)
 			}) : null}

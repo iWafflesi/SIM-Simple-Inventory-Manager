@@ -8,8 +8,8 @@ import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
 
-//********THIS PAGE DOES NOT HAVE A ROUTE AND CANNOT BE SEEN!!!!!!!!!!
-//  routes to this page is dependant on the jobId#
+
+//  routes to this page is dependant on the jobNumber
 
 class JobDetail extends Component {
 	state = {
@@ -24,22 +24,22 @@ class JobDetail extends Component {
 	};
 
 	componentDidMount() {
-		this.loadParts();
+		this.loadJob();
 	}
 
-	loadParts = () => {
-		API.getParts()
+	loadJob = () => {
+		API.getJob()
 			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",material: "", materialQuantity:"", comments:"" })
+				this.setState({ jobs: res.data })
 			)
 			.catch(err => console.log(err));
 	};
 // ******* find out how to delete material used instead of part
-	deletePart = id => {
-		API.deletePart(id)
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
-	};
+	// deletePart = id => {
+	// 	API.deletePart(id)
+	// 		.then(res => this.loadParts())
+	// 		.catch(err => console.log(err));
+	// };
 
 	handleInputChange = event => {
 		const { username, value } = event.target;
@@ -69,13 +69,28 @@ class JobDetail extends Component {
 			<React.Fragment>
 			<Nav />
 			<div className="subLinks">
-				<div className="link">
-					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+					</div>
 				</div>
-				<div className="link">
-					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-				</div>
-			</div>
+
+					<div >
+					
+
+
+// stuff goes here
+
+					</div>
+
+
+
+
 				<Row>
 					<Col size="md-12">
 

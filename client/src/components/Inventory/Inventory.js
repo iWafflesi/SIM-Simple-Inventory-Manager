@@ -32,9 +32,11 @@ const Inventory = () => {
 					<table className="table table-hover" id='inventoryTable'>
 						<thead>
 							<tr>
-								<th scope="col">SKU</th>
+								{/* <th scope="col">ID</th> */}
 								<th scope="col">Name</th>
+								<th scope="col">SKU</th>
 								<th scope="col">Quantity</th>
+								<th scope="col">Cost</th>
 							</tr>
 						</thead>
 						<tbody>
