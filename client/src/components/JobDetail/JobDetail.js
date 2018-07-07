@@ -8,43 +8,45 @@ import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
 
-//********THIS PAGE DOES NOT HAVE A ROUTE AND CANNOT BE SEEN!!!!!!!!!!
-//  routes to this page is dependant on the jobId#
+
+//  routes to this page is dependant on the jobNumber
 
 class JobDetail extends Component {
-	state = {
-		parts: [],
-		jobNumber: "",
-		username: "",
-		sku: "",
-		quantity: "",
-		material: "",
-		materialQuantity: "",
-		comments:""
-	};
-
-	componentDidMount() {
-		this.loadParts();
+	constructor(props) {
+		super(props)
+		// console.log("Props: ", props);
+		// console.log("this: ", this);
+		this.state = {
+			jobNumber: props.match.params.jobNumber,
+			username: "",
+			sku: "",
+			quantity: "",
+			material: "",
+			materialQuantity: "",
+			comments: ""
+		};
 	}
 
-	loadParts = () => {
-		API.getParts()
-			.then(res =>
-				this.setState({ parts: res.data,jobNumber: "", username: "", sku: "", quantity: "",material: "", materialQuantity:"", comments:"" })
+
+	componentDidMount() {
+		this.loadJob();
+	}
+
+	loadJob = () => {
+		// console.log("Loading the job...", this.state.jobNumber)
+		API.getJob(this.state.jobNumber)
+			.then(res => {
+				// console.log(res);
+				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity,  })
+			}
 			)
-			.catch(err => console.log(err));
-	};
-// ******* find out how to delete material used instead of part
-	deletePart = id => {
-		API.deletePart(id)
-			.then(res => this.loadParts())
 			.catch(err => console.log(err));
 	};
 
 	handleInputChange = event => {
-		const { username, value } = event.target;
+		const { name, value } = event.target;
 		this.setState({
-			[username]: value
+			[name]: value
 		});
 	};
 
@@ -59,83 +61,109 @@ class JobDetail extends Component {
 				username: this.username,
 				comments: this.comments
 			})
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
+				.then(res => this.loadParts())
+				.catch(err => console.log(err));
 		}
 	};
-	
+
 	render() {
 		return (
 			<React.Fragment>
-			<Nav />
-			<div className="subLinks">
-				<div className="link">
-					<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
+				<Nav />
+				<div className="subLinks">
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+					</div>
 				</div>
-				<div className="link">
-					<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
+
+				<div >
+
+
+
+					{// stuff goes here
+					}
+
 				</div>
-			</div>
+
+
+
+
 				<Row>
 					<Col size="md-12">
 
-					<Table>
-						<form>
-						<Input
-								value={this.state.username}
-								onChange={this.handleInputChange}
-								name="username"
-								placeholder="username (required)"
-								/>
+						<Table>
+							<form>
+								<label htmlFor="username">Username</label>
 								<Input
-								value={this.state.jobNumber}
-								onChange={this.handleInputChange}
-								name="jobNumber"
-								placeholder="jobNumber (required)"
+									value={this.state.username}
+									// onChange={this.handleInputChange}
+									readOnly={true}
+									name="username"
+									placeholder="username (required)"
 								/>
-							<Input
-								value={this.state.material}
-								onChange={this.handleInputChange}
-								name="material"
-								placeholder="material used (required)"
-								/>
+								<label htmlFor="jobNumber">Job Number</label>
 								<Input
-								value={this.state.materialQuantity}
-								onChange={this.handleInputChange}
-								name="quantity"
-								placeholder="quantity of materials used (required)"
+									value={this.state.jobNumber}
+									// onChange={this.handleInputChange}
+									readOnly={true}
+									name="jobNumber"
+									placeholder="jobNumber (required)"
 								/>
-							<Input
-								value={this.state.sku}
-								onChange={this.handleInputChange}
-								name="sku"
-								placeholder="Part sku (required)"
+								<label htmlFor="material">Material SKU</label>
+								<Input
+									value={this.state.material}
+									onChange={this.handleInputChange}
+									name="material"
+									placeholder="sku of material used (required)"
 								/>
-							<Input
-								value={this.state.quantity}
-								onChange={this.handleInputChange}
-								name="quantity"
-								placeholder="quantity of parts (required)"
+								<label htmlFor="materialQuantity">Material Quantity</label>
+								<Input
+									value={this.state.materialQuantity}
+									onChange={this.handleInputChange}
+									name="materialQuantity"
+									placeholder="quantity of materials used (required)"
+								/>
+								<label htmlFor="sku">Part SKU</label>
+								<Input
+									value={this.state.sku}
+									// onChange={this.handleInputChange}
+									readOnly={true}
+									name="sku"
+									placeholder="Part sku (required)"
+								/>
+								<label htmlFor="quantity">Quantity of Parts</label>
+								<Input
+									value={this.state.quantity}
+									// onChange={this.handleInputChange}
+									readOnly={true}
+									name="quantity"
+									placeholder="quantity of parts (required)"
 								/>
 								<textarea
-								value={this.state.comments}
-								onChange={this.handleInputChange}
-								name="Comments"
-								placeholder="Comments (Optional)"
+									value={this.state.comments}
+									onChange={this.handleInputChange}
+									name="comments"
+									placeholder="Comments (Optional)"
 								/>
-							<FormBtn
-								disabled={!(this.state.sku && this.state.quantity)}
-								onClick={this.handleFormSubmit}
+								<FormBtn
+									disabled={!(this.state.sku && this.state.quantity)}
+									onClick={this.handleFormSubmit}
 								>
-								Complete Job
+									Complete Job
 							</FormBtn>
-						</form>
+							</form>
 						</Table>
 					</Col>
-					</Row>
-					</React.Fragment>
-				);
-			};
-		}
+				</Row>
+			</React.Fragment>
+		);
+	};
+}
 
 export default JobDetail;

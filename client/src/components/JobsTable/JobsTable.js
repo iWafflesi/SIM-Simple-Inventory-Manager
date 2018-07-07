@@ -11,6 +11,14 @@ class JobsTable extends Component {
 		this.getJobs();
 	};
 
+	// getJobs = () => {
+	// 	API.getJobs()
+	// 		.then(res =>
+	// 			console.log("res.data: ", res.data),
+				
+	// 			this.setState({ jobList: res.data }))
+	// 		.catch(err => this.getJobs());
+	// }
 	getJobs = () => {
 		API.getJobs()
 			.then(res =>
@@ -19,16 +27,17 @@ class JobsTable extends Component {
 			).catch(err => this.getJobs());
 	}
 
-
 	render() {
 		console.log("JobList: ", this.state.jobList);
 		return <React.Fragment>
-			{this.state.jobList ? this.state.jobList.map((job, i) => {
+			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return(
-				<tr key={i}>
-					<td>{job.id}</td>
+				<tr key={jobNumber}>
+					<td>{job.jobNumber}</td>
 					<td>{job.sku}</td>
 					<td>{job.quantity}</td>
+					<td>{job.username}</td>
+					<td>{job.date}</td>
 				</tr>
 				)
 			}) : null}

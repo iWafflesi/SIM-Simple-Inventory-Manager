@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
+import JobsTable from "../JobsTable";
 
 //need more information on jobs to create functionality and rendering
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
@@ -22,53 +23,41 @@ class JobHistory extends Component {
 			this.setState({ jobList: res.data })
 		});
 	};
+
 	render() {
 		return (
 			<React.Fragment>
 				<Nav />
-				<div className="panel panel-default">
-					<div className="panel heading">
-						<div className="subLinks">
-							<div className="link">
-								<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
-							</div>
-							<div className="link">
-								<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
-							</div>
-							<div className="link">
-								<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
-							</div>
-						</div>
+				<div className="subLinks">
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
 					</div>
-					<div className="panel-body">
-						{this.state.jobList ?
-							this.state.jobList.map((job, i) => {
-								return (
-									<div className="jobButton" key={i}>
-										<button><Link to="#"> {job.number}</Link></button>
-									</div>
-								)
-							})
-							: null}
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
 					</div>
 				</div>
+
 				<div className="panel panel-default">
 					<div className="panel heading">Job History</div>
 					<div className="panel-body">
-						<table className="table table-hover" id='jobTable'>
+						<table className="table table-hover" id='jobsHistoryTable'>
 							<thead>
 								<tr>
-									<th scope="col">Job ID</th>
-									<th scope="col">Part</th>
+									<th scope="col">Job Number</th>
+									<th scope="col">Part SKU</th>
 									<th scope="col">Quantity</th>
+									<th scope="col">Username</th>
 									<th scope="col">Date</th>
-									<th scope="col">Completed By</th>
 								</tr>
 							</thead>
 							<tbody>
-
+								<JobsTable />
 							</tbody>
 						</table>
+
 					</div>
 				</div>
 			</React.Fragment>

@@ -7,6 +7,7 @@ export default {
 	},
 	// Gets the job with the given id
 	getJob: function(id) {
+		// console.log("API - ID: ", id);
 		return axios.get("/api/jobs/" + id);
 	},
 	// Deletes the job with the given id
