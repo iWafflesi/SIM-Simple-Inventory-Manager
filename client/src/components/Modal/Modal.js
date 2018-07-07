@@ -9,7 +9,7 @@ const LoginModal = (props) => (
 	contentLabel="selected Option"
 >
 <ModalForm 
-logout={props.logout}
+closeModal={props.closeModal}
 username ={props.username}
 password = {props.password}
 getUsername = {props.getUsername}

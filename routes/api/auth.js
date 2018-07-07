@@ -1,8 +1,9 @@
-const router = require("express").Router();
-const usersController = require("../../controllers/usersController");
-const passport = require("passport");
-// Matches with "/api/users"
+const router = require('express').Router();
+const passport = require('passport');
+const usersController = require('../../controllers/usersController');
+const adminsController = require('../../controllers/adminsController');
 
+// Matches with "/api/user/login"
 router
   .route('/login')
   .post(passport.authenticate('local'), function(req, res) {
@@ -21,15 +22,28 @@ router
       // If user isn't logged in, send back false
       res.json(false);
     }
-	});
+  });
 
-	router
+// logout route
+router
   .route('/logout')
   .get(function(req,res) {
     // Log user out
     req.logout()
     console.log(req.user);
     res.json(false);
-	})
-	
-	module.exports = router;
+  })
+
+// Matches with "/api/user/:id"
+router
+  .route('/:id')
+  .get(usersController.findById)
+  .put(adminsController.update)
+  .delete(adminsController.remove);
+
+// register a new user ("/api/user/register")
+router
+  .route('/register')
+  .post(adminsController.saveUser);
+
+module.exports = router;

@@ -3,11 +3,10 @@ import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
-import JobsTable from "../JobsTable";
-import "../links.css"
 
 //need more information on jobs to create functionality and rendering
 //also need a link to JobDetail page in first panel heading along with the other things I cant make out in picure
+
 
 class JobHistory extends Component {
 	state = {
@@ -58,8 +57,8 @@ class JobHistory extends Component {
 							<JobsTable />
 						</tbody>
 					</table>
+
 				</div>
-			</div>
 			</React.Fragment>
 		);
 	};

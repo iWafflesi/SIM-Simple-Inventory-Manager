@@ -16,7 +16,10 @@ const Nav = (props) => {
 				<NavBtn className="link"><Link className="linkStyle" to="/jobs/current">Production</Link></NavBtn>
 
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
+
+				<NavBtn className="link"><Link className="linkStyle" to="/api/admin/register">Admin</Link></NavBtn>
 			</div>
+			
 
 		<NavBtn className="login" onClick={props.handleModal}>Login</NavBtn>
 	</nav>
