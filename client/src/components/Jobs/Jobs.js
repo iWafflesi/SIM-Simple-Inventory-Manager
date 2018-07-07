@@ -71,7 +71,7 @@ class Jobs extends Component {
 								return (
 									<div className="jobButton" key={jobNumber}>
 										<button> <Link to={`/job/detail/${job.jobNumber}`}>{job.jobNumber}</Link></button>
-
+										
 										{/* <button
 										onClick={this.setRedirect()}> {job.jobNumber}</button> */}
 									</div>
