@@ -6,7 +6,7 @@ module.exports = {
 	findAll: function (req, res) {
 		db.User
 			.find(req.query)
-			.sort({ date: -1 })
+			.sort({ date: 1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -36,10 +36,11 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
-	saveUser: function (req, res) {
+	register: function (req, res) {
+		console.log("register in controller hit")
     /* To create a new user */
     db.User
-      .saveUser(new User({username: req.body.username}), req.body.password, function (err) {
+      .register(new User({username: req.body.username}), req.body.password, function (err) {
         if (err) {
           console.log('error while user register!', err);
           return res.status(422).json(err);

@@ -18,7 +18,6 @@ app.use(bodyParser.json());
 // 	app.use(express.static("client/build"));
 // }
 // Add routes, both API and view
-app.use(routes);
 app.use(cookieSession({
 	name: 'session',
 	keys: [keys.cookieKey],
@@ -29,6 +28,7 @@ app.use(passport.session());
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/simDB");
 
+app.use(routes);
 // app.get('/api/hello', (req, res) => {
 // 	console.log('hello');
 // });
