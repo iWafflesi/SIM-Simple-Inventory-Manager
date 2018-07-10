@@ -15,11 +15,11 @@
 }
 
 .linkStyle {
-	color: black;
+	color: rgba(255, 255, 255, 0.822);
 	text-decoration: none;
 }
 
 .linkStyle:active, .linkStyle:hover{
-	color: red;
+	color: rgb(255, 255, 255);
 	text-decoration: none;
 }

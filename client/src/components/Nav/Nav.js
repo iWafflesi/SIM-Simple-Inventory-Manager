@@ -6,7 +6,7 @@ import "./Nav.css"
 
 const Nav = (props) => {
 	return (
-	<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+	<nav className="navbar navbar-expand-lg navbar-dark ">
 
 		<a className="navbar-brand" href="/">Simple Inventory Manager</a>
 
