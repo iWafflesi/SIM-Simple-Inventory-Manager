@@ -19,6 +19,7 @@ class JobsTable extends Component {
 	// 			this.setState({ jobList: res.data }))
 	// 		.catch(err => this.getJobs());
 	// }
+	
 	getJobs = () => {
 		API.getJobs()
 			.then(res =>

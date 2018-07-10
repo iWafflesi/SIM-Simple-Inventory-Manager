@@ -4,8 +4,9 @@ import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import JobsTable from "../JobsTable";
-import "../links.css"
-import { Redirect } from 'react-router-dom'
+import JobCard from "../JobCard";
+import "../links.css";
+// import { Redirect } from 'react-router-dom';
 
 class Jobs extends Component {
 	state = {
@@ -25,25 +26,6 @@ class Jobs extends Component {
 		});
 	};
 
-//  setRedirect = () => {
-//     this.setState({
-//       redirect: true
-//     })
-// 	};
-	
-//   renderRedirect = () => {
-//     if (this.state.redirect) {
-// 			API.getJobs()
-// 			.then(res => 
-// 				this.setState({ jobList: res.data }))
-// 			.catch(err => this.getJobs())
-// 			return(
-// 				<Redirect to={`/job/detail/${state.jobNumber}`}/>
-// 			)		
-//     }
-//   };
-
-// const Jobs = () => {
 	render() {
 	return (
 		<React.Fragment>
@@ -69,12 +51,8 @@ class Jobs extends Component {
 						{this.state.jobList ?
 							this.state.jobList.map((job, jobNumber) => {
 								return (
-									<div className="jobButton" key={jobNumber}>
-										<button> <Link to={`/job/detail/${job.jobNumber}`}>{job.jobNumber}</Link></button>
-
-										{/* <button
-										onClick={this.setRedirect()}> {job.jobNumber}</button> */}
-									</div>
+										<JobCard key={jobNumber}/>
+							
 								)
 							})
 							: null}

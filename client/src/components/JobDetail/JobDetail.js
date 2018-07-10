@@ -84,8 +84,8 @@ class JobDetail extends Component {
 					
 
 
-// stuff goes here
-
+{// stuff goes here
+	}
 					</div>
 
 
