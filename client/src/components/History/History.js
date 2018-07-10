@@ -18,7 +18,6 @@ const TranHistory = () => (
 					<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
 				</div>
 			</div>
-			Inventory.history
 		</React.Fragment>
 );
 

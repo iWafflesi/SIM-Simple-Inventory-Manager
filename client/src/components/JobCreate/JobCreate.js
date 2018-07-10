@@ -13,7 +13,7 @@ import "../links.css"
 class JobCreate extends Component {
 	state = {
 		jobs: [],
-		jobNumber: "",
+		// jobNumber: "",
 		sku: "",
 		quantity: "",
 		username: "",
@@ -87,12 +87,6 @@ class JobCreate extends Component {
 									onChange={this.handleInputChange}
 									name="username"
 									placeholder="username (required)"
-								/>
-								<Input
-									value={this.state.jobNumber}
-									onChange={this.handleInputChange}
-									name="jobNumber"
-									placeholder="jobNumber (optional)"
 								/>
 								<Input
 									value={this.state.date}

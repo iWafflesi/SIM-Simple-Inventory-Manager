@@ -40,7 +40,7 @@ router
   .delete(adminsController.remove);
 
 	router
-  .route('/admin')
-  .post(adminsController.saveUser);
+  .route('/register')
+  .post(adminsController.register);
 
 module.exports = router;

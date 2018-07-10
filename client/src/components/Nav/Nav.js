@@ -6,7 +6,7 @@ import "./Nav.css"
 
 const Nav = (props) => {
 	return (
-	<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+	<nav className="navbar navbar-expand-lg navbar-dark ">
 
 		<a className="navbar-brand" href="/">Simple Inventory Manager</a>
 
@@ -17,7 +17,7 @@ const Nav = (props) => {
 
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
 
-				<NavBtn className="link"><Link className="linkStyle" to="/api/admin/register">Admin</Link></NavBtn>
+				<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>
 			</div>
 			
 

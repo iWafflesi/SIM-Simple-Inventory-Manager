@@ -5,8 +5,8 @@ import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import JobsTable from "../JobsTable";
 import JobCard from "../JobCard";
-import "../links.css";
-// import { Redirect } from 'react-router-dom';
+import "../links.css"
+import "../JobCard/JobCard.css"
 
 class Jobs extends Component {
 	state = {
@@ -21,7 +21,8 @@ class Jobs extends Component {
 	};
 
 	getJobs = () => {
-		API.getJobs().then((res) => {
+		API.getJobs()
+		.then((res) => {
 			this.setState({ jobList: res.data })
 		});
 	};
@@ -42,26 +43,12 @@ class Jobs extends Component {
 				</div>
 			</div>
 
-			<div className="panel panel-default">
-				<p>This is the grid for jobs</p>
-				<div className="panel panel-default">
-					<div className="panel heading">
-					</div>
-					<div className="panel-body">
-						{this.state.jobList ?
-							this.state.jobList.map((job, jobNumber) => {
-								return (
-										<JobCard key={jobNumber}/>
-							
-								)
-							})
-							: null}
-					</div>
-				</div>
+			<div className="jobCardHolder">
+				<JobCard />
 			</div>
-
+				
 			<div className="panel panel-default">
-				<div className="panel heading">Current Jobs</div>
+				<div className="panel heading text-center"><h3>Current Jobs</h3></div>
 				<div className="panel-body">
 					<table className="table table-hover" id='JobsTable'>
 						<thead>
@@ -69,6 +56,8 @@ class Jobs extends Component {
 								<th scope="col">Job ID</th>
 								<th scope="col">Part Sku</th>
 								<th scope="col">Quantity</th>
+								<th scope="col">Username</th>
+								<th scope="col">Date</th>
 							</tr>
 						</thead>
 						<tbody>

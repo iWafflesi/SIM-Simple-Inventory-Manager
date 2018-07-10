@@ -7,6 +7,7 @@ export default {
 	},
 	// Gets the job with the given id
 	getJob: function(id) {
+		// console.log("API - ID: ", id);
 		return axios.get("/api/jobs/" + id);
 	},
 	// Deletes the job with the given id
@@ -59,8 +60,35 @@ export default {
 	deleteUser: function(id) {
 		return axios.delete("/api/users/" + id);
 	},
-	// Saves a user to the database
-	saveUser: function(userData) {
-		return axios.post("/api/users", userData);
-	}
+
+	/*
+	loginCreds = {username: "alex", "password": 12345Password!}
+  */
+  login: function (loginCreds) {
+		console.log("login util hit", loginCreds)
+		return axios.post('/api/auth/login', loginCreds);
+  },
+  /* 
+    Path to check if user is logged in
+  */
+  loginCheck: function() {
+    return axios.get('/api/users/login')
+  },
+  /* 
+    Path to log out
+  */
+  logout: function() {
+    return axios.get('/api/users/logout')
+  },
+  /* 
+    Path to register new user, you can have more fields than this but "username" and "password" must exist
+    userInfo = {
+      username: "alex",
+      password: 12345Password!
+    }
+  */
+  register: function(userInfo) {
+		console.log("register util hit")
+    return axios.post("/api/admins/register", userInfo)
+  }
 };

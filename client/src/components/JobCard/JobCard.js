@@ -1,17 +1,52 @@
-import React from "react";
-import "./JobCard.css"
+import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import API from "../../utils/API";
+import "./JobCard.css";
 
-export const JobCard = props => (
-<div class="jobCardHolder">
-	<div {...props} class="card">
-		<div class="card-body">
-			<h4 class="card-title">Job {props.jobNum}</h4>
-			<h6 class="card-subtitle mb-2 text-muted">SKU: {props.sku}</h6>
-			<h6 class="card-subtitle mb-2 text-muted">Qty: {props.qty}</h6>
-			<p class="card-text">Notes: {props.notes}Priority #2, please keep tolerances within .002 in.</p>
-		</div>
-	</div>
-</div>
-);
+class JobCard extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {}
+	}
 
+	componentDidMount() {
+		this.getJobs();
+	};
+
+	getJobs = () => {
+		API.getJobs()
+			.then(res =>
+				this.setState({ jobList: res.data })
+
+			).catch(err => this.getJobs());
+	}
+
+	render() {
+		console.log("JobList: ", this.state.jobList);
+		return <React.Fragment>
+			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
+				return (
+				
+				<Link className="jobLink" to={`/job/detail/${jobNumber}`} key={jobNumber}>
+						<div className="card">
+							<div className="card-body">
+								<h4 className="card-title">Job {job.jobNumber}</h4>
+								<h6 className="card-subtitle mb-2">SKU: {job.sku}</h6>
+								<h6 className="card-subtitle mb-2">Qty: {job.quantity}</h6>
+								<p className="card-text">Notes: {job.notes}</p>
+							</div>
+						</div>
+					</Link>
+			
+				)
+			}) : null}
+		</React.Fragment>
+
+	}
+}
 export default JobCard;
+
+
+
+
+

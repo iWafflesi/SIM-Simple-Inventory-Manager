@@ -7,6 +7,7 @@ const adminsController = require('../../controllers/adminsController');
 router
   .route('/login')
   .post(passport.authenticate('local'), function(req, res) {
+		console.log('hasdfs')
     // Log in and send back user information
     console.log(req.user);
     res.json(req.user);
@@ -44,6 +45,6 @@ router
 // register a new user ("/api/user/register")
 router
   .route('/register')
-  .post(adminsController.saveUser);
+  .post(adminsController.register);
 
 module.exports = router;
