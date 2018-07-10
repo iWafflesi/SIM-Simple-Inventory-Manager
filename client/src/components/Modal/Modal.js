@@ -1,10 +1,14 @@
 import React from "react";
 import Modal from "react-modal";
 import ModalForm from "./../ModalForm"
+import "./Modal.css";
 
 
 const LoginModal = (props) => (
 <Modal
+closeTimeoutMS={500}
+className='modal'
+
 	isOpen= {props.openModal}
 	contentLabel="selected Option"
 >

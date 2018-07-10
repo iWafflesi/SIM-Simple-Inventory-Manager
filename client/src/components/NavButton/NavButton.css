@@ -2,4 +2,13 @@
 .navButton {
 	letter-spacing: 2px;
 	font-size: 20px;
+	background-color: rgba(95, 95, 95, 0.322);
+	border-color: rgba(255, 255, 255, 0.432);
+	color: rgba(255, 255, 255, 0.822);
 }
+
+.navButton:active, .navButton:hover {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}
+

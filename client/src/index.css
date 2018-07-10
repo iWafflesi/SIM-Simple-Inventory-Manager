@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+	background-image: url("./assets/archive.jpg");
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center; 
+	background-color: rgb(0, 0, 0);
+}
