@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
 	process.env.MONGODB_URI || "mongodb://localhost/simDB",
 	{
-		useMongoClient: true
+		useMongoClient: true, 
 	}
 );
 

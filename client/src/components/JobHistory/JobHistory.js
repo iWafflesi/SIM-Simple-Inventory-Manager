@@ -41,7 +41,7 @@ class JobHistory extends Component {
 				</div>
 
 				<div className="panel panel-default">
-					<div className="panel heading">Job History</div>
+					<div className="panel heading text-center"><h3>Job History</h3></div>
 					<div className="panel-body">
 						<table className="table table-hover" id='jobsHistoryTable'>
 							<thead>

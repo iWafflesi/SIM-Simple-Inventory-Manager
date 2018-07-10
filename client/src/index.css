@@ -8,3 +8,24 @@ body {
 	background-position: center; 
 	background-color: rgb(0, 0, 0);
 }
+
+.table {
+	width: 90%;
+	margin: auto;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,.301);
+
+}
+
+.card {
+	width: 50%;
+	margin: auto;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,.301);
+}
+
+
+form {
+	width: 75%;
+	margin: auto;
+}
