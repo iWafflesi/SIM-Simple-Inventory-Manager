@@ -1,23 +1,36 @@
 # Final Project Requirements
 
 * Must use React, Vue, or Angular in some way (even if minimal)
+yes
 
 * Must use a Node and Express Web Server
+yes
 
 * Must be backed by a MySQL or MongoDB Database with a Sequelize or Mongoose ORM  
+yes
 
 * Must have both GET and POST routes for retrieving and adding new data
+yes
 
 * Must be deployed using Heroku (with Data)
+need to deploy
 
 * Must utilize at least two libraries, packages, or technologies that we haven’t discussed
+passport
+react modal
+cookie sessions
 
 * Must allow for or involve the authentication of users in some way
+yes
 
 * Must have a polished frontend / UI
+yes
 
 * Must have folder structure that meets MVC Paradigm
+kinda (clean up)
 
 * Must meet good quality coding standards (indentation, scoping, naming)
+kinda (clean up)
 
 * Must not expose sensitive API key information on the server, see [Protecting-API-Keys-In-Node.md](../../../../01-Class-Content/10-nodejs/03-Supplemental/Protecting-API-Keys-In-Node.md)
+yes

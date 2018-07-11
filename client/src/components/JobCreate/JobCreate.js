@@ -66,6 +66,8 @@ class JobCreate extends Component {
 		return (
 			<React.Fragment>
 				<Nav />
+				<div className="card">
+			<div className="card-body">
 				<div className="subLinks">
 					<div className="link">
 						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
@@ -80,7 +82,7 @@ class JobCreate extends Component {
 				<Row>
 					<Col size="md-12">
 
-						<Table>
+
 							<form>
 								<Input
 									value={this.state.username}
@@ -115,9 +117,11 @@ class JobCreate extends Component {
 									Start Job
 							</FormBtn>
 							</form>
-						</Table>
+
 					</Col>
 				</Row>
+				</div>
+				</div>
 			</React.Fragment>
 		);
 	};

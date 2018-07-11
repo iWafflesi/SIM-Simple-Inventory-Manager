@@ -7,7 +7,7 @@ const Jumbotron = () => (
 		className="jumbotron"
 	>
 	<h1>Welcome to SIM</h1>
-	<h3>Please log in</h3>
+	<h3></h3>
 		
 	</div>
 );

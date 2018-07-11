@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
 import Nav from "../Nav";
 import NavBtn from "../NavButton"
+import "./Register.css";
 
 class CreateUser extends Component {
 	state = {
@@ -60,8 +61,10 @@ class CreateUser extends Component {
 
 		return (
 		
-				<div className="container admin">
+			<React.Fragment>
 				<Nav />
+				<div className="card">
+				<div className="card-body">
 					<div className="row justify-content-center">
 						<form>
 							<h3>Create a new user</h3>
@@ -88,8 +91,9 @@ class CreateUser extends Component {
 									placeholder="Password"
 								/>
 							</div>
-							<div className="checkbox">
+							<div>
 								<input
+									className="checkbox"
 									type="checkbox"
 									name="admin"
 									value={this.setState.admin = true}
@@ -102,7 +106,9 @@ class CreateUser extends Component {
 							<NavBtn type="submit" className="btn btn-success linkStyle" onClick={this.deleteUser}>User Deleted</NavBtn>
 						</form>
 					</div>
+					</div>
 				</div>
+				</React.Fragment>
 		)
 	}
 }

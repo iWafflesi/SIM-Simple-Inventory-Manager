@@ -5,58 +5,15 @@ import PartTable from "../PartTable";
 
 
 class Shipping extends Component {
-	// state = {
-	// 	parts: [],
-	// 	name: "",
-	// 	sku: "",
-	// 	quantity: "",
-	// 	material: "",
-	// };
 
-	// componentDidMount() {
-	// 	this.loadParts();
-	// }
-
-	// loadParts = () => {
-	// 	API.getParts()
-	// 		.then(res =>
-	// 			this.setState({ parts: res.data, name: "", sku: "", quantity: "",material: "" })
-	// 		)
-	// 		.catch(err => console.log(err));
-	// };
-
-	// deletePart = id => {
-	// 	API.deletePart(id)
-	// 		.then(res => this.loadParts())
-	// 		.catch(err => console.log(err));
-	// };
-
-	// handleInputChange = event => {
-	// 	const { name, value } = event.target;
-	// 	this.setState({
-	// 		[name]: value
-	// 	});
-	// };
-
-	// handleFormSubmit = event => {
-	// 	event.preventDefault();
-	// 	if (this.state.name && this.state.sku) {
-	// 		API.savePart({
-	// 			name: this.state.name,
-	// 			sku: this.state.sku,
-	// 			quantity: this.state.quantity,
-	// 			material: this.state.material
-	// 		})
-	// 		.then(res => this.loadParts())
-	// 		.catch(err => console.log(err));
-	// 	}
-	// };
 	
 	render() {
 		return (
 			<React.Fragment>
 			<Container fluid>
 			<Nav />
+			<div className="card">
+			<div className="card-body">
 				<Row>
 					<Col size="md-6 sm-12">
 
@@ -79,8 +36,10 @@ class Shipping extends Component {
 			</div>
 					</Col>
 				</Row>
+			</div>
+			</div>
 			</Container>
-	</React.Fragment>
+			</React.Fragment>
 		);
 	};
 }
