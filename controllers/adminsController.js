@@ -40,7 +40,7 @@ module.exports = {
 		console.log("register in controller hit")
     /* To create a new user */
     db.User
-      .register(new User({username: req.body.username}), req.body.password, function (err) {
+      .register(new User({username: req.body.username, admin: req.body.admin}), req.body.password, function (err) {
         if (err) {
           console.log('error while user register!', err);
           return res.status(422).json(err);
