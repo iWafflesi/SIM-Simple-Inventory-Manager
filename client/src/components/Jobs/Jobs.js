@@ -30,6 +30,8 @@ class Jobs extends Component {
 	return (
 		<React.Fragment>
 
+			<div className="card">
+			<div className="card-body">
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
@@ -45,7 +47,6 @@ class Jobs extends Component {
 			<div className="jobCardHolder">
 				<JobCard />
 			</div>
-				
 			<div className="panel panel-default">
 				<div className="panel heading text-center"><h3>Current Jobs</h3></div>
 				<div className="panel-body">
@@ -64,6 +65,8 @@ class Jobs extends Component {
 						</tbody>
 					</table>
 				</div>
+			</div>
+			</div>
 			</div>
 		</React.Fragment>
 	)

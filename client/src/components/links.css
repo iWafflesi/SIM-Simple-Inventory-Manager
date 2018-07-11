@@ -3,6 +3,7 @@
 	flex-direction: row;
 	justify-content: flex-start;
 }
+
 .link {
 	order: 0;
 	flex-grow: 0;

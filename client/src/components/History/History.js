@@ -5,6 +5,9 @@ import "../links.css"
 
 const TranHistory = () => (
 	<React.Fragment>
+		<Nav/>
+		<div className="card">
+			<div className="card-body">
 		<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
@@ -15,6 +18,8 @@ const TranHistory = () => (
 				<div className="link">
 					<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
 				</div>
+			</div>
+			</div>
 			</div>
 		</React.Fragment>
 );

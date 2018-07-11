@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import NavBtn from "../NavButton"
 import UserList from "../DeleteUser/Deleteuser";
+import "./Register.css";
 
 class CreateUser extends Component {
 	state = {
@@ -58,14 +59,11 @@ class CreateUser extends Component {
 	render() {
 
 		return (
+		
 			<React.Fragment>
-				<UserList
-					deleteUser={this.deleteUser}
-					getUsers={this.getUsers}
-					userList={this.userList}
 
-				/>
-				<div className="container admin">
+				<div className="card">
+				<div className="card-body">
 					<div className="row justify-content-center">
 						<form>
 							<h3>Create a new user</h3>
@@ -92,8 +90,9 @@ class CreateUser extends Component {
 									placeholder="Password"
 								/>
 							</div>
-							<div className="checkbox">
+							<div>
 								<input
+									className="checkbox"
 									type="checkbox"
 									name="admin"
 									value={this.setState.admin = true}
@@ -105,8 +104,9 @@ class CreateUser extends Component {
 
 						</form>
 					</div>
+					</div>
 				</div>
-			</React.Fragment>
+				</React.Fragment>
 		)
 	}
 }

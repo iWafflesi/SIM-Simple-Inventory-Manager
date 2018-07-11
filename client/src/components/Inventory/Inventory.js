@@ -9,6 +9,9 @@ const Inventory = () => {
 
 	return (
 		<React.Fragment>
+			<Nav />
+			<div className="card">
+			<div className="card-body">
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
@@ -39,6 +42,8 @@ const Inventory = () => {
 						</tbody>
 					</table>
 				</div>
+			</div>
+			</div>
 			</div>
 		</React.Fragment>
 	)

@@ -1,86 +1,51 @@
 import React, { Component } from "react";
-import DeleteBtn from "../DeleteBtn";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../Grid";
+<<<<<<< HEAD
 import { List, ListItem } from "../List";
 
+=======
+import Nav from "../Nav";
+import PartTable from "../PartTable";
+>>>>>>> master
 
 
 class Shipping extends Component {
-	state = {
-		parts: [],
-		name: "",
-		sku: "",
-		quantity: "",
-		material: "",
-	};
 
-	componentDidMount() {
-		this.loadParts();
-	}
-
-	loadParts = () => {
-		API.getParts()
-			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "",material: "" })
-			)
-			.catch(err => console.log(err));
-	};
-
-	deletePart = id => {
-		API.deletePart(id)
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
-	};
-
-	handleInputChange = event => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-	};
-
-	handleFormSubmit = event => {
-		event.preventDefault();
-		if (this.state.name && this.state.sku) {
-			API.savePart({
-				name: this.state.name,
-				sku: this.state.sku,
-				quantity: this.state.quantity,
-				material: this.state.material
-			})
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
-		}
-	};
 	
 	render() {
 
 		return (
+			<React.Fragment>
 			<Container fluid>
+
+			<div className="card">
+			<div className="card-body">
 				<Row>
 					<Col size="md-6 sm-12">
 
-						{this.state.parts.length ? (
-							<List>
-								{this.state.parts.map(part => (
-									<ListItem key={part._id}>
-										<Link to={"/parts/" + part._id}>
-											<strong>
-												{part.name} by {part.sku}
-											</strong>
-										</Link>
-										<DeleteBtn onClick={() => this.deletePart(part._id)} />
-									</ListItem>
-								))}
-							</List>
-						) : (
-							<h3>No Results to Display</h3>
-						)}
+	<div className="panel panel-default">
+				<div className="panel heading text-center"><h3>Current Jobs</h3></div>
+				<div className="panel-body">
+					<table className="table table-hover" id='JobsTable'>
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Part Sku</th>
+								<th scope="col">quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<PartTable />
+						</tbody>
+					</table>
+				</div>
+			</div>
 					</Col>
 				</Row>
+			</div>
+			</div>
 			</Container>
+			</React.Fragment>
 		);
 	};
 }
