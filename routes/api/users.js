@@ -12,7 +12,7 @@ router
   })
   .get(function(req, res) {
     // Check to see if user is logged in
-    console.log('hello', req.user);
+    console.log('hello from routes.users', req.user);
     if (req.user) {
       // If logged in, send back this flag and the username itself
       // NOTE: you can send back whatever you want here
@@ -32,7 +32,10 @@ router
     console.log(req.user);
     res.json(false);
 	})
-
+  router.route("/")
+	.get(usersController.findAll)
+  .post(usersController.create);
+  
 	router
   .route('/:id')
   .get(usersController.findById)

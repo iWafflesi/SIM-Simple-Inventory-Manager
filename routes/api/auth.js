@@ -7,7 +7,7 @@ const adminsController = require('../../controllers/adminsController');
 router
   .route('/login')
   .post(passport.authenticate('local'), function(req, res) {
-		console.log('hasdfs')
+		console.log('hasdfs this is in your backend routes/auth')
     // Log in and send back user information
     console.log(req.user);
     res.json(req.user);

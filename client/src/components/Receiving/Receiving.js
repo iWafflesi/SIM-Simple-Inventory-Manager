@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
@@ -28,7 +27,7 @@ class Receiving extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "", price: ""})
+				this.setState({ parts: res.data, name: "", sku: "", quantity: "", price: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -50,7 +49,7 @@ class Receiving extends Component {
 		event.preventDefault();
 		if (this.state.name && this.state.sku && this.state.price) {
 			console.log(this);
-			
+
 			API.saveMaterial({
 				name: this.state.name,
 				sku: this.state.sku,
@@ -63,9 +62,9 @@ class Receiving extends Component {
 	};
 
 	render() {
+	
 		return (
 			<React.Fragment>
-				<Nav />
 				<div className="subLinks">
 					<div className="link">
 						<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
@@ -100,7 +99,7 @@ class Receiving extends Component {
 									name="quantity"
 									placeholder="quantity (required)"
 								/>
-									<Input
+								<Input
 									value={this.state.price}
 									onChange={this.handleInputChange}
 									name="price"

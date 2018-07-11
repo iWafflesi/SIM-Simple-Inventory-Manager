@@ -29,12 +29,7 @@ app.use(passport.session());
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/simDB`, {useNewUrlParser: true });
 
 app.use(routes);
-// app.get('/api/hello', (req, res) => {
-// 	console.log('hello');
-// });
 
-// require('./routes/auth')(app);
-// require('./routes/testRoutes')(app);
 // Start the API server
 app.listen(PORT, function() {
 	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

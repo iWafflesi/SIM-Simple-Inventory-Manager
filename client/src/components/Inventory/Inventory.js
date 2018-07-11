@@ -1,8 +1,5 @@
 import React from "react";
-import Nav from "../Nav";
-// import { Row, Col, Container } from "../Grid";
 import "./Inventory.css"
-// import Table from "../Table";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import InventoryTable from "../InventoryTable";
@@ -12,8 +9,6 @@ const Inventory = () => {
 
 	return (
 		<React.Fragment>
-			<Nav />
-
 			<div className="subLinks">
 				<div className="link">
 					<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>

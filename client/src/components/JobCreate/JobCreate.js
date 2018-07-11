@@ -3,7 +3,6 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import Table from "../Table/Table";
-import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
@@ -65,7 +64,6 @@ class JobCreate extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Nav />
 				<div className="subLinks">
 					<div className="link">
 						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>

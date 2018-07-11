@@ -50,6 +50,7 @@ export default {
 		return axios.post("/api/parts", partData);
 	},
 	getUsers: function() {
+		// console.log("you are getting to the api in utils folder....")
 		return axios.get("/api/users");
 	},
 	// Gets the user with the given id

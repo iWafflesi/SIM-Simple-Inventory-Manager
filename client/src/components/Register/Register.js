@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
-import Nav from "../Nav";
 import NavBtn from "../NavButton"
+import UserList from "../DeleteUser/Deleteuser";
 
 class CreateUser extends Component {
 	state = {
@@ -20,6 +19,9 @@ class CreateUser extends Component {
 		})
 	}
 
+	componentDidMount() {
+		this.getUsers();
+	}
 	// Method to register a new user
 	register = (event) => {
 		event.preventDefault();
@@ -37,31 +39,33 @@ class CreateUser extends Component {
 			.catch(err => console.log(err.response.data));
 	}
 
-	deleteUser = (event) => {
-		event.preventDefault();
-		API
-			.deleteUser({ username: this.state.username, password: this.state.password, admin: this.state.admin })
-			.then((user) => {
-				console.log(user);
-				console.log(user.data);
-				console.log("username " + this.state.username);
-				console.log("password " + this.state.password);
-				console.log("admin " + this.state.admin);
-				this.setState({ success: user.data })
 
+	getUsers = () => {
+		API.getUsers()
+			.then((res) => {
+				// console.log("You're in the get users function");
+				console.log("userList:", res.data)
+				this.setState({ userList: res.data })
 			})
-			.catch(err => console.log(err.response.data));
-	}
+			.catch(err => this.getUsers());
+	};
+
+	deleteUser = id => {
+		API.deleteUser(id)
+			.then(res => this.getUsers())
+			.catch(err => console.log(err));
+	};
 	render() {
-		// If Signup was a success, take them to the Login page
-		if (this.state.success) {
-			return <Redirect to="/" />
-		}
 
 		return (
-		
+			<React.Fragment>
+				<UserList
+					deleteUser={this.deleteUser}
+					getUsers={this.getUsers}
+					userList={this.userList}
+
+				/>
 				<div className="container admin">
-				<Nav />
 					<div className="row justify-content-center">
 						<form>
 							<h3>Create a new user</h3>
@@ -98,11 +102,11 @@ class CreateUser extends Component {
 								<label htmlFor="admin">Admin Access</label>
 							</div>
 							<NavBtn type="submit" className="btn btn-success linkStyle" onClick={this.register}>User Created</NavBtn>
-							
-							<NavBtn type="submit" className="btn btn-success linkStyle" onClick={this.deleteUser}>User Deleted</NavBtn>
+
 						</form>
 					</div>
 				</div>
+			</React.Fragment>
 		)
 	}
 }

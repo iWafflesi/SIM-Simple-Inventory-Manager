@@ -8,6 +8,7 @@ const LoginModal = (props) => (
 	<Modal
 		isOpen={props.openModal}
 		onRequestClose={props.closeModal}
+		ariaHideApp={false}
 		contentLabel="selected Option"
 	>
 		<ModalForm
