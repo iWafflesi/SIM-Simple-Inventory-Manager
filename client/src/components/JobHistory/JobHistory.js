@@ -28,6 +28,8 @@ class JobHistory extends Component {
 		return (
 			<React.Fragment>
 				<Nav />
+				<div className="card">
+			<div className="card-body">
 				<div className="subLinks">
 					<div className="link">
 						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
@@ -39,7 +41,6 @@ class JobHistory extends Component {
 						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
 					</div>
 				</div>
-
 				<div className="panel panel-default">
 					<div className="panel heading text-center"><h3>Job History</h3></div>
 					<div className="panel-body">
@@ -59,6 +60,8 @@ class JobHistory extends Component {
 						</table>
 
 					</div>
+				</div>
+				</div>
 				</div>
 			</React.Fragment>
 		);

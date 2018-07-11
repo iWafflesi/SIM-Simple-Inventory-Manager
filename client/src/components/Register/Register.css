@@ -1,0 +1,9 @@
+.card-body {
+	color: white;
+	border-radius: 5px;
+	background:	linear-gradient(to bottom right, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76));
+}
+
+.checkbox {
+	margin-right: 10px;
+}

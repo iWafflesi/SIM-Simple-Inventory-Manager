@@ -12,13 +12,13 @@ body {
 .table {
 	width: 90%;
 	margin: auto;
-	border-radius: 10px;
+	border-radius: 0px;
 	background-color: rgba(255,255,255,.301);
 
 }
 
 .card {
-	width: 50%;
+	width: 90%;
 	margin: auto;
 	border-radius: 10px;
 	background-color: rgba(255,255,255,.301);

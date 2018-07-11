@@ -10,5 +10,66 @@ top: 10%;
 left: 35%;
 height: 300px;
 width: 500px;
+border-radius: 5px;
 }
 
+
+.username__input{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+	width: 250px;
+	justify-content: center;
+	align-items: center;
+}
+
+.password__input {
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+	width: 250px;
+	justify-content: center;
+	align-items: center;
+}
+
+.button {
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: rgba(0, 0, 0, 0.726);
+	color: #fff;
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin-left: 18%;
+}
+
+hr {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+}
+
+.cssTitle {
+
+}
+
+.cssForm {
+text-align: center;
+}
+
+
+wrapper {
+	width:400px;
+}
