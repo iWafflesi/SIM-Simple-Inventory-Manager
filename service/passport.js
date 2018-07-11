@@ -6,7 +6,8 @@ const User = mongoose.model("User");
 
 // Tell passport to make user of LocalStrategy
 passport.use(new LocalStrategy((username, password, done) => {
-  return User.findOne({ username: username }, (err, user) => {	
+	console.log(username);
+  User.findOne({ username: username }, (err, user) => {
     // if (err) return done(err);
     // if (!user) return done(null, false);
     // if (user.password !== password) return done(null, false);
