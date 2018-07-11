@@ -22,7 +22,7 @@ const LoginModal = (props) => (
 			setRedirect={props.setRedirect}
 			renderRedirect={props.renderRedirect}
 		/>
-		
+
 	</Modal>
 );
 export default LoginModal;

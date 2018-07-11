@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
-import Table from "../Table/Table";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
@@ -63,62 +62,61 @@ class JobCreate extends Component {
 	render() {
 		return (
 			<React.Fragment>
-	
 				<div className="card">
-			<div className="card-body">
-				<div className="subLinks">
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
-					</div>
-				</div>
-				<Row>
-					<Col size="md-12">
+					<div className="card-body">
+						<div className="subLinks">
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+							</div>
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+							</div>
+							<div className="link">
+								<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+							</div>
+						</div>
+						<Row>
+							<Col size="md-12">
 
 
-							<form>
-								<Input
-									value={this.state.username}
-									onChange={this.handleInputChange}
-									name="username"
-									placeholder="username (required)"
-								/>
-								<Input
-									value={this.state.date}
-									onChange={this.handleInputChange}
-									name="date"
-									placeholder="date used (optional)"
-								/>
+								<form>
+									<Input
+										value={this.state.username}
+										onChange={this.handleInputChange}
+										name="username"
+										placeholder="username (required)"
+									/>
+									<Input
+										value={this.state.date}
+										onChange={this.handleInputChange}
+										name="date"
+										placeholder="date used (optional)"
+									/>
 
-								<Input
-									value={this.state.sku}
-									onChange={this.handleInputChange}
-									name="sku"
-									placeholder="Part sku (required)"
-								/>
-								<Input
-									value={this.state.quantity}
-									onChange={this.handleInputChange}
-									name="quantity"
-									placeholder="quantity of parts (required)"
-								/>
+									<Input
+										value={this.state.sku}
+										onChange={this.handleInputChange}
+										name="sku"
+										placeholder="Part sku (required)"
+									/>
+									<Input
+										value={this.state.quantity}
+										onChange={this.handleInputChange}
+										name="quantity"
+										placeholder="quantity of parts (required)"
+									/>
 
-								<FormBtn
-									disabled={!(this.state.sku && this.state.quantity)}
-									onClick={this.handleFormSubmit}
-								>
-									Start Job
+									<FormBtn
+										disabled={!(this.state.sku && this.state.quantity)}
+										onClick={this.handleFormSubmit}
+									>
+										Start Job
 							</FormBtn>
-							</form>
+								</form>
 
-					</Col>
-				</Row>
-				</div>
+							</Col>
+						</Row>
+					</div>
 				</div>
 			</React.Fragment>
 		);

@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import NavBtn from "../NavButton"
 import UserList from "../DeleteUser/Deleteuser";
 import "./Register.css";
+import { Container } from "../Grid";
 
 class CreateUser extends Component {
 	state = {
@@ -59,54 +60,63 @@ class CreateUser extends Component {
 	render() {
 
 		return (
-		
+
 			<React.Fragment>
-
-				<div className="card">
-				<div className="card-body">
-					<div className="row justify-content-center">
-						<form>
-							<h3>Create a new user</h3>
-							<div className="form-group">
-								<label htmlFor="username">Username</label>
-								<input
-									type="text"
-									name="username"
-									value={this.state.username}
-									onChange={this.handleInputChange}
-									className="form-control"
-									placeholder="Username" />
-								<small id="usernameHelp" className="form-text text-muted">Enter username</small>
-							</div>
-
-							<div className="form-group">
-								<label htmlFor="password">Password</label>
-								<input
-									type="password"
-									name="password"
-									value={this.state.password}
-									onChange={this.handleInputChange}
-									className="form-control"
-									placeholder="Password"
-								/>
-							</div>
-							<div>
-								<input
-									className="checkbox"
-									type="checkbox"
-									name="admin"
-									value={this.setState.admin = true}
-									onChange={this.handleInputChange}
-								/>
-								<label htmlFor="admin">Admin Access</label>
-							</div>
-							<NavBtn type="submit" className="btn btn-success linkStyle" onClick={this.register}>User Created</NavBtn>
-
-						</form>
+				<Container fluid>
+					<div className="panel heading text-center"><h3>Current Staff</h3></div>
+					<div className="panel-body">
+						<UserList
+							deleteUser={this.deleteUser}
+							getUsers={this.getUsers}
+							userList={this.userList}
+						/>
 					</div>
+				</Container>
+				<div className="card">
+					<div className="card-body">
+						<div className="row justify-content-center">
+							<form>
+								<h3>Create a new user</h3>
+								<div className="form-group">
+									<label htmlFor="username">Username</label>
+									<input
+										type="text"
+										name="username"
+										value={this.state.username}
+										onChange={this.handleInputChange}
+										className="form-control"
+										placeholder="Username" />
+									<small id="usernameHelp" className="form-text text-muted">Enter username</small>
+								</div>
+
+								<div className="form-group">
+									<label htmlFor="password">Password</label>
+									<input
+										type="password"
+										name="password"
+										value={this.state.password}
+										onChange={this.handleInputChange}
+										className="form-control"
+										placeholder="Password"
+									/>
+								</div>
+								<div>
+									<input
+										className="checkbox"
+										type="checkbox"
+										name="admin"
+										value={this.setState.admin = true}
+										onChange={this.handleInputChange}
+									/>
+									<label htmlFor="admin">Admin Access</label>
+								</div>
+								<NavBtn type="submit" className="btn btn-success linkStyle" onClick={this.register}>User Created</NavBtn>
+
+							</form>
+						</div>
 					</div>
 				</div>
-				</React.Fragment>
+			</React.Fragment>
 		)
 	}
 }

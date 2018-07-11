@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
-<<<<<<< HEAD
-import { List, ListItem } from "../List";
-
-=======
-import Nav from "../Nav";
 import PartTable from "../PartTable";
->>>>>>> master
+
 
 
 class Shipping extends Component {

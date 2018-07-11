@@ -5,23 +5,22 @@ import "../links.css"
 
 const TranHistory = () => (
 	<React.Fragment>
-		<Nav/>
 		<div className="card">
 			<div className="card-body">
-		<div className="subLinks">
-				<div className="link">
-					<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
-				</div>
-				<div className="link">
-					<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
-				</div>
-				<div className="link">
-					<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
+				<div className="subLinks">
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
+					</div>
+					<div className="link">
+						<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
+					</div>
 				</div>
 			</div>
-			</div>
-			</div>
-		</React.Fragment>
+		</div>
+	</React.Fragment>
 );
 
 export default TranHistory;

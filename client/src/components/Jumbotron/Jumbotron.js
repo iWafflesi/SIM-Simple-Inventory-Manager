@@ -6,9 +6,9 @@ const Jumbotron = () => (
 		style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
 		className="jumbotron"
 	>
-	<h1>Welcome to SIM</h1>
-	<h3></h3>
-		
+		<h1>Welcome to SIM</h1>
+
+
 	</div>
 );
 
