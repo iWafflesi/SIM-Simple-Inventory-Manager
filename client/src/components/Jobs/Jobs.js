@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import JobsTable from "../JobsTable";
@@ -30,7 +29,7 @@ class Jobs extends Component {
 	render() {
 	return (
 		<React.Fragment>
-			<Nav />
+
 			<div className="card">
 			<div className="card-body">
 			<div className="subLinks">

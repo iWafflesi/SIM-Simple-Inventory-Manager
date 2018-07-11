@@ -1,10 +1,12 @@
 import React from "react";
 import NavBtn from "../NavButton";
-import API from "../../utils/API"
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import "./Nav.css"
 
 const Nav = (props) => {
+
+	// <NavBtn className="link"><Link className="linkStyle" to="/admin" onClick={props.getUsers}>Admin</Link></NavBtn>
+
 	return (
 	<nav className="navbar navbar-expand-lg navbar-dark ">
 
@@ -21,7 +23,7 @@ const Nav = (props) => {
 			</div>
 			
 
-		<NavBtn className="logout" onClick={props.logout}>Logout</NavBtn>
+		<NavBtn className="link"><Link className="linkStyle" to="/" onClick={props.logout}>Logout</Link></NavBtn>
 	</nav>
 	)
 };

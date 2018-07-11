@@ -3,12 +3,10 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import Table from "../Table/Table";
-import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
 
-//********THIS PAGE DOES NOT HAVE A ROUTE AND CANNOT BE SEEN!!!!!!!!!!
 
 class JobCreate extends Component {
 	state = {
@@ -65,7 +63,7 @@ class JobCreate extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Nav />
+	
 				<div className="card">
 			<div className="card-body">
 				<div className="subLinks">
