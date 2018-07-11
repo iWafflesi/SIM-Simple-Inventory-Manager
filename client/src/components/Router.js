@@ -106,7 +106,7 @@ class Router extends React.Component {
 					{this.state.isLoggedIn ?
 						<Nav
 							logout={this.logout}
-							// getUsers={this.getUsers}
+						// getUsers={this.getUsers}
 						/> :
 						<OpenNav
 							login={this.login}

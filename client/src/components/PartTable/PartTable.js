@@ -18,7 +18,7 @@ class JobsTable extends Component {
 	loadParts = () => {
 		API.getParts()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "",material: "" })
+				this.setState({ parts: res.data, name: "", sku: "", quantity: "", material: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -45,33 +45,33 @@ class JobsTable extends Component {
 				quantity: this.state.quantity,
 				material: this.state.material
 			})
-			.then(res => this.loadParts())
-			.catch(err => console.log(err));
+				.then(res => this.loadParts())
+				.catch(err => console.log(err));
 		}
 	};
-	
+
 	render() {
 		return <React.Fragment>
-			{this.state.parts ? this.state.parts.map((part , i) => {
+			{this.state.parts ? this.state.parts.map((part, i) => {
 				return (
 					<tr key={i}>
-					<td>
-						{part.name}
-					</td>
-					<td>
-						{part.sku}
-					</td>
-					<td>
-						{part.quantity}
-					</td>
-					<td>
-						<DeleteBtn onClick={() => this.deletePart(part._id)} />
+						<td>
+							{part.name}
+						</td>
+						<td>
+							{part.sku}
+						</td>
+						<td>
+							{part.quantity}
+						</td>
+						<td>
+							<DeleteBtn onClick={() => this.deletePart(part._id)} />
 						</td>
 					</tr>
 				)
 			}) : (<h3>No Results to Display</h3>)}
-			</React.Fragment>
+		</React.Fragment>
 	}
-	}
+}
 
 export default JobsTable;

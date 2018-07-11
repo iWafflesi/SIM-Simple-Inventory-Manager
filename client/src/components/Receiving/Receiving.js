@@ -62,7 +62,7 @@ class Receiving extends Component {
 	};
 
 	render() {
-	
+
 		return (
 			<React.Fragment>
 				<div className="subLinks">

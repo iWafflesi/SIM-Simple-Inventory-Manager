@@ -15,8 +15,7 @@ import { Redirect } from 'react-router-dom'
 class JobDetail extends Component {
 	constructor(props) {
 		super(props)
-		// console.log("Props: ", props);
-		// console.log("this: ", this);
+
 		this.state = {
 			jobNumber: props.match.params.jobNumber,
 			username: "",
@@ -41,7 +40,7 @@ class JobDetail extends Component {
 		API.getJob(this.state.jobNumber)
 			.then(res => {
 				console.log(res);
-				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity,  })
+				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity, })
 			}
 			)
 			.catch(err => console.log(err));
@@ -67,7 +66,7 @@ class JobDetail extends Component {
 				username: this.username,
 				comments: this.comments
 			})
-				.then(this.setState({completed: true}))
+				.then(this.setState({ completed: true }))
 				.catch(err => console.log(err));
 		}
 	};
@@ -77,12 +76,11 @@ class JobDetail extends Component {
 		if (this.state.completed) {
 			return (
 				<Redirect to={"/jobs/current"} />
-				)
+			)
 		}
 
 		return (
 			<React.Fragment>
-				<Nav />
 				<div className="subLinks">
 					<div className="link">
 						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>

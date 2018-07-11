@@ -38,7 +38,7 @@ class UserTable extends Component {
 		console.log(this.props.userList, "trying to get some users")
 		return <React.Fragment>
 			{this.props.userList ? this.props.userList.map((user, i) => {
-				
+
 				return (
 					<table className="table table-hover" id='JobsTable'>
 

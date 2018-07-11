@@ -10,7 +10,7 @@ class ModalForm extends React.Component {
 			username: '',
 			password: '',
 		}
-	
+
 	}
 	handleInputChange = event => {
 		const { name, value } = event.target;
@@ -27,24 +27,24 @@ class ModalForm extends React.Component {
 		return (
 			<React.Fragment>
 				<wrapper>
-				<div className="cssTitle">
-				<h3 className='modal__title'> User Log In</h3>
-				<hr/>
-				</div>
+					<div className="cssTitle">
+						<h3 className='modal__title'> User Log In</h3>
+						<hr />
+					</div>
 
-				<div className="cssForm">
-				<form className='addOption' login={this.handleAddOption}>
-					<input className='username__input' type="text" name="username" value={this.props.username} onChange={this.props.getUsername} /><br />
-					<input className='password__input' type="text" name="password" value={this.props.password} onChange={this.props.getPassword} />
-				</form>
-				</div>
-				<div>
-				<button className='button' onClick={ this.props.login }>Log In</button>
-				</div>
+					<div className="cssForm">
+						<form className='addOption' login={this.handleAddOption}>
+							<input className='username__input' type="text" name="username" value={this.props.username} onChange={this.props.getUsername} /><br />
+							<input className='password__input' type="text" name="password" value={this.props.password} onChange={this.props.getPassword} />
+						</form>
+					</div>
+					<div>
+						<button className='button' onClick={this.props.login}>Log In</button>
+					</div>
 				</wrapper>
-				</React.Fragment>
+			</React.Fragment>
 		)
 	}
 }
 export default ModalForm;
- 
+

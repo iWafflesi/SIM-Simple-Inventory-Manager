@@ -26,8 +26,8 @@ class JobCard extends Component {
 		return <React.Fragment>
 			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return (
-				
-				<Link className="jobLink" to={`/job/detail/${jobNumber}`} key={jobNumber}>
+
+					<Link className="jobLink" to={`/job/detail/${jobNumber}`} key={jobNumber}>
 						<div className="card">
 							<div className="card-body">
 								<h4 className="card-title">Job {job.jobNumber}</h4>
@@ -37,7 +37,7 @@ class JobCard extends Component {
 							</div>
 						</div>
 					</Link>
-			
+
 				)
 			}) : null}
 		</React.Fragment>
