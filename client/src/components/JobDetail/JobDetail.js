@@ -26,7 +26,8 @@ class JobDetail extends Component {
 			materialQuantity: "",
 			partPrice: "",
 			partName: "",
-			comments: ""
+			comments: "",
+			completed: false
 		};
 	}
 
@@ -36,10 +37,10 @@ class JobDetail extends Component {
 	}
 
 	loadJob = () => {
-		// console.log("Loading the job...", this.state.jobNumber)
+		console.log("Loading the job...", this.state.jobNumber)
 		API.getJob(this.state.jobNumber)
 			.then(res => {
-				// console.log(res);
+				console.log(res);
 				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity,  })
 			}
 			)
@@ -53,12 +54,6 @@ class JobDetail extends Component {
 		});
 	};
 
-	backToJobs = () => {
-		console.log("We're going back to jobs...");
-		return (
-		<Redirect to={"/jobs/current"} />
-		)
-	}
 
 	handleFormSubmit = event => {
 		event.preventDefault();
@@ -72,12 +67,19 @@ class JobDetail extends Component {
 				username: this.username,
 				comments: this.comments
 			})
-				.then(this.backToJobs())
+				.then(this.setState({completed: true}))
 				.catch(err => console.log(err));
 		}
 	};
 
 	render() {
+		// If job is completed, return to current jobs page
+		if (this.state.completed) {
+			return (
+				<Redirect to={"/jobs/current"} />
+				)
+		}
+
 		return (
 			<React.Fragment>
 				<Nav />
