@@ -7,6 +7,7 @@ import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
+import { Redirect } from 'react-router-dom'
 
 
 //  routes to this page is dependant on the jobNumber
@@ -23,6 +24,8 @@ class JobDetail extends Component {
 			quantity: "",
 			material: "",
 			materialQuantity: "",
+			partPrice: "",
+			partName: "",
 			comments: ""
 		};
 	}
@@ -50,18 +53,26 @@ class JobDetail extends Component {
 		});
 	};
 
+	backToJobs = () => {
+		console.log("We're going back to jobs...");
+		return (
+		<Redirect to={"/jobs/current"} />
+		)
+	}
+
 	handleFormSubmit = event => {
 		event.preventDefault();
 		if (this.state.username && this.state.sku) {
 			API.savePart({
-				name: this.state.name,
+				name: this.state.partName,
 				sku: this.state.sku,
 				quantity: this.state.quantity,
 				material: this.state.material,
+				price: this.state.partPrice,
 				username: this.username,
 				comments: this.comments
 			})
-				.then(res => this.loadParts())
+				.then(this.backToJobs())
 				.catch(err => console.log(err));
 		}
 	};
@@ -128,6 +139,20 @@ class JobDetail extends Component {
 									onChange={this.handleInputChange}
 									name="materialQuantity"
 									placeholder="quantity of materials used (required)"
+								/>
+								<label htmlFor="partName">Part Name</label>
+								<Input
+									value={this.state.partName}
+									onChange={this.handleInputChange}
+									name="partName"
+									placeholder="name of individual part"
+								/>
+								<label htmlFor="partPrice">Part Price</label>
+								<Input
+									value={this.state.partPrice}
+									onChange={this.handleInputChange}
+									name="partPrice"
+									placeholder="price of individual part"
 								/>
 								<label htmlFor="sku">Part SKU</label>
 								<Input
