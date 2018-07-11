@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
-import Table from "../Table/Table";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"

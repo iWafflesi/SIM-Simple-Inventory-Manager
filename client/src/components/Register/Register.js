@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import NavBtn from "../NavButton"
 import UserList from "../DeleteUser/Deleteuser";
 import "./Register.css";
+import { Container } from "../Grid";
 
 class CreateUser extends Component {
 	state = {
@@ -65,9 +66,9 @@ class CreateUser extends Component {
 					<div className="panel heading text-center"><h3>Current Staff</h3></div>
 					<div className="panel-body">
 						<UserList
-							deleteUser={props.deleteUser}
-							getUsers={props.getUsers}
-							userList={props.userList}
+							deleteUser={this.deleteUser}
+							getUsers={this.getUsers}
+							userList={this.userList}
 						/>
 					</div>
 				</Container>

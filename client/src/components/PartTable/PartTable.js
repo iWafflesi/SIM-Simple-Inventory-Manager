@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DeleteBtn from "../DeleteBtn";
-import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 class JobsTable extends Component {
