@@ -23,11 +23,8 @@ class CreateUser extends Component {
 	// Method to register a new user
 	register = (event) => {
 		event.preventDefault();
-		API.register({ 
-			username: this.state.username,
-			password: this.state.password,
-			admin: this.state.admin
-		})
+		API
+			.register({ username: this.state.username, password: this.state.password, admin: this.state.admin })
 			.then((user) => {
 				console.log(user);
 				console.log(user.data);
