@@ -26,7 +26,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/simDB");
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/simDB`, {useNewUrlParser: true });
 
 app.use(routes);
 // app.get('/api/hello', (req, res) => {

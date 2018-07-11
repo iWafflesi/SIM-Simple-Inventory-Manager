@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const User = new Schema({
+const userSchema = new Schema({
 	admin: {type: Boolean}	
 });
 
 // Set up passport to 
-User.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', User);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

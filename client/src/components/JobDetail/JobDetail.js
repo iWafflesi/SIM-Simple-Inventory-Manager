@@ -7,6 +7,7 @@ import Nav from "../Nav";
 import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom'
 import "../links.css"
+import { Redirect } from 'react-router-dom'
 
 
 //  routes to this page is dependant on the jobNumber
@@ -23,7 +24,10 @@ class JobDetail extends Component {
 			quantity: "",
 			material: "",
 			materialQuantity: "",
-			comments: ""
+			partPrice: "",
+			partName: "",
+			comments: "",
+			completed: false
 		};
 	}
 
@@ -33,10 +37,10 @@ class JobDetail extends Component {
 	}
 
 	loadJob = () => {
-		// console.log("Loading the job...", this.state.jobNumber)
+		console.log("Loading the job...", this.state.jobNumber)
 		API.getJob(this.state.jobNumber)
 			.then(res => {
-				// console.log(res);
+				console.log(res);
 				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity,  })
 			}
 			)
@@ -50,23 +54,32 @@ class JobDetail extends Component {
 		});
 	};
 
+
 	handleFormSubmit = event => {
 		event.preventDefault();
 		if (this.state.username && this.state.sku) {
 			API.savePart({
-				name: this.state.name,
+				name: this.state.partName,
 				sku: this.state.sku,
 				quantity: this.state.quantity,
 				material: this.state.material,
+				price: this.state.partPrice,
 				username: this.username,
 				comments: this.comments
 			})
-				.then(res => this.loadParts())
+				.then(this.setState({completed: true}))
 				.catch(err => console.log(err));
 		}
 	};
 
 	render() {
+		// If job is completed, return to current jobs page
+		if (this.state.completed) {
+			return (
+				<Redirect to={"/jobs/current"} />
+				)
+		}
+
 		return (
 			<React.Fragment>
 				<Nav />
@@ -128,6 +141,20 @@ class JobDetail extends Component {
 									onChange={this.handleInputChange}
 									name="materialQuantity"
 									placeholder="quantity of materials used (required)"
+								/>
+								<label htmlFor="partName">Part Name</label>
+								<Input
+									value={this.state.partName}
+									onChange={this.handleInputChange}
+									name="partName"
+									placeholder="name of individual part"
+								/>
+								<label htmlFor="partPrice">Part Price</label>
+								<Input
+									value={this.state.partPrice}
+									onChange={this.handleInputChange}
+									name="partPrice"
+									placeholder="price of individual part"
 								/>
 								<label htmlFor="sku">Part SKU</label>
 								<Input

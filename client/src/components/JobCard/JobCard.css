@@ -1,0 +1,25 @@
+.jobCardHolder {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.card {
+	order: 0;
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: rgba(46, 173, 167, 0.705);
+}
+
+.jobLink {
+	color: rgba(255, 255, 255, 0.822);
+	text-decoration: none;
+}
+.jobLink:active, .jobLink:hover{
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}

@@ -1,0 +1,4 @@
+.jumbotron {
+border-radius: 0;
+background:	linear-gradient(to bottom right, rgba(255, 255, 255, 0.301), rgba(255, 255, 255, 0.301));
+}

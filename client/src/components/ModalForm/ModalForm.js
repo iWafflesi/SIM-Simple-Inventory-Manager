@@ -20,7 +20,6 @@ class ModalForm extends React.Component {
 		})
 	}
 
-
 	render() {
 		if (this.props.isLoggedIn) {
 			return <Redirect to="/" />

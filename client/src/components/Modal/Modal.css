@@ -1,0 +1,14 @@
+.modal{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(255, 255, 255);
+position: relative;
+border: solid 1px;
+border-color: rgba(0, 0, 0, 0.336);
+top: 10%;
+left: 35%;
+height: 300px;
+width: 500px;
+}
+
