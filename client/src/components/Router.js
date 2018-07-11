@@ -24,10 +24,6 @@ const Router = () => (
 		<Route path="/jobs/history" component={JobHistory} />
 		<Route path="/jobs/create" component={JobCreate} />
 		<Route path="/job/detail/:jobNumber" component={JobDetail} />
-		{/* <Route path="/job/detail/:jobID" 
-					 render={
-					 props => <JobDetail {...props}/>
-					}/> */}
 		<Route path="/shipping" component={Shipping} />
 		<Route path="/admin" component={Register} />
 		<Route component={App} />
