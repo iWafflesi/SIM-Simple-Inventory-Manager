@@ -29,10 +29,11 @@ router
 router
   .route('/logout')
   .get(function(req,res) {
+    console.log(req.user);
     // Log user out
     req.logout()
     console.log(req.user);
-    res.json(false);
+    res.redirect ("/")
   })
 
 // Matches with "/api/user/:id"

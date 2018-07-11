@@ -1,6 +1,6 @@
-
 import React from "react";
 import NavBtn from "../NavButton";
+import API from "../../utils/API"
 import { Link } from 'react-router-dom';
 import "./Nav.css"
 
@@ -8,7 +8,7 @@ const Nav = (props) => {
 	return (
 	<nav className="navbar navbar-expand-lg navbar-dark ">
 
-		<a className="navbar-brand" href="/">Simple Inventory Manager</a>
+		<a className="navbar-brand" href="/"><h1>Simple Inventory Manager</h1></a>
 
 			<div className="navLinks">
 				<NavBtn className="link"><Link className="linkStyle" to="/inventory/current">Inventory</Link></NavBtn>
@@ -21,7 +21,7 @@ const Nav = (props) => {
 			</div>
 			
 
-		<NavBtn className="login" onClick={props.handleModal}>Login</NavBtn>
+		<NavBtn className="logout" onClick={props.logout}>Logout</NavBtn>
 	</nav>
 	)
 };
