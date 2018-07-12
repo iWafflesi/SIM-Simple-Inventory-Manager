@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import NavBtn from "../NavButton"
-import UserList from "../DeleteUser/Deleteuser";
+import UserTable from "../UserTable";
 import "./Register.css";
-import { Container } from "../Grid";
+import { Col, Row, Container } from "../Grid";
 
 class CreateUser extends Component {
 	state = {
@@ -35,7 +35,8 @@ class CreateUser extends Component {
 				console.log("username " + this.state.username);
 				console.log("password " + this.state.password);
 				console.log("admin " + this.state.admin);
-				this.setState({ success: user.data })
+				this.setState({ success: user.data });
+				this.getUsers();
 
 			})
 			.catch(err => console.log(err.response.data));
@@ -48,29 +49,51 @@ class CreateUser extends Component {
 				// console.log("You're in the get users function");
 				console.log("userList:", res.data)
 				this.setState({ userList: res.data })
+				
 			})
 			.catch(err => this.getUsers());
 	};
 
-	deleteUser = id => {
-		API.deleteUser(id)
-			.then(res => this.getUsers())
-			.catch(err => console.log(err));
-	};
+	// deleteUser = id => {
+	// 	API.deleteUser(id)
+	// 		.then(res => this.getUsers())
+	// 		.catch(err => console.log(err));
+	// };
 	render() {
-
+		console.log(this.props.userList, "trying to get some users")
 		return (
-
 			<React.Fragment>
 				<Container fluid>
-					<div className="panel heading text-center"><h3>Current Staff</h3></div>
-					<div className="panel-body">
-						<UserList
-							deleteUser={this.deleteUser}
-							getUsers={this.getUsers}
-							userList={this.userList}
-						/>
-					</div>
+				
+			<div className="card">
+			<div className="card-body">
+				<Row>
+					<Col size="md-6 sm-12">
+
+	<div className="panel panel-default">
+				<div className="panel heading text-center"><h3>Current Staff</h3></div>
+				<div className="panel-body">
+					<table className="table table-hover" id='JobsTable'>
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Access</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<UserTable
+							userList= {this.state.userList}
+							getUsers={this.state.getUsers}
+							/>
+						</tbody>
+					</table>
+				</div>
+			</div>
+					</Col>
+				</Row>
+			</div>
+			</div>
 				</Container>
 				<div className="card">
 					<div className="card-body">
