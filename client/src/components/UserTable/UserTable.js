@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../DeleteBtn";
+import API from "../../utils/API";
 
 class UserTable extends Component {
 	constructor(props) {
@@ -9,23 +10,28 @@ class UserTable extends Component {
 			username: ""
 		}
 	};
-	// componentDidMount() {
-	// 	this.getUsers();
-	// }
+	handleFormSubmit = event => {
+		event.preventDefault();
+		if (this.props.user ) {
+			API.savePart({
+				username: this.props.userList.username,
+				Admin: this.props.userList.admin
+			
+			})
+				.then(res => this.props.getUsers())
+				.catch(err => console.log(err));
+		}
+	};
 
-	// getUsers = () => {
-	// 	API.getUsers()
-	// 		.then(res =>
-	// 			this.setState({ userList: res.data })
-	// 		)
-	// 		.catch(err => this.getUsers());
-	// };
 
-	// deleteUser = id => {
-	// 	API.deleteUser(id)
-	// 		.then(res => this.getUsers())
-	// 		.catch(err => console.log(err));
-	// };
+	deleteUser = id => {
+		API.deleteUser(id)
+			.then(()=>{
+				console.log();
+				this.props.getUsers();
+			})
+			.catch(err => console.log(err));
+	};
 
 	handleInputChange = event => {
 		const { username, value } = event.target;
@@ -35,29 +41,22 @@ class UserTable extends Component {
 	};
 
 	render() {
-		console.log(this.props.userList, "trying to get some users")
+		// console.log(this.props.getUser, "trying to get some users")
 		return <React.Fragment>
 			{this.props.userList ? this.props.userList.map((user, i) => {
 
 				return (
-					<table className="table table-hover" id='JobsTable'>
 
-						<thead>
-							<tr>
-								<th scope="col">Username</th>
-								<th scope="col">Access</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr key={i}>
-								<td>{user.username}</td>
-								<td>{user.admin ? "Admin" : "User"}</td>
-								<td><DeleteBtn onClick={() => this.props.deleteUser(user._id)} /></td>
-							</tr>
-						</tbody>
-					</table>
+					<tr key={i}>
+						<td>{user.username}</td>
+						<td>{user.admin ? "Admin" : "User"}</td>
+						<td>
+						<DeleteBtn onClick={() => this.deleteUser(user._id)} />
+					</td>
+					</tr>
+
 				)
-			}) : (<h3>No Employees</h3>)}
+			}) : null}
 		</React.Fragment>
 	}
 }
