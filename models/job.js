@@ -7,7 +7,8 @@ const jobSchema = new Schema({
 	sku: { type: String, required: true, trim: true },
 	quantity: {type: Number },
 	username: {type: String, trim: true},
-	date: {type: Date }
+	date: {type: Date },
+	notes: {type: String, trim: true}
 });
 jobSchema.plugin(AutoIncrement, {inc_field: "jobNumber"});
 
