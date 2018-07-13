@@ -92,18 +92,6 @@ class JobDetail extends Component {
 					</div>
 				</div>
 
-				<div >
-
-
-
-					{// stuff goes here
-					}
-
-				</div>
-
-
-
-
 				<Row>
 					<Col size="md-12">
 

@@ -65,21 +65,22 @@ class Receiving extends Component {
 
 		return (
 			<React.Fragment>
-				<div className="subLinks">
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
-					</div>
-				</div>
 				<Row>
 					<Col size="md-12">
 
 						<Table>
+							<div className="subLinks">
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
+								</div>
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
+								</div>
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
+								</div>
+							</div>
+							<div class="panel heading text-center"><h3>Receiving</h3></div>
 							<form>
 								<Input
 									value={this.state.name}
