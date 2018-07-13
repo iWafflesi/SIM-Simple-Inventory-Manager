@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 require("./models/user");
 require("./service/passport");
 
+
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
