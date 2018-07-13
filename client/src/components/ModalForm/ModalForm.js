@@ -35,7 +35,7 @@ class ModalForm extends React.Component {
 					<div className="cssForm">
 						<form className='addOption' login={this.handleAddOption}>
 							<input className='username__input' type="text" name="username" value={this.props.username} onChange={this.props.getUsername} /><br />
-							<input className='password__input' type="text" name="password" value={this.props.password} onChange={this.props.getPassword} />
+							<input className='password__input' type="password" name="password" value={this.props.password} onChange={this.props.getPassword} />
 						</form>
 					</div>
 					<div>
