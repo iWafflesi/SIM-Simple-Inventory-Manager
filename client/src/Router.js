@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import API from "../utils/API";
+import API from "./utils/API";
 // import components
-import App from "../App";
-import Jobs from "./Jobs/Jobs";
-import JobHistory from "./JobHistory/JobHistory";
-import Shipping from "./Shipping/Shipping";
-import Inventory from "./Inventory/Inventory";
-import TranHistory from "./History/History";
-import Receiving from "./Receiving/Receiving";
-import JobCreate from "./JobCreate/JobCreate";
-import JobDetail from "./JobDetail/JobDetail";
-import Register from "./Register/Register";
-import Nav from "./Nav";
-import OpenNav from "./OpenNav";
+import App from "./App";
+import Jobs from "./pages/Jobs/Jobs";
+import JobHistory from "./components/JobHistory/JobHistory";
+import Shipping from "./pages/Shipping/Shipping";
+import Inventory from "./pages/Inventory/Inventory";
+import TranHistory from "./components/History/History";
+import Receiving from "./components/Receiving/Receiving";
+import JobCreate from "./components/JobCreate/JobCreate";
+import JobDetail from "./components/JobDetail/JobDetail";
+import Register from "./pages/Register/Register";
+import Nav from "./components/Nav";
+import OpenNav from "./components/OpenNav";
 
 
 class Router extends React.Component {
