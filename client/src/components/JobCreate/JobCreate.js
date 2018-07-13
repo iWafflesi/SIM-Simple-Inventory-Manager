@@ -15,7 +15,7 @@ class JobCreate extends Component {
 		quantity: "",
 		username: "",
 		date: "",
-
+		notes: ""
 	};
 
 	componentDidMount() {
@@ -52,7 +52,8 @@ class JobCreate extends Component {
 				username: this.state.username,
 				date: this.state.date,
 				sku: this.state.sku,
-				quantity: this.state.quantity
+				quantity: this.state.quantity,
+				notes: this.state.notes
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -104,6 +105,12 @@ class JobCreate extends Component {
 										onChange={this.handleInputChange}
 										name="quantity"
 										placeholder="quantity of parts (required)"
+									/>
+									<Input
+										value={this.state.notes}
+										onChange={this.handleInputChange}
+										name="notes"
+										placeholder="notes (optional)"
 									/>
 
 									<FormBtn
