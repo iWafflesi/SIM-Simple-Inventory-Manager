@@ -10,7 +10,7 @@ class CreateUser extends Component {
 		success: false,
 		username: "",
 		password: "",
-		admin: false
+		admin: {default:false}
 	}
 
 	handleInputChange = event => {
@@ -30,11 +30,7 @@ class CreateUser extends Component {
 		API
 			.register({ username: this.state.username, password: this.state.password, admin: this.state.admin })
 			.then((user) => {
-				console.log(user);
-				console.log(user.data);
-				console.log("username " + this.state.username);
-				console.log("password " + this.state.password);
-				console.log("admin " + this.state.admin);
+
 				this.setState({ success: user.data });
 				this.getUsers();
 
@@ -84,7 +80,7 @@ class CreateUser extends Component {
 						<tbody>
 							<UserTable
 							userList= {this.state.userList}
-							getUsers={this.state.getUsers}
+							getUsers={this.getUsers}
 							/>
 						</tbody>
 					</table>
