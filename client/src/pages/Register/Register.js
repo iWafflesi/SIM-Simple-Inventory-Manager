@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import NavBtn from "../NavButton"
-import UserTable from "../UserTable";
+import NavBtn from "../../components/NavButton"
+import UserTable from "../../components/UserTable";
 import "./Register.css";
-import { Col, Row, Container } from "../Grid";
+import { Col, Row, Container } from "../../components/Grid";
 
 class CreateUser extends Component {
 	state = {

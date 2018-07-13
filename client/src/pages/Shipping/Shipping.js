@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
-import PartTable from "../PartTable";
+import { Col, Row, Container } from "../../components/Grid";
+import PartTable from "../../components/PartTable";
 
 
 
