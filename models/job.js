@@ -4,10 +4,14 @@ const AutoIncrement = require ("mongoose-sequence")(mongoose);
 
 const jobSchema = new Schema({
 	jobNumber: { type: Number, trim: true, unique: true },
-	sku: { type: String, required: true, trim: true },
-	quantity: {type: Number },
-	username: {type: String, trim: true},
-	date: {type: Date }
+	partName: {type: String, required: true, trim: true},
+	partsku: { type: String, required: true, trim: true },
+	partPrice: {type: Number, required: true, trim: true},
+	partQty: {type: Number, required: true, trim: true},
+	materialUsed: {type: String, required: true, trim: true},
+	matquantity: {type: String, required: true, trim: true},
+	comments: {type: String, trim: true},
+	date: {type: Date}
 });
 jobSchema.plugin(AutoIncrement, {inc_field: "jobNumber"});
 

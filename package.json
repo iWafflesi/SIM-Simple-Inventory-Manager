@@ -26,11 +26,13 @@
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
+    "moment": "^2.22.2",
     "mongodb": "2.2",
     "mongoose": "^5.0.17",
     "mongoose-sequence": "^4.0.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1"
+    "passport-local-mongoose": "^5.0.1",
+    "react-moment": "^0.7.9"
   }
 }

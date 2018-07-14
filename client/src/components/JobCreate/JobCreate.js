@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "../links.css"
 
 
@@ -11,11 +11,15 @@ class JobCreate extends Component {
 	state = {
 		jobs: [],
 		// jobNumber: "",
-		sku: "",
-		quantity: "",
-		username: "",
-		date: "",
-
+		partName: "",
+		partsku: "",
+		partPrice: "",
+		partQty: "",
+		materialUsed: "",
+		matquantity: "",
+		comments: "",
+		date: ""
+		// username: "",
 	};
 
 	componentDidMount() {
@@ -25,8 +29,17 @@ class JobCreate extends Component {
 	loadJobs = () => {
 		API.getJobs()
 			.then(res =>
-				this.setState({ jobs: res.data, username: "", sku: "", quantity: "", date: "" })
-			)
+				this.setState({ 
+					jobs: res.data,
+					jobNumber: "",
+					partName: "",
+					partsku: "",
+					partPrice: "",
+					partQty: "",
+					materialUsed: "",
+					matquantity: "",
+					comments: "",
+					date: ""  }))
 			.catch(err => console.log(err));
 	};
 	// ******* find out how to delete material used instead of part
@@ -45,14 +58,19 @@ class JobCreate extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.sku) {
+		if (this.state.username && this.state.partsku) {
 			console.log("This: ", this.state);
 			API.saveJob({
 				jobNumber: this.state.jobNumber,
-				username: this.state.username,
-				date: this.state.date,
-				sku: this.state.sku,
-				quantity: this.state.quantity
+				partName: this.state.partName,
+				partsku: this.state.partsku,
+				partPrice: this.state.partPrice,
+				partQty: this.state.partQty,
+				materialUsed: this.state.materialUsed,
+				matquantity: this.state.matquantity,
+				comments: this.state.comments,
+				date: this.state.date
+				// username: this.state.username,
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -81,33 +99,58 @@ class JobCreate extends Component {
 
 								<form>
 									<Input
-										value={this.state.username}
+										value={this.state.partName}
 										onChange={this.handleInputChange}
-										name="username"
-										placeholder="username (required)"
-									/>
-									<Input
-										value={this.state.date}
-										onChange={this.handleInputChange}
-										name="date"
-										placeholder="date used (optional)"
+										name="partName"
+										placeholder="Part Name (required)"
 									/>
 
 									<Input
-										value={this.state.sku}
+										value={this.state.partsku}
 										onChange={this.handleInputChange}
-										name="sku"
+										name="partsku"
 										placeholder="Part sku (required)"
 									/>
+
 									<Input
-										value={this.state.quantity}
+										value={this.state.partPrice}
 										onChange={this.handleInputChange}
-										name="quantity"
-										placeholder="quantity of parts (required)"
+										name="partPrice"
+										placeholder="Part Price (optional)"
+									/>
+
+									<Input
+										value={this.state.partQty}
+										onChange={this.handleInputChange}
+										name="partQty"
+											placeholder="Part Quantity (optional)"
+										/>
+
+
+									<Input
+										value={this.state.materialUsed}
+										onChange={this.handleInputChange}
+										name="materialUsed"
+										placeholder="Material Used (required)"
+									/>
+									
+
+									<Input
+										value={this.state.matquantity}
+										onChange={this.handleInputChange}
+										name="matquantity"
+										placeholder="quantity of materials used (required)"
+									/>
+
+									<Input
+										value={this.state.comments}
+										onChange={this.handleInputChange}
+										name="comments"
+										placeholder="Enter any comments here..."
 									/>
 
 									<FormBtn
-										disabled={!(this.state.sku && this.state.quantity)}
+										// disabled={!(this.state.partName && this.state.partQty)}
 										onClick={this.handleFormSubmit}
 									>
 										Start Job
@@ -122,22 +165,5 @@ class JobCreate extends Component {
 		);
 	};
 }
-
-
-
-
-// import React from "react";
-// import Nav from "../Nav";
-// import NavBtn from "../NavButton";
-// import { Link } from 'react-router-dom'
-
-// const JobCreate = () => (
-// 	<React.Fragment>
-// 		<Nav/>
-// 		<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-// 		<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-// 			Jobs.Create
-// 	</React.Fragment>
-// );
 
 export default JobCreate;

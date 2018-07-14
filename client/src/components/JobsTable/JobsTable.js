@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import API from "../../utils/API";
 
 class JobsTable extends Component {
@@ -33,13 +34,16 @@ class JobsTable extends Component {
 		return <React.Fragment>
 			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return (
-					<tr key={jobNumber}>
-						<td>{job.jobNumber}</td>
-						<td>{job.sku}</td>
-						<td>{job.quantity}</td>
-						<td>{job.username}</td>
-						<td>{job.date}</td>
-					</tr>
+					<tr>
+						<Link className="square" to={`/job/detail/${job.jobNumber}`} key={jobNumber}>
+							<td>■</td>
+						</Link>
+							<td>{job.jobNumber}</td>
+							<td>{job.sku}</td>
+							<td>{job.quantity}</td>
+							<td>{job.username}</td>
+							<td>{job.date}</td>
+						</tr>
 				)
 			}) : null}
 		</React.Fragment>

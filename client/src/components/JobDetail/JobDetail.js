@@ -80,22 +80,22 @@ class JobDetail extends Component {
 
 		return (
 			<React.Fragment>
-				<div className="subLinks">
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
-					</div>
-					<div className="link">
-						<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
-					</div>
-				</div>
 
 				<Row>
 					<Col size="md-12">
 
 						<Table>
+							<div className="subLinks">
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/jobs/current">Jobs</Link></NavBtn>
+								</div>
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/jobs/history">History</Link></NavBtn>
+								</div>
+								<div className="link">
+									<NavBtn><Link className="linkStyle" to="/jobs/create">Create</Link></NavBtn>
+								</div>
+							</div>
 							<form>
 								<label htmlFor="username">Username</label>
 								<Input

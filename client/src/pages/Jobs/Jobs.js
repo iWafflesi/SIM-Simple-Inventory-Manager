@@ -47,7 +47,7 @@ class Jobs extends Component {
 						</div>
 
 						<div className="jobCardHolder">
-							<JobCard />
+							<JobCard className="jobCard" />
 						</div>
 
 						<div className="panel panel-default">
@@ -55,6 +55,7 @@ class Jobs extends Component {
 								<table className="table table-hover" id='JobsTable'>
 									<thead>
 										<tr>
+											<th scope="col"></th>
 											<th scope="col">Job ID</th>
 											<th scope="col">Part Sku</th>
 											<th scope="col">Quantity</th>
