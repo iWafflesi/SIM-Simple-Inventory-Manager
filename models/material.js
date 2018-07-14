@@ -5,7 +5,7 @@ const materialSchema = new Schema({
 	name: { type: String, required: true, trim: true },
 	sku: { type: String, required: true, trim: true },
 
-	quantity: {type: Number }, 
+	materialQuantity: {type: Number }, 
 	price: { type: Number, required: true, trim: true }
 	
 });

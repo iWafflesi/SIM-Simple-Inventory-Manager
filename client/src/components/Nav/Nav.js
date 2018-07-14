@@ -3,10 +3,21 @@ import NavBtn from "../NavButton";
 import { Link } from 'react-router-dom';
 import "./Nav.css"
 
-const Nav = (props) => {
-
-	// <NavBtn className="link"><Link className="linkStyle" to="/admin" onClick={props.getUsers}>Admin</Link></NavBtn>
-
+class Nav extends React.Component {
+	constructor(props){
+		super(props)
+		this.state = {}
+		console.log(this.props)
+	}
+	getAdmin = (e) => {
+		this.props.setState({ admin: e.target.value }
+			,()=>console.log(this.props.state.admin, "admin state")
+		)
+	};
+	
+	// {this.props.admin ?<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>:null}
+	render() {
+		{this.getAdmin? <NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> : null}
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark ">
 
@@ -19,12 +30,12 @@ const Nav = (props) => {
 
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
 
-				<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>
+				
 			</div>
 
 
-			<NavBtn className="link"><Link className="linkStyle" to="/" onClick={props.logout}>Logout</Link></NavBtn>
+			<NavBtn className="link"><Link className="linkStyle" to="/" onClick={this.props.logout}>Logout</Link></NavBtn>
 		</nav>
-	)
+	)}
 };
 export default Nav;

@@ -27,7 +27,7 @@ class InventoryTable extends Component {
 					<tr key={i}>
 						<td>{material.name}</td>
 						<td>{material.sku}</td>
-						<td>{material.quantity}</td>
+						<td>{material.materialQuantity}</td>
 						<td>${material.price}</td>
 					</tr>
 				)

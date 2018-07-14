@@ -5,9 +5,9 @@ import API from "../../utils/API";
 class JobsTable extends Component {
 	state = {
 		parts: [],
-		name: "",
+		partName: "",
 		sku: "",
-		quantity: "",
+		partQuantity: "",
 		material: "",
 	};
 	componentDidMount() {
@@ -17,7 +17,7 @@ class JobsTable extends Component {
 	loadParts = () => {
 		API.getParts()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "", material: "" })
+				this.setState({ parts: res.data, partName: "", sku: "", partQuantity: "", material: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -29,19 +29,19 @@ class JobsTable extends Component {
 	};
 
 	handleInputChange = event => {
-		const { name, value } = event.target;
+		const { partName, value } = event.target;
 		this.setState({
-			[name]: value
+			[partName]: value
 		});
 	};
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.name && this.state.sku) {
+		if (this.state.partName && this.state.sku) {
 			API.savePart({
-				name: this.state.name,
+				partName: this.state.partName,
 				sku: this.state.sku,
-				quantity: this.state.quantity,
+				partQuantity: this.state.partQuantity,
 				material: this.state.material
 			})
 				.then(res => this.loadParts())
@@ -55,13 +55,13 @@ class JobsTable extends Component {
 				return (
 					<tr key={i}>
 						<td>
-							{part.name}
+							{part.partName}
 						</td>
 						<td>
 							{part.sku}
 						</td>
 						<td>
-							{part.quantity}
+							{part.partQuantity}
 						</td>
 						<td>
 							<DeleteBtn onClick={() => this.deletePart(part._id)} />

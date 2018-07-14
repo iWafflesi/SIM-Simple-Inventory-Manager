@@ -10,8 +10,14 @@ import "../../components/links.css"
 class Jobs extends Component {
 	state = {
 		jobs: [],
-		name: "",
+		partName: "",
 		jobNumber: "",
+		sku: "",
+		material: "",
+		materialQuantity: "",
+		Username: "",
+		part: "",
+		PartQuantity: "",
 		redirect: false
 	};
 
@@ -25,7 +31,8 @@ class Jobs extends Component {
 				this.setState({ jobList: res.data })
 			});
 	};
-
+	
+	
 	render() {
 		return (
 			<React.Fragment>

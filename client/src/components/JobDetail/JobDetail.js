@@ -4,9 +4,9 @@ import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import Table from "../Table/Table";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
-import "../links.css"
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import "../links.css";
+import { Redirect } from 'react-router-dom';
 
 
 //  routes to this page is dependant on the jobNumber
@@ -16,15 +16,17 @@ class JobDetail extends Component {
 		super(props)
 
 		this.state = {
+			materials: [],
+			jobs: [],
+			parts: [],
 			jobNumber: props.match.params.jobNumber,
-			username: "",
 			sku: "",
-			quantity: "",
+			partQuantity: "",
 			material: "",
 			materialQuantity: "",
 			partPrice: "",
 			partName: "",
-			comments: "",
+			notes: "",
 			completed: false
 		};
 	}
@@ -35,38 +37,65 @@ class JobDetail extends Component {
 	}
 
 	loadJob = () => {
-		console.log("Loading the job...", this.state.jobNumber)
 		API.getJob(this.state.jobNumber)
 			.then(res => {
-				console.log(res);
-				this.setState({ username: res.data.username, sku: res.data.sku, quantity: res.data.quantity, })
-			}
-			)
+				this.setState({
+					sku: res.data.sku, materialQuantity: res.data.materialQuantity,
+					material: res.data.material, partPrice: res.data.partPrice, partQuantity: res.data.partQuantity, notes: res.data.notes, partName: res.data.partName
+				})
+			})
 			.catch(err => console.log(err));
 	};
 
 	handleInputChange = event => {
-		const { name, value } = event.target;
+		const { partName, value } = event.target;
 		this.setState({
-			[name]: value
+			[partName]: value
 		});
 	};
+	deleteJob = id => {
+		console.log("You are deleting this job");
+			// API.deleteJob(id)
+			// .then(res =>
+				this.loadJob();
 
+		// )
+		// 	.catch(err => console.log(err));
+
+	};
+
+	removeMaterials = event => {
+		console.log("remove materials");
+		// console.log(materialQuantity);
+		console.log(this.state.materialQuantity);
+		API.saveMaterial({
+			name:this.state.material,
+			materialQuantity: - this.state.materialQuantity
+		})
+	}
+	addPart = event => {
+		console.log("add products")
+		// API.savePart({
+		// 	partName: this.state.partName,
+		// 	sku: this.state.sku,
+		// 	partQuantity: this.state.partQuantity,
+		// 	material: this.state.material,
+		// 	partPrice: this.state.partPrice
+		// })
+		// 	.then(res => this.loadParts())
+		// 	.catch(err => console.log(err));
+};
+	
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.sku) {
-			API.savePart({
-				name: this.state.partName,
-				sku: this.state.sku,
-				quantity: this.state.quantity,
-				material: this.state.material,
-				price: this.state.partPrice,
-				username: this.username,
-				comments: this.comments
-			})
-				.then(this.setState({ completed: true }))
-				.catch(err => console.log(err));
+		console.log(this.state.partQuantity, this.state.partName)
+
+		if (this.state.partQuantity && this.state.partName) {
+			console.log("for the love of all that is holy!!!!");
+			this.removeMaterials();
+			this.addPart();
+			this.deleteJob();
 		}
 	};
 
@@ -97,74 +126,66 @@ class JobDetail extends Component {
 								</div>
 							</div>
 							<form>
-								<label htmlFor="username">Username</label>
-								<Input
-									value={this.state.username}
-									// onChange={this.handleInputChange}
-									readOnly={true}
-									name="username"
-									placeholder="username (required)"
-								/>
+
 								<label htmlFor="jobNumber">Job Number</label>
 								<Input
-									value={this.state.jobNumber}
-									// onChange={this.handleInputChange}
+									value={this.state.jobNumber || ''}
+									onChange={this.handleInputChange}
 									readOnly={true}
 									name="jobNumber"
-									placeholder="jobNumber (required)"
+								// placeholder="jobNumber (required)"
 								/>
-								<label htmlFor="material">Material SKU</label>
+								<label htmlFor="material">Material Used</label>
 								<Input
-									value={this.state.material}
+									value={this.state.material || ''}
 									onChange={this.handleInputChange}
 									name="material"
-									placeholder="sku of material used (required)"
+								// placeholder="sku of material used (required)"
 								/>
-								<label htmlFor="materialQuantity">Material Quantity</label>
+								<label htmlFor="materialQuantity">Material quantity</label>
 								<Input
-									value={this.state.materialQuantity}
+									value={this.state.materialQuantity || ''}
 									onChange={this.handleInputChange}
 									name="materialQuantity"
-									placeholder="quantity of materials used (required)"
+								// placeholder="quantity of materials used (required)"
 								/>
 								<label htmlFor="partName">Part Name</label>
 								<Input
-									value={this.state.partName}
+									value={this.state.partName || ''}
 									onChange={this.handleInputChange}
 									name="partName"
-									placeholder="name of individual part"
+								// placeholder="name of individual part"
 								/>
 								<label htmlFor="partPrice">Part Price</label>
 								<Input
-									value={this.state.partPrice}
+									value={this.state.partPrice || ''}
 									onChange={this.handleInputChange}
 									name="partPrice"
-									placeholder="price of individual part"
+								// placeholder="price of individual part"
 								/>
 								<label htmlFor="sku">Part SKU</label>
 								<Input
-									value={this.state.sku}
-									// onChange={this.handleInputChange}
+									value={this.state.sku || ''}
+									onChange={this.handleInputChange}
 									readOnly={true}
 									name="sku"
-									placeholder="Part sku (required)"
+								// placeholder="Part sku (required)"
 								/>
-								<label htmlFor="quantity">Quantity of Parts</label>
+								<label htmlFor="partQuantity">Parts Quantity</label>
 								<Input
-									value={this.state.quantity}
-									// onChange={this.handleInputChange}
-									readOnly={true}
-									name="quantity"
-									placeholder="quantity of parts (required)"
+									value={this.state.partQuantity || ''}
+									onChange={this.handleInputChange}
+									name="partQuantity"
+								// placeholder="quantity of parts created (required)"
 								/>
 								<textarea
-									value={this.state.comments}
+									value={this.state.notes || ''}
 									onChange={this.handleInputChange}
-									name="comments"
-									placeholder="Comments (Optional)"
+									name="notes"
+									placeholder="notes (Optional)"
 								/>
 								<FormBtn
-									disabled={!(this.state.sku && this.state.quantity)}
+									// disabled={!(this.state.sku && this.state.partQuantity)}
 									onClick={this.handleFormSubmit}
 								>
 									Complete Job

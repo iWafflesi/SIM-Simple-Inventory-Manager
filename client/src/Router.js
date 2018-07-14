@@ -24,6 +24,7 @@ class Router extends React.Component {
 			// 	openModal: false,
 			username: "",
 			password: "",
+			admin: false
 		};
 
 		this.logout = this.logout.bind(this);
@@ -54,23 +55,15 @@ class Router extends React.Component {
 		e.preventDefault();
 		console.log('hi');
 		API
-			.login({ username: this.state.username, password: this.state.password })
+			.login({ username: this.state.username, password: this.state.password, admin: this.state.admin })
 			.then(res => {
 				console.log(res.data);
 				this.setState({ isLoggedIn: true });
 				this.closeModal();
 			})
-			.catch(err => console.log(err.response));
+			.catch(err => console.log(err));
 	}
-	// getUsers = () => {
-	// 	API.getUsers()
-	// 		.then((res) => {
-	// 			// console.log("You're in the get users function");
-	// 			console.log("userList:", res.data)
-	// 			this.setState({ userList: res.data })
-	// 		})
-	// 		.catch(err => this.getUsers());
-	// };
+
 	logout = () => {
 		console.log('hello you are logging out');
 		API
@@ -89,14 +82,13 @@ class Router extends React.Component {
 			// ,()=>console.log(this.state.password)
 		)
 	};
+	// getAdmin = (e) => {
+	// 	this.setState({ admin: e.target.value }
+	// 		,()=>console.log(this.state.admin, "admin state")
+	// 	)
+	// };
 	render() {
-		// if ({Register}){
-		// 	console.log("am i even getting this");
-		// 	<Register 
-		// 	getUsers={this.getUsers}
-		// 	userList={this.userList}
-		// 	/>
-		// }
+		
 		return (
 
 
@@ -106,7 +98,7 @@ class Router extends React.Component {
 					{this.state.isLoggedIn ?
 						<Nav
 							logout={this.logout}
-						// getUsers={this.getUsers}
+							admin={this.state.admin}
 						/> :
 						<OpenNav
 							login={this.login}
