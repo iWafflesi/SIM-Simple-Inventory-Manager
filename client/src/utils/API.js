@@ -35,7 +35,7 @@ export default {
 	// Saves a material to the database
 	saveMaterial: function(materialData) {
 		console.log("you made it to API")
-		return axios.put("/api/materials", materialData);
+		return axios.post("/api/materials", materialData);
 	},
 
 	getParts: function() {
