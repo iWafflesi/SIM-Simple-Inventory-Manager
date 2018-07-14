@@ -34,8 +34,6 @@ class JobCreate extends Component {
 			.then(res =>
 				this.setState({ 
 					jobs: res.data,
-					materials: res.data,
-					parts: res.data,
 					jobNumber: "",
 					partName: "",
 					sku: "",
@@ -48,44 +46,47 @@ class JobCreate extends Component {
 			.catch(err => console.log(err));
 	};
 	// ******* find out how to delete material used instead of part
-	deleteJob = id => {
-		API.deleteJob(id)
-			.then(res => 
-				this.loadJobs(),
-				this.removeMaterials(),
-				this.addProducts()
-		)
-			.catch(err => console.log(err));
+// deleteJob = id => {
+// 	API.deleteJob(id)
+// 		.then(res => 
+// 			this.loadJobs(),
+// 			this.removeMaterials(),
+// 			this.addProducts()
+// 	)
+// 		.catch(err => console.log(err));
 
-	};
-removeMaterials = event => {
-	console.log("remove materials")
-}
-addProducts = event => {
-	console.log("add products")
-}
+// 	};
+// removeMaterials = event => {
+// 	console.log("remove materials")
+// }
+// addProducts = event => {
+// 	console.log("add products")
+// }
 
 	handleInputChange = event => {
-		const { partName, value } = event.target;
+		const { name, value } = event.target;
 		this.setState({
-			[partName]: value
+			[name]: value
 		});
 	};
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.partsku) {
+		if (this.state.sku && 
+			this.state.partQuantity && 
+			this.state.material && 
+			this.state.materialQuantity) {
 			console.log("This: ", this.state);
 			API.saveJob({
-				jobNumber: this.state.jobNumber,
+				// jobNumber: this.state.jobNumber,
 				partName: this.state.partName,
-				partsku: this.state.partsku,
+				sku: this.state.sku,
 				partPrice: this.state.partPrice,
-				partQty: this.state.partQty,
-				materialUsed: this.state.materialUsed,
-				matquantity: this.state.matquantity,
+				partQuantity: this.state.partQuantity,
+				material: this.state.material,
+				materialQuantity: this.state.materialQuantity,
 				notes: this.state.notes,
-				date: this.state.date
+				// date: this.state.date
 				// username: this.state.username,
 			})
 				.then(res => this.loadJobs())
@@ -132,16 +133,15 @@ addProducts = event => {
 										value={this.state.partPrice}
 										onChange={this.handleInputChange}
 										name="partPrice"
-										placeholder="Part Price (optional)"
+										placeholder="Part Price (required)"
 									/>
 
 									<Input
 										value={this.state.partQuantity}
 										onChange={this.handleInputChange}
 										name="partQuantity"
-											placeholder="Part Quantity (optional)"
-										/>
-
+											placeholder="Part Quantity (required)"
+									/>
 
 									<Input
 										value={this.state.material}
@@ -165,7 +165,9 @@ addProducts = event => {
 									/>
 
 									<FormBtn
-										disabled={!(this.state.sku && this.state.partQuantity && this.state.material && this.state.materialQuantity)}
+										disabled={!(
+											this.state.sku && 
+											this.state.partQuantity && this.state.material && this.state.materialQuantity)}
 										onClick={this.handleFormSubmit}
 									>
 										Start Job
