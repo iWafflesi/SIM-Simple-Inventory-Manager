@@ -47,8 +47,8 @@ export default {
 	deletePart: function(id) {
 		return axios.delete("/api/parts/" + id);
 	},
-	// updates a part to the database
-	updatePart: function(partData) {
+	// Saves a part to the database
+	savePart: function(partData) {
 		return axios.put("/api/parts", partData);
 	},
 	getUsers: function() {

@@ -12,15 +12,6 @@ class JobsTable extends Component {
 		this.getJobs();
 	};
 
-	// getJobs = () => {
-	// 	API.getJobs()
-	// 		.then(res =>
-	// 			console.log("res.data: ", res.data),
-
-	// 			this.setState({ jobList: res.data }))
-	// 		.catch(err => this.getJobs());
-	// }
-
 	getJobs = () => {
 		API.getJobs()
 			.then(res =>
@@ -34,16 +25,15 @@ class JobsTable extends Component {
 		return <React.Fragment>
 			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return (
-					<tr>
-						<Link className="square" to={`/job/detail/${job.jobNumber}`} key={jobNumber}>
-							<td>■</td>
+					<tr key={jobNumber}>
+						<Link className="square" to={`/job/detail/{job.jobNumber}`} >
+						<td>■</td>
 						</Link>
-							<td>{job.jobNumber}</td>
-							<td>{job.sku}</td>
-							<td>{job.quantity}</td>
-							<td>{job.username}</td>
-							<td>{job.date}</td>
-						</tr>
+						<td>{job.jobNumber}</td>
+						<td>{job.sku}</td>
+						<td>{job.partQuantity}</td>
+						<td>{job.date}</td>
+					</tr>
 				)
 			}) : null}
 		</React.Fragment>
