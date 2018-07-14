@@ -7,6 +7,7 @@ import JobCard from "../../components/JobCard";
 import "../../components/links.css"
 
 
+
 class Jobs extends Component {
 	state = {
 		jobs: [],
