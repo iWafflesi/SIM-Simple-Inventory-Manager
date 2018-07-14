@@ -68,7 +68,7 @@ class JobDetail extends Component {
 		console.log("remove materials");
 		// console.log(materialQuantity);
 		console.log(this.state.materialQuantity);
-		API.saveMaterial({
+		API.updateMaterial({
 			name:this.state.material,
 			materialQuantity: - this.state.materialQuantity
 		})
