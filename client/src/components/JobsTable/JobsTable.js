@@ -25,8 +25,8 @@ class JobsTable extends Component {
 		return <React.Fragment>
 			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return (
-					<tr>
-						<Link className="square" to={`/job/detail/{job.jobNumber}`} key={jobNumber}>
+					<tr key={jobNumber}>
+						<Link className="square" to={`/job/detail/{job.jobNumber}`} >
 						<td>■</td>
 						</Link>
 						<td>{job.jobNumber}</td>
