@@ -21,6 +21,7 @@ class JobDetail extends Component {
 			parts: [],
 			jobNumber: props.match.params.jobNumber,
 			sku: "",
+			id: "",
 			partQuantity: "",
 			material: "",
 			materialQuantity: "",
@@ -40,7 +41,7 @@ class JobDetail extends Component {
 		API.getJob(this.state.jobNumber)
 			.then(res => {
 				this.setState({
-					sku: res.data.sku, materialQuantity: res.data.materialQuantity,
+					sku: res.data.sku, materialQuantity: res.data.materialQuantity,id: res.data._id,
 					material: res.data.material, partPrice: res.data.partPrice, partQuantity: res.data.partQuantity, notes: res.data.notes, partName: res.data.partName
 				})
 			})
@@ -54,15 +55,18 @@ class JobDetail extends Component {
 		});
 	};
 
+	// deleteJob = id => {
+	// 	console.log("You are deleting this job");
+	// 		API.deleteJob(id)
+	// 		.then(res =>
+	// 			this.loadJob());
+
+
 	deleteJob = id => {
-		console.log("You are deleting this job");
-			// API.deleteJob(id)
-			// .then(res =>
-				this.loadJob();
-
-		// )
-		// 	.catch(err => console.log(err));
-
+		API
+			.deleteJob(this.state.id)
+			.then(res => this.removeMaterials())
+			.catch(err => console.log(err));
 	};
 
 	removeMaterials = event => {
@@ -70,32 +74,27 @@ class JobDetail extends Component {
 		// console.log(materialQuantity);
 		console.log(this.state.materialQuantity);
 		API.saveMaterial({
-			name:this.state.material,
-			materialQuantity: - this.state.materialQuantity
-		})
-	};
+			name: this.state.material,
+			materialQuantity: this.state.materialQuantity - 1,
+		}).then(res => this.addPart())
+			.catch(err => console.log(err, "save materials error"))
+	}
 
 	addPart = event => {
 		console.log("add products")
 		API.savePart({
 			partName: this.state.partName,
 			sku: this.state.sku,
-			partQuantity: this.state.partQuantity,
+			partQuantity: this.state.partQuantity + 3,
 			material: this.state.material,
-			materialQuantity: this.state.materialQuantity
+			partPrice: this.state.partPrice,
 		})
-			.then(res => this.loadParts())
+			.then(
+			console.log(this.state.partQuantity),	
+			(res => this.loadJob()))
 			.catch(err => console.log(err));
-};
+	};
 
-loadParts = () => {
-	API.getParts()
-		.then(res =>
-			this.setState({ parts: res.data, partName: "", sku: "", partQuantity: "", material: "" })
-		)
-		.catch(err => console.log(err));
-};
-	
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -103,8 +102,8 @@ loadParts = () => {
 
 		if (this.state.partQuantity && this.state.partName) {
 			console.log("for the love of all that is holy!!!!");
-			this.removeMaterials();
-			this.addPart();
+			// this.removeMaterials();
+			// this.addPart();
 			this.deleteJob();
 		}
 	};
@@ -202,9 +201,9 @@ loadParts = () => {
 								<FormBtn
 									// disabled={!(this.state.sku && this.state.partQuantity)}
 									onClick={this.handleFormSubmit}
-								>
-									Complete Job
-							</FormBtn>
+								><Link className="linkStyle" to="/jobs/current">
+										Complete Job </Link>
+								</FormBtn>
 							</form>
 						</Table>
 					</Col>
