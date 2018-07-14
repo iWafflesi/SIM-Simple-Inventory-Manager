@@ -36,7 +36,7 @@ class JobsTable extends Component {
 					<tr key={jobNumber}>
 						<td>{job.jobNumber}</td>
 						<td>{job.sku}</td>
-						<td>{job.quantity}</td>
+						<td>{job.partQuantity}</td>
 						<td>{job.username}</td>
 						<td>{job.date}</td>
 					</tr>

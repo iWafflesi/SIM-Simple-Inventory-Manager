@@ -9,9 +9,15 @@ class Nav extends React.Component {
 		this.state = {}
 		console.log(this.props)
 	}
+	getAdmin = (e) => {
+		this.props.setState({ admin: e.target.value }
+			,()=>console.log(this.props.state.admin, "admin state")
+		)
+	};
+	
 	// {this.props.admin ?<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>:null}
 	render() {
-		{this.props.admin ? <NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> : null}
+		{this.getAdmin? <NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> : null}
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark ">
 

@@ -14,27 +14,69 @@ mongoose.connect(
 const jobSeed = [
 {
 	jobNumber: 1,
-	username: "Cowboy",
 	date: "01/01/1990",
 	sku: 49649875,
-	quantity:2,
+	partName: "quarter panel",
+	partQuantity:2,
+	partPrice: 17.20,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
 	notes: "Company needs this completed ASAP"
 },
 {
 	jobNumber: 2,
-	username: "Cowgirl",
 	date: "01/01/1991",
 	sku:9465264,
-	quantity:5,
+	partName: "ventilation panel",
+	partQuantity:5,
+	partPrice:17.50,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
 	notes:"Once job one is completed company requires this within two business days"
 },
 {
-	jobNumber:3,
-	username: "Cowkid",
+	jobNumber: 3,
 	date: "01/01/1992",
 	sku:49487765,
-	quantity:4,
-	notes:"This request is to be made out of copper instead of steel"
+	partName: ' half panel',
+	partQuantity:4,
+	partPrice:14.99,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
+	notes:"This request is to be made out of steal instead of copper"
+},
+{
+	jobNumber: 4,
+	date: "01/01/1995",
+	sku: 49649875,
+	partName: 'quarter panel',
+	partQuantity:1,
+	partPrice: 23.99,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
+	notes: "Company needs this completed by EOW"
+},
+{
+	jobNumber: 5,
+	date: "01/01/1997",
+	sku:9465264,
+	partName: 'ventilation panel',
+	partQuantity:3,
+	partPrice: 18.00,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
+	notes:"Once job one is completed company requires this within fourteen business days"
+},
+{
+	jobNumber: 6,
+	date: "01/01/1993",
+	sku:49487765,
+	partName: 'half panel',
+	partQuantity:2,
+	partPrice:21.99,
+	material: '1/4" Flat Stock Alloy Steel',
+	materialQuantity: 1,
+	notes:"Call when shipping is completed"
 },
 
 ];

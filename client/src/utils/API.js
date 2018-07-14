@@ -26,20 +26,22 @@ export default {
 	getMaterial: function(id) {
 		return axios.get("/api/materials/" + id);
 	},
+	
+
 	// Deletes the material with the given id
 	deleteMaterial: function(id) {
 		return axios.delete("/api/materials/" + id);
 	},
 	// Saves a material to the database
 	saveMaterial: function(materialData) {
-		return axios.post("/api/materials", materialData);
+		return axios.put("/api/materials", materialData);
 	},
 	getParts: function() {
 		return axios.get("/api/parts");
 	},
 	// Gets the part with the given id
-	getPart: function(id) {
-		return axios.get("/api/parts/" + id);
+	getPart: function(sku) {
+		return axios.get("/api/parts/" + sku);
 	},
 	// Deletes the part with the given id
 	deletePart: function(id) {
@@ -47,7 +49,7 @@ export default {
 	},
 	// Saves a part to the database
 	savePart: function(partData) {
-		return axios.post("/api/parts", partData);
+		return axios.pust("/api/parts", partData);
 	},
 	getUsers: function() {
 		// console.log("you are getting to the api in utils folder....")

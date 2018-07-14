@@ -10,10 +10,12 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	findById: function (req, res) {
+		console.log("you are in the controller")
 		db.Part
-			.findById(req.params.id)
+			.findOne(req.params.sku)
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
+
 	},
 	create: function (req, res) {
 		db.Part
@@ -22,11 +24,14 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	update: function (req, res) {
+		console.log ("You made it to the controller")
 		db.Part
-			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.findOneAndUpdate({ _id: req.params.sku }, req.body)
+			.update({$inc:{ partQuantity: +3}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
+	
 	remove: function (req, res) {
 		db.Part
 			.findById({ _id: req.params.id })

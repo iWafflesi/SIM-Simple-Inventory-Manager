@@ -15,37 +15,37 @@ const materialSeed = [
 	{
 		name: '1/4" Flat Stock Alloy Steel',
 	sku: '2hkd9',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 5.20
 	},
 	{
 		name: '1/2" Flat Stock Alloy Steel',
 	sku: '2hkf6',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 7.40
 	},
 	{
 		name: '3/4" Flat Stock Alloy Steel',
 	sku: '2hkg1',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 4.45
 	},
 	{
 		name: '1" Flat Stock Alloy Steel',
 	sku: '2hgf1',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 6.20
 	},
 	{
 		name: '1/2 " Flat Stock Alloy Steel',
 	sku: '1UXG6',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 6.20
 	},
 	{
 		name: '3/4" Flat Stock Alloy Steel',
 	sku: '1UXf2',
-	quantity: 5,
+	materialQuantity: 5,
 	price: 7.20
 	}
 ];

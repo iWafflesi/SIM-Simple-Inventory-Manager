@@ -61,7 +61,7 @@ class Router extends React.Component {
 				this.setState({ isLoggedIn: true });
 				this.closeModal();
 			})
-			.catch(err => console.log(err.response));
+			.catch(err => console.log(err));
 	}
 
 	logout = () => {
@@ -82,11 +82,11 @@ class Router extends React.Component {
 			// ,()=>console.log(this.state.password)
 		)
 	};
-	getAdmin = (e) => {
-		this.setState({ admin: e.target.value }
-			,()=>console.log(this.state.admin, "admin state")
-		)
-	};
+	// getAdmin = (e) => {
+	// 	this.setState({ admin: e.target.value }
+	// 		,()=>console.log(this.state.admin, "admin state")
+	// 	)
+	// };
 	render() {
 		
 		return (

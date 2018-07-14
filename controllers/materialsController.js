@@ -22,8 +22,10 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	update: function (req, res) {
+		console.log ("You made it to the controller")
 		db.Material
-			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.findOneAndUpdate({ _id: req.params.sku }, req.body)
+			.update(({$min:{materialQuantity: 1}}),({$inc:{ materialQuantity: -1}}))
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},

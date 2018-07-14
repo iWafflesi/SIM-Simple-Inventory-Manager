@@ -32,7 +32,7 @@ class JobCard extends Component {
 							<div className="card-body">
 								<h4 className="card-title">Job {job.jobNumber}</h4>
 								<h6 className="card-subtitle mb-2">SKU: {job.sku}</h6>
-								<h6 className="card-subtitle mb-2">Qty: {job.quantity}</h6>
+								<h6 className="card-subtitle mb-2">Qty: {job.partQuantity}</h6>
 								<p className="card-text">Notes: {job.notes}</p>
 							</div>
 						</div>
