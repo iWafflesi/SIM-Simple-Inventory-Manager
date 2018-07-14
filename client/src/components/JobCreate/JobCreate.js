@@ -3,23 +3,26 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "../links.css"
 
 
 class JobCreate extends Component {
 	state = {
 		jobs: [],
+		materials: [],
+		parts: [],
 		// jobNumber: "",
+		partName: "",
+		// partsku: "",
 		sku: "",
+		partPrice: "",
 		partQuantity: "",
 		material: "",
 		materialQuantity: "",
-		username: "",
+		notes: "",
 		date: "",
-		materials: [],
-		partName: "",
-		parts: [],
+		username: ""
 	};
 
 	componentDidMount() {
@@ -30,14 +33,18 @@ class JobCreate extends Component {
 		API.getJobs()
 			.then(res =>
 				this.setState({ 
-					jobs: res.data, 
-					username: "", 
-					sku: "", 
+					jobs: res.data,
+					materials: res.data,
+					parts: res.data,
+					jobNumber: "",
+					partName: "",
+					sku: "",
+					partPrice: "",
 					partQuantity: "",
-					material:"", 
-					materialQuantity: "", 
-					date: "" })
-			)
+					material: "",
+					materialQuantity: "",
+					notes: "",
+					date: ""  }))
 			.catch(err => console.log(err));
 	};
 	// ******* find out how to delete material used instead of part
@@ -67,16 +74,19 @@ addProducts = event => {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.sku && this.state.material) {
+		if (this.state.username && this.state.partsku) {
 			console.log("This: ", this.state);
 			API.saveJob({
 				jobNumber: this.state.jobNumber,
-				username: this.state.username,
-				date: this.state.date,
-				sku: this.state.sku,
-				partQuantity: this.state.partQuantity,
-				material: this.state.material,
-				materialQuantity: this.state.materialQuantity
+				partName: this.state.partName,
+				partsku: this.state.partsku,
+				partPrice: this.state.partPrice,
+				partQty: this.state.partQty,
+				materialUsed: this.state.materialUsed,
+				matquantity: this.state.matquantity,
+				notes: this.state.notes,
+				date: this.state.date
+				// username: this.state.username,
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -105,16 +115,10 @@ addProducts = event => {
 
 								<form>
 									<Input
-										value={this.state.date}
-										onChange={this.handleInputChange}
-										name="date"
-										placeholder="date used (optional)"
-									/>
-									<Input
 										value={this.state.partName}
 										onChange={this.handleInputChange}
 										name="partName"
-										placeholder="Part Created (required)"
+										placeholder="Part Name (required)"
 									/>
 
 									<Input
@@ -123,29 +127,34 @@ addProducts = event => {
 										name="sku"
 										placeholder="Part sku (required)"
 									/>
+
+									<Input
+										value={this.state.partPrice}
+										onChange={this.handleInputChange}
+										name="partPrice"
+										placeholder="Part Price (optional)"
+									/>
+
 									<Input
 										value={this.state.partQuantity}
 										onChange={this.handleInputChange}
 										name="partQuantity"
-										placeholder="quantity of parts (required)"
-									/>
+											placeholder="Part Quantity (optional)"
+										/>
+
+
 									<Input
 										value={this.state.material}
 										onChange={this.handleInputChange}
 										name="material"
-										placeholder="Material used (required)"
+										placeholder="Material Used (required)"
 									/>
+									
 									<Input
-									value={this.state.materialQuantity}
-									onChange={this.handleInputChange}
-									name="materialQuantity"
-									placeholder="Material used (required)"
-								/>
-									<Input
-										value={this.state.notes}
+										value={this.state.materialQuantity}
 										onChange={this.handleInputChange}
 										name="materialQuantity"
-										placeholder="material quantity(required)"
+										placeholder="quantity of materials used (required)"
 									/>
 
 									<Input
@@ -160,9 +169,8 @@ addProducts = event => {
 										onClick={this.handleFormSubmit}
 									>
 										Start Job
-							</FormBtn>
+									</FormBtn>
 								</form>
-
 							</Col>
 						</Row>
 					</div>
@@ -171,22 +179,5 @@ addProducts = event => {
 		);
 	};
 }
-
-
-
-
-// import React from "react";
-// import Nav from "../Nav";
-// import NavBtn from "../NavButton";
-// import { Link } from 'react-router-dom'
-
-// const JobCreate = () => (
-// 	<React.Fragment>
-// 		<Nav/>
-// 		<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-// 		<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-// 			Jobs.Create
-// 	</React.Fragment>
-// );
 
 export default JobCreate;
