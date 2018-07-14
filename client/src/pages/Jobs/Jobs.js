@@ -65,7 +65,6 @@ class Jobs extends Component {
 											<th scope="col">Job ID</th>
 											<th scope="col">Part Sku</th>
 											<th scope="col">Quantity</th>
-											<th scope="col">Username</th>
 											<th scope="col">Date</th>
 										</tr>
 									</thead>

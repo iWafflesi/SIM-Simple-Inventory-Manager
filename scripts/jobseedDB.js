@@ -4,12 +4,8 @@ mongoose.Promise = global.Promise;
 
 // This file empties the materials collection and inserts the books below
 
-mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/simDB",
-	{
-		useMongoClient: true
-	}
-);
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/simDB`,
+{ useNewUrlParser: true });
 
 const jobSeed = [
 {

@@ -5,10 +5,8 @@ mongoose.Promise = global.Promise;
 // This file empties the materials collection and inserts the books below
 
 mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/simDB",
-	{
-		useMongoClient: true, 
-	}
+	process.env.MONGODB_URI || `mongodb://localhost:27017/simDB`,
+	{ useNewUrlParser: true }
 );
 
 const userSeed = [
@@ -53,7 +51,7 @@ db.User
 	.remove({})
 	.then(() => db.User.collection.insertMany(userSeed))
 	.then(data => {
-		console.log(data.insertedIds.length + "users records inserted!");
+		console.log(data.insertedIds.length + " users records inserted!");
 		process.exit(0);
 	})
 	.catch(err => {

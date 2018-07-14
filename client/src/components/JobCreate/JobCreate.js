@@ -20,8 +20,6 @@ class JobCreate extends Component {
 		materials: [],
 		partName: "",
 		parts: [],
-
-	
 	};
 
 	componentDidMount() {
@@ -31,7 +29,14 @@ class JobCreate extends Component {
 	loadJobs = () => {
 		API.getJobs()
 			.then(res =>
-				this.setState({ jobs: res.data, username: "", sku: "", partQuantity: "",material:"", materialQuantity: "", date: "" })
+				this.setState({ 
+					jobs: res.data, 
+					username: "", 
+					sku: "", 
+					partQuantity: "",
+					material:"", 
+					materialQuantity: "", 
+					date: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -141,6 +146,9 @@ addProducts = event => {
 										onChange={this.handleInputChange}
 										name="materialQuantity"
 										placeholder="material quantity(required)"
+									/>
+
+									<Input
 										value={this.state.notes}
 										onChange={this.handleInputChange}
 										name="notes"
