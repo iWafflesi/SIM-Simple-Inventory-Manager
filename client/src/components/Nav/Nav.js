@@ -17,7 +17,7 @@ class Nav extends React.Component {
 	
 	// {this.props.admin ?<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn>:null}
 	render() {
-		{this.getAdmin? <NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> : null}
+		// {this.props.state.admin? <NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> : null}
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark ">
 
@@ -29,6 +29,9 @@ class Nav extends React.Component {
 				<NavBtn className="link"><Link className="linkStyle" to="/jobs/current">Production</Link></NavBtn>
 			
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
+
+				<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> 
+				
 			</div>
 			<NavBtn className="link"><Link className="linkStyle" to="/" onClick={this.props.logout}>Logout</Link></NavBtn>
 		</nav>

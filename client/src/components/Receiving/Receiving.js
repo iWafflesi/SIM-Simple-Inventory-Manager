@@ -62,7 +62,9 @@ class Receiving extends Component {
 	};
 
 	render() {
-
+	// 	<div className="link">
+	// 	<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
+	// </div>
 		return (
 			<React.Fragment>
 				<Row>
@@ -73,9 +75,7 @@ class Receiving extends Component {
 								<div className="link">
 									<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
 								</div>
-								<div className="link">
-									<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
-								</div>
+								
 								<div className="link">
 									<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
 								</div>

@@ -12,10 +12,11 @@ export default {
 	},
 	// Deletes the job with the given id
 	deleteJob: function(id) {
+		console.log("delete job", id)
 		return axios.delete("/api/jobs/" + id);
 	},
-	// Saves a job to the database
-	saveJob: function(jobData) {
+	// saves a job to the database
+	updateJob: function(jobData) {
 		return axios.post("/api/jobs", jobData);
 	},
 
@@ -33,6 +34,7 @@ export default {
 	},
 	// Saves a material to the database
 	saveMaterial: function(materialData) {
+		console.log("you made it to API")
 		return axios.put("/api/materials", materialData);
 	},
 
@@ -47,8 +49,9 @@ export default {
 	deletePart: function(id) {
 		return axios.delete("/api/parts/" + id);
 	},
-	// Saves a part to the database
+	// saves a part to the database
 	savePart: function(partData) {
+		console.log("you made it to API")
 		return axios.put("/api/parts", partData);
 	},
 	
