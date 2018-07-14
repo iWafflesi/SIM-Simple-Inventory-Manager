@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Col, Row } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import NavBtn from "../NavButton";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "../links.css"
 
 
@@ -11,14 +11,18 @@ class JobCreate extends Component {
 	state = {
 		jobs: [],
 		// jobNumber: "",
+		partName: "",
+		// partsku: "",
 		sku: "",
+		partPrice: "",
 		partQuantity: "",
 		material: "",
+		notes: "",
+		date: "",
+		// username: "",
 		materialQuantity: "",
 		username: "",
-		date: "",
 		materials: [],
-		partName: "",
 		parts: [],
 
 	
@@ -31,8 +35,19 @@ class JobCreate extends Component {
 	loadJobs = () => {
 		API.getJobs()
 			.then(res =>
-				this.setState({ jobs: res.data, username: "", sku: "", partQuantity: "",material:"", materialQuantity: "", date: "" })
-			)
+				this.setState({ 
+					jobs: res.data,
+					materials: res.data,
+					parts: res.data,
+					jobNumber: "",
+					partName: "",
+					partsku: "",
+					partPrice: "",
+					partQty: "",
+					material: "",
+					materialQuantity: "",
+					notes: "",
+					date: ""  }))
 			.catch(err => console.log(err));
 	};
 	// ******* find out how to delete material used instead of part
@@ -62,16 +77,19 @@ addProducts = event => {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.sku && this.state.material) {
+		if (this.state.username && this.state.partsku) {
 			console.log("This: ", this.state);
 			API.saveJob({
 				jobNumber: this.state.jobNumber,
-				username: this.state.username,
-				date: this.state.date,
-				sku: this.state.sku,
-				partQuantity: this.state.partQuantity,
-				material: this.state.material,
-				materialQuantity: this.state.materialQuantity
+				partName: this.state.partName,
+				partsku: this.state.partsku,
+				partPrice: this.state.partPrice,
+				partQty: this.state.partQty,
+				materialUsed: this.state.materialUsed,
+				matquantity: this.state.matquantity,
+				notes: this.state.notes,
+				date: this.state.date
+				// username: this.state.username,
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -100,23 +118,60 @@ addProducts = event => {
 
 								<form>
 									<Input
-										value={this.state.username}
+										value={this.state.partName}
 										onChange={this.handleInputChange}
-										name="username"
-										placeholder="username (required)"
-									/>
-									<Input
-										value={this.state.date}
-										onChange={this.handleInputChange}
-										name="date"
-										placeholder="date used (optional)"
+										name="partName"
+										placeholder="Part Name (required)"
 									/>
 
 									<Input
-										value={this.state.sku}
+										value={this.state.partsku}
 										onChange={this.handleInputChange}
-										name="sku"
+										name="partsku"
 										placeholder="Part sku (required)"
+									/>
+									<Input
+										value={this.state.partName}
+										onChange={this.handleInputChange}
+										name="partName"
+										placeholder="Part Created (required)"
+									/>
+
+									<Input
+										value={this.state.partPrice}
+										onChange={this.handleInputChange}
+										name="partPrice"
+										placeholder="Part Price (optional)"
+									/>
+
+									<Input
+										value={this.state.partQty}
+										onChange={this.handleInputChange}
+										name="partQty"
+											placeholder="Part Quantity (optional)"
+										/>
+
+
+									<Input
+										value={this.state.materialUsed}
+										onChange={this.handleInputChange}
+										name="materialUsed"
+										placeholder="Material Used (required)"
+									/>
+									
+
+									<Input
+										value={this.state.matquantity}
+										onChange={this.handleInputChange}
+										name="matquantity"
+										placeholder="quantity of materials used (required)"
+									/>
+
+									<Input
+										value={this.state.comments}
+										onChange={this.handleInputChange}
+										name="comments"
+										placeholder="Enter any comments here..."
 									/>
 									<Input
 										value={this.state.partQuantity}
@@ -130,21 +185,34 @@ addProducts = event => {
 										name="material"
 										placeholder="Material used (required)"
 									/>
+
 									<Input
-										value={this.state.materialQuantity}
-										onChange={this.handleInputChange}
-										name="materialQuantity"
-										placeholder="material quantity(required)"
-									/>
+									value={this.state.materialQuantity}
+									onChange={this.handleInputChange}
+									name="materialQuantity"
+									placeholder="Material used (required)"
+								/>
 
-									<FormBtn
-										disabled={!(this.state.sku && this.state.partQuantity && this.state.material && this.state.materialQuantity)}
-										onClick={this.handleFormSubmit}
-									>
-										Start Job
-							</FormBtn>
+								<Input
+									value={this.state.materialQuantity}
+									onChange={this.handleInputChange}
+									name="materialQuantity"
+									placeholder="material quantity(required)"
+								/>
+								<Input
+									value={this.state.notes}
+									onChange={this.handleInputChange}
+									name="notes"
+									placeholder="notes (optional)"
+								/>
+
+								<FormBtn
+									disabled={!(this.state.sku && this.state.partQuantity && this.state.material && this.state.materialQuantity)}
+									onClick={this.handleFormSubmit}
+								>
+									Start Job
+								</FormBtn>
 								</form>
-
 							</Col>
 						</Row>
 					</div>
@@ -153,22 +221,5 @@ addProducts = event => {
 		);
 	};
 }
-
-
-
-
-// import React from "react";
-// import Nav from "../Nav";
-// import NavBtn from "../NavButton";
-// import { Link } from 'react-router-dom'
-
-// const JobCreate = () => (
-// 	<React.Fragment>
-// 		<Nav/>
-// 		<NavBtn><Link to="/jobs">Jobs</Link></NavBtn>
-// 		<NavBtn><Link to="/jobs/create">Create</Link></NavBtn>
-// 			Jobs.Create
-// 	</React.Fragment>
-// );
 
 export default JobCreate;
