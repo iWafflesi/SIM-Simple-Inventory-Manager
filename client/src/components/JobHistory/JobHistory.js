@@ -42,10 +42,10 @@ class JobHistory extends Component {
 								<table className="table table-hover" id='jobsHistoryTable'>
 									<thead>
 										<tr>
+											<th scope="col"></th>
 											<th scope="col">Job Number</th>
 											<th scope="col">Part SKU</th>
 											<th scope="col">Quantity</th>
-											<th scope="col">Username</th>
 											<th scope="col">Date</th>
 										</tr>
 									</thead>

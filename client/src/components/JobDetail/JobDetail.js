@@ -48,11 +48,17 @@ class JobDetail extends Component {
 	};
 
 	handleInputChange = event => {
-		const { partName, value } = event.target;
+		const { name, value } = event.target;
 		this.setState({
-			[partName]: value
+			[name]: value
 		});
 	};
+
+	deleteJob = id => {
+		console.log("You are deleting this job");
+			// API.deleteJob(id)
+			// .then(res =>
+				this.loadJob();
 
 
 	deleteJob = jobNumber => {
@@ -89,9 +95,9 @@ class JobDetail extends Component {
 	};
 
 
-	handleFormSubmit = event => {
+	handleFormSubmit = (event) => {
 		event.preventDefault();
-		console.log(this.state.partQuantity, this.state.partName)
+		// console.log(this.state.partQuantity, this.state.partName)
 
 		if (this.state.partQuantity && this.state.partName) {
 			console.log("for the love of all that is holy!!!!");
@@ -141,6 +147,7 @@ class JobDetail extends Component {
 								<Input
 									value={this.state.material || ''}
 									onChange={this.handleInputChange}
+									readOnly={true}
 									name="material"
 								// placeholder="sku of material used (required)"
 								/>
@@ -148,6 +155,7 @@ class JobDetail extends Component {
 								<Input
 									value={this.state.materialQuantity || ''}
 									onChange={this.handleInputChange}
+									readOnly={true}
 									name="materialQuantity"
 								// placeholder="quantity of materials used (required)"
 								/>
@@ -155,6 +163,7 @@ class JobDetail extends Component {
 								<Input
 									value={this.state.partName || ''}
 									onChange={this.handleInputChange}
+									readOnly={true}
 									name="partName"
 								// placeholder="name of individual part"
 								/>
@@ -162,6 +171,7 @@ class JobDetail extends Component {
 								<Input
 									value={this.state.partPrice || ''}
 									onChange={this.handleInputChange}
+									readOnly={true}
 									name="partPrice"
 								// placeholder="price of individual part"
 								/>
@@ -177,6 +187,7 @@ class JobDetail extends Component {
 								<Input
 									value={this.state.partQuantity || ''}
 									onChange={this.handleInputChange}
+									readOnly={true}
 									name="partQuantity"
 								// placeholder="quantity of parts created (required)"
 								/>

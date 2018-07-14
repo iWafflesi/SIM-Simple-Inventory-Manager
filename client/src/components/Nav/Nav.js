@@ -25,16 +25,14 @@ class Nav extends React.Component {
 
 			<div className="navLinks">
 				<NavBtn className="link"><Link className="linkStyle" to="/inventory/current">Inventory</Link></NavBtn>
-
+			
 				<NavBtn className="link"><Link className="linkStyle" to="/jobs/current">Production</Link></NavBtn>
-
+			
 				<NavBtn className="link"><Link className="linkStyle" to="/shipping">Shipping</Link></NavBtn>
 
 				<NavBtn className="link"><Link className="linkStyle" to="/admin">Admin</Link></NavBtn> 
 				
 			</div>
-
-
 			<NavBtn className="link"><Link className="linkStyle" to="/" onClick={this.props.logout}>Logout</Link></NavBtn>
 		</nav>
 	)}
