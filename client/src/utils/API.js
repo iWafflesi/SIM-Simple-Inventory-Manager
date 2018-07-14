@@ -49,7 +49,7 @@ export default {
 	},
 	// Saves a part to the database
 	savePart: function(partData) {
-		return axios.pust("/api/parts", partData);
+		return axios.put("/api/parts", partData);
 	},
 	getUsers: function() {
 		// console.log("you are getting to the api in utils folder....")
