@@ -17,15 +17,11 @@ class JobCreate extends Component {
 		materialQuantity: "",
 		username: "",
 		date: "",
-<<<<<<< HEAD
 		materials: [],
 		partName: "",
 		parts: [],
 
 	
-=======
-		notes: ""
->>>>>>> master
 	};
 
 	componentDidMount() {
@@ -73,14 +69,9 @@ addProducts = event => {
 				username: this.state.username,
 				date: this.state.date,
 				sku: this.state.sku,
-<<<<<<< HEAD
 				partQuantity: this.state.partQuantity,
 				material: this.state.material,
 				materialQuantity: this.state.materialQuantity
-=======
-				quantity: this.state.quantity,
-				notes: this.state.notes
->>>>>>> master
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -109,16 +100,16 @@ addProducts = event => {
 
 								<form>
 									<Input
-										value={this.state.username}
-										onChange={this.handleInputChange}
-										name="username"
-										placeholder="username (required)"
-									/>
-									<Input
 										value={this.state.date}
 										onChange={this.handleInputChange}
 										name="date"
 										placeholder="date used (optional)"
+									/>
+									<Input
+										value={this.state.partName}
+										onChange={this.handleInputChange}
+										name="partName"
+										placeholder="Part Created (required)"
 									/>
 
 									<Input
@@ -134,23 +125,26 @@ addProducts = event => {
 										placeholder="quantity of parts (required)"
 									/>
 									<Input
-<<<<<<< HEAD
 										value={this.state.material}
 										onChange={this.handleInputChange}
 										name="material"
 										placeholder="Material used (required)"
 									/>
 									<Input
-										value={this.state.materialQuantity}
+									value={this.state.materialQuantity}
+									onChange={this.handleInputChange}
+									name="materialQuantity"
+									placeholder="Material used (required)"
+								/>
+									<Input
+										value={this.state.notes}
 										onChange={this.handleInputChange}
 										name="materialQuantity"
 										placeholder="material quantity(required)"
-=======
 										value={this.state.notes}
 										onChange={this.handleInputChange}
 										name="notes"
 										placeholder="notes (optional)"
->>>>>>> master
 									/>
 
 									<FormBtn
