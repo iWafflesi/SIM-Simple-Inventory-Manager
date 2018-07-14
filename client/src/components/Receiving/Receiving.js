@@ -15,7 +15,7 @@ class Receiving extends Component {
 		materials: [],
 		name: "",
 		sku: "",
-		quantity: "",
+		materialQuantity: "",
 		material: "",
 		price: ""
 	};
@@ -27,7 +27,7 @@ class Receiving extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", quantity: "", price: "" })
+				this.setState({ parts: res.data, name: "", sku: "", materialQuantity: "", price: "" })
 			)
 			.catch(err => console.log(err));
 	};
@@ -95,9 +95,9 @@ class Receiving extends Component {
 									placeholder="sku (required)"
 								/>
 								<Input
-									value={this.state.quantity}
+									value={this.state.materialQuantity}
 									onChange={this.handleInputChange}
-									name="quantity"
+									name="materialQuantity"
 									placeholder="quantity (required)"
 								/>
 								<Input
@@ -108,7 +108,7 @@ class Receiving extends Component {
 								/>
 								<FormBtn
 									className="btn btn-outline-dark formButton"
-									disabled={!(this.state.sku && this.state.quantity && this.state.price)}
+									disabled={!(this.state.sku && this.state.materialQuantity && this.state.price)}
 									onClick={this.handleFormSubmit}
 								>
 									Receive Order

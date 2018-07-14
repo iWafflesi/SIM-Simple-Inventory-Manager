@@ -12,10 +12,20 @@ class JobCreate extends Component {
 		jobs: [],
 		// jobNumber: "",
 		sku: "",
-		quantity: "",
+		partQuantity: "",
+		material: "",
+		materialQuantity: "",
 		username: "",
 		date: "",
+<<<<<<< HEAD
+		materials: [],
+		partName: "",
+		parts: [],
+
+	
+=======
 		notes: ""
+>>>>>>> master
 	};
 
 	componentDidMount() {
@@ -25,35 +35,52 @@ class JobCreate extends Component {
 	loadJobs = () => {
 		API.getJobs()
 			.then(res =>
-				this.setState({ jobs: res.data, username: "", sku: "", quantity: "", date: "" })
+				this.setState({ jobs: res.data, username: "", sku: "", partQuantity: "",material:"", materialQuantity: "", date: "" })
 			)
 			.catch(err => console.log(err));
 	};
 	// ******* find out how to delete material used instead of part
 	deleteJob = id => {
 		API.deleteJob(id)
-			.then(res => this.loadJobs())
+			.then(res => 
+				this.loadJobs(),
+				this.removeMaterials(),
+				this.addProducts()
+		)
 			.catch(err => console.log(err));
+
 	};
+removeMaterials = event => {
+	console.log("remove materials")
+}
+addProducts = event => {
+	console.log("add products")
+}
 
 	handleInputChange = event => {
-		const { name, value } = event.target;
+		const { partName, value } = event.target;
 		this.setState({
-			[name]: value
+			[partName]: value
 		});
 	};
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.username && this.state.sku) {
+		if (this.state.username && this.state.sku && this.state.material) {
 			console.log("This: ", this.state);
 			API.saveJob({
 				jobNumber: this.state.jobNumber,
 				username: this.state.username,
 				date: this.state.date,
 				sku: this.state.sku,
+<<<<<<< HEAD
+				partQuantity: this.state.partQuantity,
+				material: this.state.material,
+				materialQuantity: this.state.materialQuantity
+=======
 				quantity: this.state.quantity,
 				notes: this.state.notes
+>>>>>>> master
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -101,20 +128,33 @@ class JobCreate extends Component {
 										placeholder="Part sku (required)"
 									/>
 									<Input
-										value={this.state.quantity}
+										value={this.state.partQuantity}
 										onChange={this.handleInputChange}
-										name="quantity"
+										name="partQuantity"
 										placeholder="quantity of parts (required)"
 									/>
 									<Input
+<<<<<<< HEAD
+										value={this.state.material}
+										onChange={this.handleInputChange}
+										name="material"
+										placeholder="Material used (required)"
+									/>
+									<Input
+										value={this.state.materialQuantity}
+										onChange={this.handleInputChange}
+										name="materialQuantity"
+										placeholder="material quantity(required)"
+=======
 										value={this.state.notes}
 										onChange={this.handleInputChange}
 										name="notes"
 										placeholder="notes (optional)"
+>>>>>>> master
 									/>
 
 									<FormBtn
-										disabled={!(this.state.sku && this.state.quantity)}
+										disabled={!(this.state.sku && this.state.partQuantity && this.state.material && this.state.materialQuantity)}
 										onClick={this.handleFormSubmit}
 									>
 										Start Job

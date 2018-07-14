@@ -26,7 +26,7 @@ class Shipping extends Component {
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">Part Sku</th>
-								<th scope="col">quantity</th>
+								<th scope="col">Quantity</th>
 							</tr>
 						</thead>
 						<tbody>

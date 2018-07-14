@@ -8,7 +8,7 @@ import JobsTable from "../JobsTable";
 class JobHistory extends Component {
 	state = {
 		jobs: [],
-		name: "",
+		partName: "",
 		jobNumber: "",
 	};
 	componentDidMount() {

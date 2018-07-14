@@ -10,24 +10,13 @@ class UserTable extends Component {
 			username: ""
 		}
 	};
-	handleFormSubmit = event => {
-		event.preventDefault();
-		if (this.props.user ) {
-			API.savePart({
-				username: this.props.userList.username,
-				Admin: this.props.userList.admin
-			
-			})
-				.then(res => this.props.getUsers())
-				.catch(err => console.log(err));
-		}
-	};
 
-
+	
 	deleteUser = id => {
+	
 		API.deleteUser(id)
 			.then(()=>{
-				console.log();
+
 				this.props.getUsers();
 			})
 			.catch(err => console.log(err));
@@ -41,7 +30,7 @@ class UserTable extends Component {
 	};
 
 	render() {
-		// console.log(this.props.getUser, "trying to get some users")
+	
 		return <React.Fragment>
 			{this.props.userList ? this.props.userList.map((user, i) => {
 

@@ -13,39 +13,39 @@ mongoose.connect(
 
 const partSeed = [
 	{
-		name: 'this part',
+		partName: 'this part',
 		sku: '798441',
-		quantity: 5,
+		partQuantity: 5,
 		price: 19.99,
 		material:'1UXf2'
 	},{
-		name: 'part 2',
+		partName: 'ventilation panel',
 	sku: '49465264',
-	quantity: 5,
+	partQuantity: 5,
 	price: 23.50,
 	material:'1UXG6'
 	},{
-		name: 'part 3',
+		partName: 'quarter panel',
 		sku: '49649875',
-		quantity: 5,
+		partQuantity: 5,
 		price: 24.99,
 		material: '2hgf1'
 	},{
-		name: 'part 4',
+		partName: 'half panel',
 		sku: '49487765',
-		quantity: 5,
+		partQuantity: 5,
 		price: 21.99,
 		material: '2hkg1'
 	},{
-		name: 'part 5',
+		partName: 'silencer',
 		sku: '46984789',
-		quantity: 5,
+		partQuantity: 5,
 		price: 18.99,
 		material: '2hkf6'
 	},{
-		name: 'part 6',
+		partName: 'front panel',
 	sku: '56456545',
-	quantity: 5,
+	partQuantity: 5,
 	price: 15.99,
 	material: '2hkd9'
 	}
