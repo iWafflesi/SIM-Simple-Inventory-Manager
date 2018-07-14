@@ -21,6 +21,7 @@ class JobDetail extends Component {
 			parts: [],
 			jobNumber: props.match.params.jobNumber,
 			sku: "",
+			id: "",
 			partQuantity: "",
 			material: "",
 			materialQuantity: "",
@@ -40,7 +41,7 @@ class JobDetail extends Component {
 		API.getJob(this.state.jobNumber)
 			.then(res => {
 				this.setState({
-					sku: res.data.sku, materialQuantity: res.data.materialQuantity,
+					sku: res.data.sku, materialQuantity: res.data.materialQuantity,id: res.data._id,
 					material: res.data.material, partPrice: res.data.partPrice, partQuantity: res.data.partQuantity, notes: res.data.notes, partName: res.data.partName
 				})
 			})
@@ -54,16 +55,16 @@ class JobDetail extends Component {
 		});
 	};
 
+	// deleteJob = id => {
+	// 	console.log("You are deleting this job");
+	// 		API.deleteJob(id)
+	// 		.then(res =>
+	// 			this.loadJob());
+
+
 	deleteJob = id => {
-		console.log("You are deleting this job");
-			// API.deleteJob(id)
-			// .then(res =>
-				this.loadJob();
-
-
-	deleteJob = jobNumber => {
 		API
-			.deleteJob(this.state.jobNumber)
+			.deleteJob(this.state.id)
 			.then(res => this.removeMaterials())
 			.catch(err => console.log(err));
 	};
@@ -201,7 +202,7 @@ class JobDetail extends Component {
 									// disabled={!(this.state.sku && this.state.partQuantity)}
 									onClick={this.handleFormSubmit}
 								><Link className="linkStyle" to="/jobs/current">
-										Complete Job</Link>
+										Complete Job </Link>
 								</FormBtn>
 							</form>
 						</Table>
