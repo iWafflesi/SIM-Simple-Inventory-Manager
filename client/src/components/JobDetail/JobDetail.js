@@ -53,39 +53,41 @@ class JobDetail extends Component {
 			[partName]: value
 		});
 	};
-	deleteJob = id => {
-		console.log("You are deleting this job");
-			// API.deleteJob(id)
-			// .then(res =>
-				this.loadJob();
 
-		// )
-		// 	.catch(err => console.log(err));
 
+	deleteJob = jobNumber => {
+		API
+			.deleteJob(this.state.jobNumber)
+			.then(res => this.removeMaterials())
+			.catch(err => console.log(err));
 	};
 
 	removeMaterials = event => {
 		console.log("remove materials");
 		// console.log(materialQuantity);
 		console.log(this.state.materialQuantity);
-		API.updateMaterial({
-			name:this.state.material,
-			materialQuantity: - this.state.materialQuantity
-		})
+		API.saveMaterial({
+			name: this.state.material,
+			materialQuantity: this.state.materialQuantity - 1,
+		}).then(res => this.addPart())
+			.catch(err => console.log(err, "save materials error"))
 	}
+
 	addPart = event => {
 		console.log("add products")
-		// API.savePart({
-		// 	partName: this.state.partName,
-		// 	sku: this.state.sku,
-		// 	partQuantity: this.state.partQuantity,
-		// 	material: this.state.material,
-		// 	partPrice: this.state.partPrice
-		// })
-		// 	.then(res => this.loadParts())
-		// 	.catch(err => console.log(err));
-};
-	
+		API.savePart({
+			partName: this.state.partName,
+			sku: this.state.sku,
+			partQuantity: this.state.partQuantity + 3,
+			material: this.state.material,
+			partPrice: this.state.partPrice,
+		})
+			.then(
+			console.log(this.state.partQuantity),	
+			(res => this.loadJob()))
+			.catch(err => console.log(err));
+	};
+
 
 	handleFormSubmit = event => {
 		event.preventDefault();
@@ -93,8 +95,8 @@ class JobDetail extends Component {
 
 		if (this.state.partQuantity && this.state.partName) {
 			console.log("for the love of all that is holy!!!!");
-			this.removeMaterials();
-			this.addPart();
+			// this.removeMaterials();
+			// this.addPart();
 			this.deleteJob();
 		}
 	};
@@ -187,9 +189,9 @@ class JobDetail extends Component {
 								<FormBtn
 									// disabled={!(this.state.sku && this.state.partQuantity)}
 									onClick={this.handleFormSubmit}
-								>
-									Complete Job
-							</FormBtn>
+								><Link className="linkStyle" to="/jobs/current">
+										Complete Job</Link>
+								</FormBtn>
 							</form>
 						</Table>
 					</Col>

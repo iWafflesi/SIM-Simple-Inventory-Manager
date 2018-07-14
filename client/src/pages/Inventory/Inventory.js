@@ -6,7 +6,9 @@ import InventoryTable from "../../components/InventoryTable";
 import "../../components/links.css"
 
 const Inventory = () => {
-
+// 	<div className="link">
+// 	<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
+// </div>
 	return (
 		<React.Fragment>
 			<div className="card">
@@ -15,9 +17,7 @@ const Inventory = () => {
 						<div className="link">
 							<NavBtn><Link className="linkStyle" to="/inventory/current">Current</Link></NavBtn>
 						</div>
-						<div className="link">
-							<NavBtn><Link className="linkStyle" to="/inventory/history">History</Link></NavBtn>
-						</div>
+						
 						<div className="link">
 							<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
 						</div>

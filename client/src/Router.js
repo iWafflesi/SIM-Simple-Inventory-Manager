@@ -24,7 +24,7 @@ class Router extends React.Component {
 			// 	openModal: false,
 			username: "",
 			password: "",
-			admin: false
+			admin: true
 		};
 
 		this.logout = this.logout.bind(this);
