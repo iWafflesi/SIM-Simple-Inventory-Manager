@@ -17,11 +17,15 @@ class JobCreate extends Component {
 		materialQuantity: "",
 		username: "",
 		date: "",
+<<<<<<< HEAD
 		materials: [],
 		partName: "",
 		parts: [],
 
 	
+=======
+		notes: ""
+>>>>>>> master
 	};
 
 	componentDidMount() {
@@ -69,9 +73,14 @@ addProducts = event => {
 				username: this.state.username,
 				date: this.state.date,
 				sku: this.state.sku,
+<<<<<<< HEAD
 				partQuantity: this.state.partQuantity,
 				material: this.state.material,
 				materialQuantity: this.state.materialQuantity
+=======
+				quantity: this.state.quantity,
+				notes: this.state.notes
+>>>>>>> master
 			})
 				.then(res => this.loadJobs())
 				.catch(err => console.log(err));
@@ -125,6 +134,7 @@ addProducts = event => {
 										placeholder="quantity of parts (required)"
 									/>
 									<Input
+<<<<<<< HEAD
 										value={this.state.material}
 										onChange={this.handleInputChange}
 										name="material"
@@ -135,6 +145,12 @@ addProducts = event => {
 										onChange={this.handleInputChange}
 										name="materialQuantity"
 										placeholder="material quantity(required)"
+=======
+										value={this.state.notes}
+										onChange={this.handleInputChange}
+										name="notes"
+										placeholder="notes (optional)"
+>>>>>>> master
 									/>
 
 									<FormBtn
