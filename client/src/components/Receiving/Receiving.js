@@ -27,7 +27,7 @@ class Receiving extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", materialQuantity: "", price: "" })
+				this.setState({ materials: res.data})
 			)
 			.catch(err => console.log(err));
 	};
