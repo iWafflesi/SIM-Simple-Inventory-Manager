@@ -13,6 +13,7 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	background-color: rgba(46, 173, 167, 0.705);
+
 }
 
 .jobLink {
@@ -26,4 +27,16 @@
 
 .jobCard {
 	margin-bottom: 20px;
+}
+
+.cardCSS {
+	width: 360px !important;
+	order: 0;
+	margin-right: 39px;
+	background-color: rgba(46, 173, 167, 0.705);
+	padding-bottom:20px;
+}
+
+.cardsCSS {
+	margin-bottom: 20px !important;
 }

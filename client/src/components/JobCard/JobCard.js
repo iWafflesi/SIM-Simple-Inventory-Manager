@@ -28,8 +28,8 @@ class JobCard extends Component {
 				return (
 
 					<Link className="jobLink" to={`/job/detail/${job.jobNumber}`} key={jobNumber}>
-						<div className="card">
-							<div className="card-body">
+						<div className="card cardsCSS">
+							<div className="card-body cardCSS">
 								<h4 className="card-title">Job {job.jobNumber}</h4>
 								<h6 className="card-subtitle mb-2">SKU: {job.sku}</h6>
 								<h6 className="card-subtitle mb-2">Qty: {job.partQuantity}</h6>

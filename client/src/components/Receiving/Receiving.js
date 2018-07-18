@@ -27,7 +27,7 @@ class Receiving extends Component {
 	loadMaterials = () => {
 		API.getMaterials()
 			.then(res =>
-				this.setState({ parts: res.data, name: "", sku: "", materialQuantity: "", price: "" })
+				this.setState({ materials: res.data})
 			)
 			.catch(err => console.log(err));
 	};
@@ -53,7 +53,7 @@ class Receiving extends Component {
 			API.saveMaterial({
 				name: this.state.name,
 				sku: this.state.sku,
-				quantity: this.state.quantity,
+				materialQuantity: this.state.materialQuantity,
 				price: this.state.price
 			})
 				.then(res => this.loadMaterials())
@@ -80,7 +80,7 @@ class Receiving extends Component {
 									<NavBtn><Link className="linkStyle" to="/inventory/receiving">Receiving</Link></NavBtn>
 								</div>
 							</div>
-							<div class="panel heading text-center"><h3>Receiving</h3></div>
+							<div className="panel heading text-center"><h3>Receiving</h3></div>
 							<form>
 								<Input
 									value={this.state.name}

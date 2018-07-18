@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
+import "./JobsTable.css"
+
 
 class JobsTable extends Component {
 	constructor(props) {
@@ -26,9 +28,9 @@ class JobsTable extends Component {
 			{this.state.jobList ? this.state.jobList.map((job, jobNumber) => {
 				return (
 					<tr key={jobNumber}>
-						<Link className="square" to={`/job/detail/{job.jobNumber}`} >
-						<td>■</td>
-						</Link>
+						<td>
+							<Link className="square" to={`/job/detail/${job.jobNumber}`}>■</Link>
+						</td>
 						<td>{job.jobNumber}</td>
 						<td>{job.sku}</td>
 						<td>{job.partQuantity}</td>
