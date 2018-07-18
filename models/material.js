@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const materialSchema = new Schema({
 	name: { type: String, required: true, trim: true },
-	sku: { type: String, required: true, trim: true },
+	sku: { type: String, required: true, trim: true, unique: true },
 
 	materialQuantity: {type: Number }, 
 	price: { type: Number, required: true, trim: true }
