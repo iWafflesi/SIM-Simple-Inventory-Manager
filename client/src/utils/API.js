@@ -36,7 +36,10 @@ export default {
 	// Saves a material to the database
 	saveMaterial: function(materialData) {
 		console.log("you made it to API")
-		return axios.put("/api/materials", materialData);
+		return axios.post("/api/materials", materialData);
+	},
+	updateMaterial: function(id) {
+		return axios.put("/api/materials" + id)
 	},
 	getParts: function() {
 		return axios.get("/api/parts");
@@ -49,10 +52,13 @@ export default {
 	deletePart: function(id) {
 		return axios.delete("/api/parts/" + id);
 	},
+	updatePart: function(id){
+		return axios.put("api/parts" + id)
+	},
 	// saves a part to the database
 	savePart: function(partData) {
 		console.log("you made it to API")
-		return axios.put("/api/parts", partData);
+		return axios.post("/api/parts", partData);
 	},
 	getUsers: function() {
 		// console.log("you are getting to the api in utils folder....")
@@ -72,7 +78,7 @@ export default {
   */
   login: function (loginCreds) {
 		console.log("login util hit", loginCreds)
-		return axios.post('/api/auth/login', loginCreds);
+		return axios.post('/api/users/login', loginCreds);
   },
   /* 
     Path to check if user is logged in
