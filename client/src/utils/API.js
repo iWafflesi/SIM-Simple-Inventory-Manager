@@ -19,6 +19,11 @@ export default {
 	updateJob: function(jobData) {
 		return axios.post("/api/jobs", jobData);
 	},
+	// Saves a job to the database
+	saveJob: function(jobData) {
+		console.log("you made it to save job")
+		return axios.post("/api/jobs", jobData);
+	},
 
 	// Gets all materials
 	getMaterials: function() {
