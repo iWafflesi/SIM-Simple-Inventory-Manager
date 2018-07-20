@@ -55,13 +55,6 @@ class JobDetail extends Component {
 		});
 	};
 
-	// deleteJob = id => {
-	// 	console.log("You are deleting this job");
-	// 		API.deleteJob(id)
-	// 		.then(res =>
-	// 			this.loadJob());
-
-
 	deleteJob = id => {
 		API
 			.deleteJob(this.state.id)
@@ -69,20 +62,20 @@ class JobDetail extends Component {
 			.catch(err => console.log(err));
 	};
 
-	removeMaterials = event => {
+	removeMaterials = id => {
 		console.log("remove materials");
 		// console.log(materialQuantity);
-		console.log(this.state.materialQuantity);
-		API.saveMaterial({
+		console.log(this.state.id);
+		API.updateMaterial({
 			name: this.state.material,
 			materialQuantity: this.state.materialQuantity - 1,
 		}).then(res => this.addPart())
 			.catch(err => console.log(err, "save materials error"))
 	}
 
-	addPart = event => {
+	addPart = id => {
 		console.log("add products")
-		API.savePart({
+		API.updatePart({
 			partName: this.state.partName,
 			sku: this.state.sku,
 			partQuantity: this.state.partQuantity + 3,
