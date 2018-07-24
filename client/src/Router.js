@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import API from "./utils/API";
 // import components
 import App from "./App";
@@ -14,6 +14,7 @@ import JobDetail from "./components/JobDetail/JobDetail";
 import Register from "./pages/Register/Register";
 import Nav from "./components/Nav";
 import OpenNav from "./components/OpenNav";
+import AdminNav from "./components/AdminNav/AdminNav";
 
 
 class Router extends React.Component {
@@ -21,7 +22,7 @@ class Router extends React.Component {
 		super(props)
 		this.state = {
 			isLoggedIn: false,
-			// 	openModal: false,
+			redirect: false,
 			username: "",
 			password: "",
 			admin: true
@@ -34,6 +35,19 @@ class Router extends React.Component {
 	componentDidMount() {
 		this.loginCheck();
 	};
+
+	setRedirect = () => {
+		this.setState({
+		  redirect: true
+		})
+	  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/'/>
+    };
+  };
+
 	loginCheck = () => {
 		API
 			.loginCheck()
@@ -48,7 +62,9 @@ class Router extends React.Component {
 			})
 			.catch(err => {
 				console.log(err);
-				this.setState({ isLoggedIn: false })
+				this.setState({ isLoggedIn: false });
+				this.setRedirect();
+				this.renderRedirect();
 			})
 	}
 	login = (e) => {
@@ -70,6 +86,7 @@ class Router extends React.Component {
 			.logout()
 
 		this.setState({ isLoggedIn: false });
+		
 	};
 
 	getUsername = (e) => {
@@ -95,18 +112,24 @@ class Router extends React.Component {
 			<BrowserRouter>
 
 				<React.Fragment>
-					{this.state.isLoggedIn ?
+					{!this.state.isLoggedIn ?	
+						<OpenNav
+						login={this.login}
+						username={this.username}
+						password={this.password}
+						getUsername={this.getUsername}
+						getPassword={this.getPassword}
+						loginCheck={this.loginCheck}
+					/>
+					: this.state.isLoggedIn && this.state.admin ?
+					 <AdminNav
+					logout={this.logout}
+					admin={this.state.admin}
+					/> 
+					:
 						<Nav
 							logout={this.logout}
 							admin={this.state.admin}
-						/> :
-						<OpenNav
-							login={this.login}
-							username={this.username}
-							password={this.password}
-							getUsername={this.getUsername}
-							getPassword={this.getPassword}
-							loginCheck={this.loginCheck}
 						/>}
 					<Switch>
 						<Route exact path="/" component={App} />
@@ -129,3 +152,19 @@ class Router extends React.Component {
 	};
 };
 export default Router;
+// {this.state.isLoggedIn && this.state.admin ? <AdminNav
+// 	logout={this.logout}
+// 	admin={this.state.admin}
+// 	/> :this.state.isLoggedIn && !this.state.admin ?
+// 		<Nav
+// 			logout={this.logout}
+// 			admin={this.state.admin}
+// 		/> :
+// 		<OpenNav
+// 			login={this.login}
+// 			username={this.username}
+// 			password={this.password}
+// 			getUsername={this.getUsername}
+// 			getPassword={this.getPassword}
+// 			loginCheck={this.loginCheck}
+// 		/>}

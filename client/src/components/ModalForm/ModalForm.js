@@ -26,7 +26,7 @@ class ModalForm extends React.Component {
 		}
 		return (
 			<React.Fragment>
-				<wrapper>
+				<div className="wrapper">
 					<div className="cssTitle">
 						<h3 className='modal__title'> User Log In</h3>
 						<hr />
@@ -39,9 +39,9 @@ class ModalForm extends React.Component {
 						</form>
 					</div>
 					<div>
-						<button className='button' onClick={this.props.login}>Log In</button>
+						<button className='button' type="submit" onClick={this.props.login}>Log In</button>
 					</div>
-				</wrapper>
+				</div>
 			</React.Fragment>
 		)
 	}

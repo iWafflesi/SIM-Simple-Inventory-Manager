@@ -25,7 +25,8 @@ module.exports = {
 		console.log ("You made it to the controller");
 		db.Material
 			.findOneAndUpdate({ _id: req.params.name }, req.body)
-			.update(({$min:{materialQuantity: 1}}),({$inc:{ materialQuantity: -1}}))
+			.update({$min:{materialQuantity: 1}})
+			.update({$inc:{materialQuantity: -1}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
