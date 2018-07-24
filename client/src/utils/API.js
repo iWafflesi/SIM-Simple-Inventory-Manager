@@ -57,7 +57,7 @@ export default {
 	// saves a part to the database
 	savePart: function(partData) {
 		console.log("you made it to API")
-		return axios.put("/api/parts", partData);
+		return axios.post("/api/parts", partData);
 	},
 	
 	getUsers: function() {
