@@ -25,6 +25,7 @@ export default {
 		return axios.post("/api/jobs", jobData);
 	},
 
+
 	// Gets all materials
 	getMaterials: function() {
 		return axios.get("/api/materials");
@@ -44,9 +45,11 @@ export default {
 
 	},
 	updateMaterial: function(id) {
+		console.log("updating materials...", id);
 		return axios.put("/api/materials" + id)
-
 	},
+
+
 
 	getParts: function() {
 		return axios.get("/api/parts");
@@ -59,15 +62,18 @@ export default {
 	deletePart: function(id) {
 		return axios.delete("/api/parts/" + id);
 	},
-	updatePart: function(id){
-		return axios.put("api/parts" + id)
+	updatePart: function(sku){
+		console.log("updating parts...", sku);
+		return axios.put("/api/parts/" + sku)
 	},
 	// saves a part to the database
 	savePart: function(partData) {
 		console.log("you made it to API")
-		return axios.post("/api/parts", partData);
+		return axios.post("/api/parts/", partData);
 	},
 	
+
+
 	getUsers: function() {
 		// console.log("you are getting to the api in utils folder....")
 		return axios.get("/api/users");

@@ -24,10 +24,10 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	update: function (req, res) {
-		console.log ("You made it to the controller")
+		console.log ("You made it to the controller PARTS", req.params.sku)
 		db.Part
-			.findOneAndUpdate({ _id: req.params.sku }, req.body)
-			.update({$inc:{ partQuantity: +3}})
+			.findOneAndUpdate({ sku: req.params.sku }, req.body)
+			// .update({$inc:{ partQuantity: +3}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
