@@ -7,7 +7,7 @@ const partSchema = new Schema({
 	partQuantity: { type: Number, required: true, trim: true},
 	material: { type: String, required: true, trim: true },
 	partPrice: {type: Number, required: true, trim: true}
-
+	// min: [0, "Insufficent quantity!"]
 		
 });
 const Part = mongoose.model("part", partSchema);
