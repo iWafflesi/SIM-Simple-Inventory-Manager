@@ -73,7 +73,7 @@ class Router extends React.Component {
 		API
 			.login({ username: this.state.username, password: this.state.password, admin: this.state.admin })
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				this.setState({ isLoggedIn: true });
 				this.closeModal();
 			})

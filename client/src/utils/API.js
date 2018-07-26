@@ -91,7 +91,7 @@ export default {
 	loginCreds = {username: "alex", "password": 12345Password!}
   */
   login: function (loginCreds) {
-		console.log("login util hit", loginCreds)
+		// console.log("login util hit", loginCreds)
 		return axios.post('/api/users/login', loginCreds);
   },
   /* 
