@@ -39,7 +39,7 @@ const jobSeed = [
 	partPrice:14.99,
 	material: '1/4" Flat Stock Alloy Steel',
 	materialQuantity: 1,
-	notes:"This request is to be made out of steal instead of copper"
+	notes:"This request is to be made out of steel instead of copper"
 },
 {
 	jobNumber: 4,
@@ -71,7 +71,7 @@ const jobSeed = [
 	partQuantity:2,
 	partPrice:21.99,
 	material: '1/4" Flat Stock Alloy Steel',
-	materialQuantity: 1,
+	materialQuantity: 7,
 	notes:"Call when shipping is completed"
 },
 
