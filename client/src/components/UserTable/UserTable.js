@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../DeleteBtn";
 import API from "../../utils/API";
+import "./UserTable.css"
 
 class UserTable extends Component {
 	constructor(props) {
