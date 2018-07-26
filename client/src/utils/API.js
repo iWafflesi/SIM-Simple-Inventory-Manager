@@ -44,9 +44,9 @@ export default {
 		return axios.post("/api/materials", materialData);
 
 	},
-	updateMaterial: function(id) {
-		console.log("updating materials...", id);
-		return axios.put("/api/materials" + id)
+	updateMaterial: function(name) {
+		console.log("updating materials...", name);
+		return axios.put("/api/materials/" + name, name);
 	},
 
 
@@ -64,7 +64,7 @@ export default {
 	},
 	updatePart: function(sku){
 		console.log("updating parts...", sku);
-		return axios.put("/api/parts/" + sku)
+		return axios.put("/api/parts/" + sku, sku)
 	},
 	// saves a part to the database
 	savePart: function(partData) {
@@ -91,7 +91,7 @@ export default {
 	loginCreds = {username: "alex", "password": 12345Password!}
   */
   login: function (loginCreds) {
-		console.log("login util hit", loginCreds)
+		// console.log("login util hit", loginCreds)
 		return axios.post('/api/users/login', loginCreds);
   },
   /* 

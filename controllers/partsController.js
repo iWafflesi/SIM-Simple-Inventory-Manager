@@ -1,4 +1,5 @@
 const db = require("../models");
+const stringify = require("json-stringify");
 
 // Defining methods for the booksController
 module.exports = {
@@ -24,9 +25,10 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	update: function (req, res) {
-		console.log ("You made it to the controller PARTS", req.params.sku)
+		const info = req.body;
+		console.log ("You made it to the controller PARTS " + stringify(info, null, 2));
 		db.Part
-			.findOneAndUpdate({ sku: req.params.sku }, req.body)
+			.findOneAndUpdate({sku: req.body.sku }, req.body)
 			// .update({$inc:{ partQuantity: +3}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));

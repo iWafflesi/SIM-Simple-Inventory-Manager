@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import NavBtn from "../../components/NavButton";
 import UserTable from "../../components/UserTable";
 import "./Register.css";
-import { Col, Row, Container } from "../../components/Grid";
+import { Col } from "../../components/Grid";
 
 class CreateUser extends Component {
   state = {
